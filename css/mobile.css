@@ -1,0 +1,25 @@
+
+
+/* Desktop/Tablet Erweiterung (dein Ansatz ist korrekt) */
+@media (min-width: 768px) {
+    .hero__inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3rem;
+    }
+
+    .hero__media {
+        flex: 0 0 40%;
+        margin-top: 0;
+    }
+
+    .hero__img {
+        height: 480px;
+    }
+}
+
+.page{
+  min-height: 100vh;
+}
+
