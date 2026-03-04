@@ -1,60 +1,55 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vorname Nachname | Portfolio</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/mobile.css" />
 
-    <script src="js/main.js"></script>
-  </head>
-  <body>
-    <div class="ui-left">
-      <img src="assets/img/Menu system.png" alt="Navigation links" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vorname Nachname | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/main.js" defer></script>
+</head>
 
-      <!-- unsichtbare Click-Zonen -->
-      <a class="hit hit--why" href="#about" aria-label="Why me"></a>
-      <a class="hit hit--skills" href="#skills" aria-label="Skills"></a>
-      <a class="hit hit--work" href="#projects" aria-label="My Work"></a>
-      <a class="hit hit--contact" href="#contact" aria-label="Contact"></a>
+<body>
+  <!-- Sticky Sidebar -->
+  <aside class="sidebar" aria-label="Primary">
+    <div class="sidebar__badge" aria-hidden="true">
+      <div class="sidebar__badgeText">
+        <span class="sidebar__badgeArc">front and developer</span>
+        <span class="sidebar__badgeInitials">MH</span>
+      </div>
     </div>
 
-    <div class="ui-top">
-      <img src="assets/img/Social media.png" alt="Socialmedia icons" />
+    <nav class="sidebar__nav" aria-label="Sections">
+      <a class="sidebar__link" href="#contact">Contact</a>
+      <a class="sidebar__link" href="#my-work">My Work</a>
+      <a class="sidebar__link" href="#skills">Skills</a>
+      <a class="sidebar__link" href="#why-me">Why me</a>
+    </nav>
+  </aside>
+
+  <div class="topbar">
+    <div class="social">
+      <a class="icon icon--mail" href="mailto:you@email.com" aria-label="Email"></a>
+      <a class="social__btn icon icon--linkedin" href="https://linkedin.com" target="_blank" aria-label="LinkedIn"></a>
+
+      <a class="social__btn icon icon--github" href="https://github.com/OBO-WAN" target="_blank"
+        aria-label="GitHub"></a>
     </div>
 
+    <div class="lang">
+      <a href="#" class="icon icon--de" aria-label="Deutsch"></a>
+      <span class="lang__divider icon icon--vline" aria-hidden="true"></span>
+      <a href="#" class="icon icon--en" aria-label="English"></a>
+    </div>
+
+    <!-- Main section comes after scrolling the front page !!! -->
     <!-- <main>
-      <section class="hero" id="top">
-        <div class="container hero__inner">
-          <p class="hero__eyebrow">UI/UX Designer • Frontend</p>
-
-          <h1 class="hero__title">
-            Hi, ich bin <span class="hero__accent">Mein Name</span>.
-          </h1>
-
-          <p class="hero__text">
-            Kurzbeschreibung (2–3 Zeilen) passend zu deinem Figma-Text.
-          </p>
-
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#projects">Projekte</a>
-            <a class="btn btn--ghost" href="#contact">Kontakt</a>
-          </div>
-
-          <div class="hero__media">
-            <img
-              class="hero__img"
-              src="assets/img/hero.jpg"
-              alt="Portrait von Dein Name"
-            />
-          </div>
-        </div>
-      </section>
+      <section class="panel">Home</section>
+      <section class="panel">Why me</section>
+      <section class="panel">Skills</section>
+      <section class="panel">Projects</section>
+      <section class="panel">Contact</section>
     </main> -->
+</body>
 
-    <!-- <footer>
-      <p>© 2026 Vorname Nachname</p>
-    </footer> -->
-  </body>
 </html>
