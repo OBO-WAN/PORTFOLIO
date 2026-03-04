@@ -140,83 +140,25 @@ body {
     color: white;
     text-decoration: none;
     font-size: 14px;
+    transition: border-color 0.2s ease;
 }
 
 .social__btn:hover {
     border-color: white;
 }
 
-.lang {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.lang .icon--de,
-.lang .icon--en {
-    width: 22px;
-    height: 25px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.icon--de {
-    background-image: url("../assets/icons/language/DE.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 22px;
-    height: 25px;
-}
-
-.icon--de:hover {
-    background-image: url("../assets/icons/language/DE:hover.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 22px;
-    height: 25px;
-}
-
-.icon--en {
-    background-image: url("../assets/icons/language/EN.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.icon--en:hover {
-    background-image: url("../assets/icons/language/EN:hover.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.lang .icon--vline {
-    width: 6px;
-    height: 22px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.icon--vline {
-    background-image: url("../assets/icons/language/vertical_line.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
+/* Base icon (used by social + language elements) */
 .icon {
     width: 36px;
     height: 36px;
     display: inline-block;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: contain;
+    transition: background-image 0.2s ease;
 }
 
+/* Social icons (36x36 via .icon) */
 .icon--mail {
     background-image: url("../assets/icons/email_button.svg");
 }
@@ -239,4 +181,50 @@ body {
 
 .icon--github:hover {
     background-image: url("../assets/icons/github_button:hover.svg");
+}
+
+/* Language block */
+.lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Language icons: override size ONLY inside .lang */
+.lang .icon--de,
+.lang .icon--en,
+.lang .icon--vline {
+    width: 22px;
+    height: 25px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* If your vertical line SVG needs different sizing, change ONLY these two lines */
+.lang .icon--vline {
+    width: 6px;
+    height: 22px;
+}
+
+/* Language images + hover swaps */
+.icon--de {
+    background-image: url("../assets/icons/language/DE.svg");
+}
+
+.icon--de:hover {
+    background-image: url("../assets/icons/language/DE:hover.svg");
+}
+
+.icon--en {
+    background-image: url("../assets/icons/language/EN.svg");
+}
+
+.icon--en:hover {
+    background-image: url("../assets/icons/language/EN:hover.svg");
+}
+
+.icon--vline {
+    background-image: url("../assets/icons/language/vertical_line.svg");
 }

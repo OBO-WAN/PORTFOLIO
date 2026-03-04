@@ -1,48 +1,77 @@
 <!doctype html>
 <html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Francisco Naranjo | Portfolio</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vorname Nachname | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="js/main.js" defer></script>
-</head>
+    <link rel="stylesheet" href="css/style.css" />
 
-<body>
-  <!-- Sticky Sidebar -->
-  <aside class="sidebar" aria-label="Primary">
-    <div class="sidebar__badge" aria-hidden="true">
-      <div class="sidebar__badgeText">
-        <span class="sidebar__badgeArc">front and developer</span>
-        <span class="sidebar__badgeInitials">MH</span>
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Sticky Sidebar -->
+    <aside class="sidebar" aria-label="Primary">
+      <div class="sidebar__badge" aria-hidden="true">
+        <div class="sidebar__badgeText">
+          <span class="sidebar__badgeArc">front and developer</span>
+          <span class="sidebar__badgeInitials">MH</span>
+        </div>
       </div>
-    </div>
 
-    <nav class="sidebar__nav" aria-label="Sections">
-      <a class="sidebar__link" href="#contact">Contact</a>
-      <a class="sidebar__link" href="#my-work">My Work</a>
-      <a class="sidebar__link" href="#skills">Skills</a>
-      <a class="sidebar__link" href="#why-me">Why me</a>
+      <nav class="sidebar__nav" aria-label="Sections">
+        <a class="sidebar__link" href="#contact">Contact</a>
+        <a class="sidebar__link" href="#my-work">My Work</a>
+        <a class="sidebar__link" href="#skills">Skills</a>
+        <a class="sidebar__link" href="#why-me">Why me</a>
+      </nav>
+    </aside>
+
+    <nav class="topbar">
+      <div class="social" aria-label="Social media">
+        <a
+          class="social__btn icon icon--mail"
+          href="mailto:francisco@naranjo.me"
+          aria-label="Email"
+        ></a>
+        <a
+          class="social__btn icon icon--linkedin"
+          href="https://linkedin.com"
+          target="_blank"
+          aria-label="LinkedIn"
+        ></a>
+        <a
+          class="social__btn icon icon--github"
+          href="https://github.com/OBO-WAN"
+          target="_blank"
+          aria-label="GitHub"
+        ></a>
+      </div>
+
+      <div class="lang" aria-label="Language switcher">
+        <a
+          class="icon icon--de"
+          href="/de/"
+          hreflang="de"
+          lang="de"
+          aria-current="page"
+          aria-label="Deutsch"
+        ></a>
+
+        <span class="lang__divider icon icon--vline" aria-hidden="true"></span>
+
+        <a
+          class="icon icon--en"
+          href="/en/"
+          hreflang="en"
+          lang="en"
+          aria-label="English"
+        ></a>
+      </div>
     </nav>
-  </aside>
 
-  <div class="topbar">
-    <div class="social">
-      <a class="icon icon--mail" href="mailto:you@email.com" aria-label="Email"></a>
-      <a class="social__btn icon icon--linkedin" href="https://linkedin.com" target="_blank" aria-label="LinkedIn"></a>
-
-      <a class="social__btn icon icon--github" href="https://github.com/OBO-WAN" target="_blank"
-        aria-label="GitHub"></a>
-    </div>
-
-    <div class="lang">
-      <a href="#" class="icon icon--de" aria-label="Deutsch"></a>
-      <span class="lang__divider icon icon--vline" aria-hidden="true"></span>
-      <a href="#" class="icon icon--en" aria-label="English"></a>
-    </div>
-
-    <!-- Main section comes after scrolling the front page !!! -->
+    <!-- Main section appears not after until scrolling the front/landing page !!! -->
     <!-- <main>
       <section class="panel">Home</section>
       <section class="panel">Why me</section>
@@ -50,6 +79,5 @@
       <section class="panel">Projects</section>
       <section class="panel">Contact</section>
     </main> -->
-</body>
-
+  </body>
 </html>
