@@ -2,7 +2,7 @@
     --sidebar: #b5e93b;
     --bg: #0b0b0b;
     --text: #eaeaea;
-    --sidebar-w: 96px;
+    --sidebar-w: 106px;
 }
 
 html,
@@ -23,9 +23,10 @@ body {
 /* Sticky sidebar */
 .sidebar {
     position: fixed;
-    inset: 0 auto 0 0;
+    top: 0;
+    left: 0;
     width: var(--sidebar-w);
-    height: 100vh;
+    height: 100%;
     background: var(--sidebar);
     display: flex;
     flex-direction: column;
@@ -33,6 +34,16 @@ body {
     padding: 14px 10px;
     gap: 18px;
     z-index: 50;
+}
+
+@media (max-width: 520px) {
+    :root {
+        --sidebar-w: 64px;
+    }
+    
+    .sidebar__link {
+        font-size: 13px;
+    }
 }
 
 .sidebar__badge {
@@ -62,14 +73,15 @@ body {
 
 .sidebar__badgeArc {
     position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 9px;
-    letter-spacing: 0.9px;
+    inset: 0;
+    pointer-events: none;
+}
+
+.sidebar__badgeArcText {
+    font-size: 7px;
+    letter-spacing: 1px;
     text-transform: lowercase;
-    color: rgba(0, 0, 0, 0.65);
-    white-space: nowrap;
+    fill: rgba(0, 0, 0, 0.65);
 }
 
 .sidebar__nav {
@@ -102,16 +114,6 @@ body {
     outline: 3px solid rgba(0, 0, 0, 0.85);
     outline-offset: 4px;
     border-radius: 6px;
-}
-
-@media (max-width: 520px) {
-    :root {
-        --sidebar-w: 82px;
-    }
-
-    .sidebar__link {
-        font-size: 13px;
-    }
 }
 
 /* Top right social + language */
@@ -190,7 +192,6 @@ body {
     gap: 6px;
 }
 
-/* Language icons: override size ONLY inside .lang */
 .lang .icon--de,
 .lang .icon--en,
 .lang .icon--vline {
@@ -202,7 +203,6 @@ body {
     background-size: contain;
 }
 
-/* If your vertical line SVG needs different sizing, change ONLY these two lines */
 .lang .icon--vline {
     width: 6px;
     height: 22px;
@@ -228,3 +228,16 @@ body {
 .icon--vline {
     background-image: url("../assets/icons/language/vertical_line.svg");
 }
+
+/* Main layout */
+main {
+  margin-left: var(--sidebar-w);
+}
+
+/* Hero section (required 100vh) */
+.hero {
+  display: flex;
+  height: 100vh;
+  width: calc(100vw - var(--sidebar-w));
+}
+

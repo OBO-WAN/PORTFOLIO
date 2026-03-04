@@ -13,11 +13,26 @@
   <body>
     <!-- Sticky Sidebar -->
     <aside class="sidebar" aria-label="Primary">
-      <div class="sidebar__badge" aria-hidden="true">
-        <div class="sidebar__badgeText">
-          <span class="sidebar__badgeArc">front and developer</span>
-          <span class="sidebar__badgeInitials">MH</span>
-        </div>
+      <div class="sidebar__badgeText">
+        <svg class="sidebar__badgeArc" viewBox="0 0 64 64" aria-hidden="true">
+          <!-- arc path (top curve) -->
+          <path
+            id="badgeArcPath"
+            d="M 10 36 A 22 22 0 0 1 54 36"
+            fill="none"
+          ></path>
+          <text class="sidebar__badgeArcText">
+            <textPath
+              href="#badgeArcPath"
+              startOffset="50%"
+              text-anchor="middle"
+            >
+              frontend developer
+            </textPath>
+          </text>
+        </svg>
+
+        <span class="sidebar__badgeInitials">FN</span>
       </div>
 
       <nav class="sidebar__nav" aria-label="Sections">
@@ -71,13 +86,12 @@
       </div>
     </nav>
 
-    <!-- Main section appears not after until scrolling the front/landing page !!! -->
-    <!-- <main>
-      <section class="panel">Home</section>
-      <section class="panel">Why me</section>
-      <section class="panel">Skills</section>
-      <section class="panel">Projects</section>
-      <section class="panel">Contact</section>
-    </main> -->
+
+    <main>
+      <section id="home" class="hero"></section>
+    </main>
+
+    
+
   </body>
 </html>
