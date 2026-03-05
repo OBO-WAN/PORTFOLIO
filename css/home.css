@@ -40,7 +40,7 @@ body {
     :root {
         --sidebar-w: 64px;
     }
-    
+
     .sidebar__link {
         font-size: 13px;
     }
@@ -124,6 +124,7 @@ body {
     display: flex;
     align-items: center;
     gap: 28px;
+    z-index: 100;
 }
 
 .social {
@@ -229,15 +230,109 @@ body {
     background-image: url("../assets/icons/language/vertical_line.svg");
 }
 
-/* Main layout */
+/* Hero section */
 main {
-  margin-left: var(--sidebar-w);
+    margin-left: var(--sidebar-w);
 }
 
-/* Hero section (required 100vh) */
 .hero {
-  display: flex;
-  height: 100vh;
-  width: calc(100vw - var(--sidebar-w));
+    height: 100vh;
+    width: calc(100vw - var(--sidebar-w));
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
 }
 
+/* Portrait container */
+.hero__portrait {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__portrait img {
+    max-height: 88vh;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+}
+
+.hero__name {
+    position: absolute;
+    left: 50%;
+    bottom: 140px;
+    transform: translateX(-50%);
+    margin: 0;
+    text-align: center;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 120%;
+    letter-spacing: 0;
+    color: #b5e93b;
+    white-space: inherit;
+}
+
+/* .hero__nameFirst {
+  
+} */
+
+.hero__nameLast {
+    margin-left: 44px;
+    color: orange;
+}
+
+@media (max-width: 900px) {
+    .hero__name {
+        font-size: 54px;
+    }
+}
+
+.hero__subtitle {
+  position: absolute;
+  left: 50%;
+  bottom: 64px;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: "Quantico", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: transparent;
+  -webkit-text-stroke: 1px #b5e93b;
+  letter-spacing: 0;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.hero__subtitle span:first-child {
+  position: relative;
+  top: -2px;
+}
+
+.hero__subtitle span:last-child {
+  position: relative;
+  top: 2px;
+}
+
+/* Arrow to switch sections */
+.hero__arrow {
+    position: absolute;
+    right: 10px;
+    top: 30%;
+    transform: translateY(-50%);
+    display: inline-block;
+}
+
+.hero__arrow img {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+
+/* subtle hover feedback */
+.hero__arrow:hover img {
+    transform: translateX(6px);
+    transition: transform 0.2s ease;
+}

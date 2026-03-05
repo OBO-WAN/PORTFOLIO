@@ -1,25 +1,121 @@
+/* ###### HOME ############### */
 
 
-/* Desktop/Tablet Erweiterung (dein Ansatz ist korrekt) */
-@media (min-width: 768px) {
-    .hero__inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 3rem;
-    }
-
-    .hero__media {
-        flex: 0 0 40%;
-        margin-top: 0;
-    }
-
-    .hero__img {
-        height: 480px;
-    }
+/* Prevent the topbar from overflowing the visible area (sidebar takes space) */
+.topbar {
+  max-width: calc(100vw - var(--sidebar-w) - 16px);
 }
 
-.page{
-  min-height: 100vh;
+/* Tablet / small screens */
+@media (max-width: 768px) {
+  .topbar {
+    top: 16px;
+    right: 16px;
+    gap: 16px;
+  }
+
+  .social {
+    gap: 8px;
+  }
 }
 
+/* Phones */
+@media (max-width: 520px) {
+  .topbar {
+    top: 12px;
+    right: 12px;
+
+    /* allow the two groups to fit instead of clipping */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  /* Make the tap targets a bit smaller but still comfortable */
+  .social__btn,
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Keep language icons scaled consistently inside lang */
+  .lang .icon--de,
+  .lang .icon--en,
+  .lang .icon--vline {
+    width: 20px;
+    height: 22px;
+  }
+
+  .lang .icon--vline {
+    width: 5px;
+    height: 20px;
+  }
+}
+
+/* --- Main/Hero responsive tweaks --- */
+
+/* Prevent accidental horizontal overflow caused by large text/absolute elements */
+main {
+  max-width: calc(100vw - var(--sidebar-w));
+}
+
+.hero {
+  overflow: hidden;
+}
+
+/* Tablet / small screens */
+@media (max-width: 768px) {
+  .hero__portrait img {
+    max-height: 86vh;
+  }
+
+  .hero__name {
+    font-size: 56px;
+    bottom: 128px;
+    white-space: inherit;
+  }
+
+  .hero__subtitle {
+    font-size: 24px;
+    bottom: 56px;
+  }
+
+  .hero__arrow {
+    right: 12px;
+    top: 32%;
+  }
+
+  .hero__arrow img {
+    height: 22px;
+  }
+}
+
+/* Phones */
+@media (max-width: 520px) {
+  .hero__portrait img {
+    max-height: 82vh; /* avoid covering topbar */
+  }
+
+  .hero__name {
+    font-size: 42px;
+    bottom: 118px;
+  }
+
+  .hero__nameLast {
+    margin-left: 18px; /* smaller gap on phone */
+  }
+
+  .hero__subtitle {
+    font-size: 24px;
+    bottom: 52px;
+  }
+
+  .hero__arrow {
+    right: 8px;
+    top: 34%;
+  }
+
+  .hero__arrow img {
+    height: 20px;
+  }
+}

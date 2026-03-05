@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Francisco Naranjo | Portfolio</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
 
     <script src="js/main.js" defer></script>
   </head>
@@ -86,12 +94,25 @@
       </div>
     </nav>
 
-
     <main>
-      <section id="home" class="hero"></section>
+      <section id="home" class="hero">
+        <div class="hero__portrait">
+          <img src="assets/img/portrait.svg" alt="Francisco Naranjo portrait" />
+        </div>
+
+        <h1 class="hero__name" aria-label="Francisco Naranjo">
+          <span class="hero__nameFirst">Francisco</span>
+          <span class="hero__nameLast">Naranjo</span>
+        </h1>
+
+<h2 class="hero__subtitle">
+  <span>Frontend</span>
+  <span>Developer</span>
+</h2>
+        <a href="#why-me" class="hero__arrow" aria-label="Go to next section">
+          <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+        </a>
+      </section>
     </main>
-
-    
-
   </body>
 </html>
