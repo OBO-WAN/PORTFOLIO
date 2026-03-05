@@ -73,7 +73,13 @@ body {
     line-height: 3.3;
     color: transparent;
     -webkit-text-stroke: 1px black;
+    transition: color 0.25s ease, transform 0.2s ease;
     letter-spacing: -2.5px;
+}
+
+.sidebar__badgeInitials:hover {
+    color: transparent;
+    -webkit-text-stroke: 1.4px #131312;
 }
 
 .sidebar__badgeArc {
@@ -94,16 +100,15 @@ body {
 }
 
 .sidebar__badgeText:hover .sidebar__badgeArc {
-    animation: badgeSpin 2.6s ease-in-out infinite;
-    cursor: pointer;
+    animation: badgeSwing 2.8s linear infinite;
 }
 
-@keyframes badgeSpin {
-    0%   { transform: rotate(0deg); }
-    25%  { transform: rotate(8deg); }
-    50%  { transform: rotate(0deg); }
-    75%  { transform: rotate(-8deg); }
-    100% { transform: rotate(0deg); }
+@keyframes badgeSwing{
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(8deg); }
+  50%  { transform: rotate(0deg); }
+  75%  { transform: rotate(-8deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .sidebar__nav {
