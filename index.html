@@ -21,14 +21,10 @@
   <body>
     <!-- Sticky Sidebar -->
     <aside class="sidebar" aria-label="Primary">
-      <div class="sidebar__badgeText">
-        <svg class="sidebar__badgeArc" viewBox="0 0 64 64" aria-hidden="true">
+      <a class="sidebar__badgeText" href="index.html" aria-label="Home">
+        <svg class="sidebar__badgeArc" viewBox="0 -12 64 76" aria-hidden="true">
           <!-- arc path (top curve) -->
-          <path
-            id="badgeArcPath"
-            d="M 10 36 A 22 22 0 0 1 54 36"
-            fill="none"
-          ></path>
+          <path id="badgeArcPath" d="M 4 40 A 28 32 0 0 1 60 40" fill="none"></path>
           <text class="sidebar__badgeArcText">
             <textPath
               href="#badgeArcPath"
@@ -39,9 +35,8 @@
             </textPath>
           </text>
         </svg>
-
         <span class="sidebar__badgeInitials">FN</span>
-      </div>
+      </a>
 
       <nav class="sidebar__nav" aria-label="Sections">
         <a class="sidebar__link" href="#contact">Contact</a>
