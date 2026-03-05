@@ -79,7 +79,7 @@ body {
 
 .sidebar__badgeInitials:hover {
     color: transparent;
-    -webkit-text-stroke: 1.4px #131312;
+    -webkit-text-stroke: 1.6px #131312;
 }
 
 .sidebar__badgeArc {
@@ -101,14 +101,29 @@ body {
 
 .sidebar__badgeText:hover .sidebar__badgeArc {
     animation: badgeSwing 2.8s linear infinite;
+    /* -webkit-text-stroke: 1.6px #131312; */
 }
 
-@keyframes badgeSwing{
-  0%   { transform: rotate(0deg); }
-  25%  { transform: rotate(8deg); }
-  50%  { transform: rotate(0deg); }
-  75%  { transform: rotate(-8deg); }
-  100% { transform: rotate(0deg); }
+@keyframes badgeSwing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(8deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-8deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .sidebar__nav {
@@ -134,7 +149,7 @@ body {
 
 .sidebar__link:hover {
     color: transparent;
-    -webkit-text-stroke: 1px #131312;
+    -webkit-text-stroke: 1.2px #131312;
 }
 
 .sidebar__link:focus-visible {
