@@ -5,21 +5,22 @@
     --sidebar-w: 106px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body {
     height: 100%;
     margin: 0;
     overflow-y: hidden;
-    /* no vertical scroll */
     overflow-x: auto;
-    /* horizontal scroll later */
 }
+
 
 body {
     background: var(--bg);
     color: var(--text);
-    /* overscroll-behavior: none; */
-
 }
 
 /* Sticky sidebar */
@@ -257,11 +258,6 @@ body {
     background-size: contain;
 }
 
-.lang .icon--vline {
-    width: 6px;
-    height: 22px;
-}
-
 /* Language images + hover swaps */
 .icon--de {
     background-image: url("../assets/icons/language/DE.svg");
@@ -294,6 +290,17 @@ body {
 /* Hero section */
 main {
     margin-left: var(--sidebar-w);
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    scroll-snap-type: x mandatory;
+}
+
+main>section {
+    width: calc(100vw - var(--sidebar-w));
+    height: 100vh;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 .hero {
@@ -302,7 +309,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    position: relative; 
+    position: relative;
 }
 
 /* Portrait container */
