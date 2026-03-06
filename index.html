@@ -4,11 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Francisco Naranjo | Portfolio</title>
-    
-    <link rel="icon" href="assets/favicon/favicon.png" />
-    <!-- <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" /> -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,6 +34,31 @@
   </head>
 
   <body>
+    <header class="mobileBar">
+      <a class="mobileBar__brand" href="#home" aria-label="Home">
+        <span class="mobileBar__brandText">FN</span>
+      </a>
+
+      <button
+        class="mobileBar__toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav class="mobileMenu" id="mobileMenu" aria-label="Mobile navigation">
+      <a class="mobileMenu__link" href="#contact">Contact</a>
+      <a class="mobileMenu__link" href="#my-work">My Work</a>
+      <a class="mobileMenu__link" href="#skills">Skills</a>
+      <a class="mobileMenu__link" href="#why-me">Why me</a>
+    </nav>
+
     <!-- Sticky Sidebar -->
     <aside class="sidebar" aria-label="Primary">
       <a class="sidebar__badgeText" href="index.html" aria-label="Home">

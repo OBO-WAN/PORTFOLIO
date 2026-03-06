@@ -18,6 +18,8 @@ body {
 body {
     background: var(--bg);
     color: var(--text);
+    /* overscroll-behavior: none; */
+
 }
 
 /* Sticky sidebar */
@@ -283,7 +285,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    position: relative;
+    position: relative; 
 }
 
 /* Portrait container */
@@ -302,7 +304,7 @@ main {
 
 .hero__name {
     display: inline-flex;
-    /* gap: 12px; */
+    gap: 12px;
     position: absolute;
     left: 50%;
     bottom: 140px;

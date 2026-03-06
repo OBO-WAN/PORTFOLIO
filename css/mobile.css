@@ -93,7 +93,8 @@ main {
 /* Phones */
 @media (max-width: 520px) {
   .hero__portrait img {
-    max-height: 82vh; /* avoid covering topbar */
+    max-height: 82vh;
+    /* avoid covering topbar */
   }
 
   .hero__name {
@@ -102,7 +103,8 @@ main {
   }
 
   .hero__nameLast {
-    margin-left: 8px; /* smaller gap on phone */
+    margin-left: 8px;
+    /* smaller gap on phone */
   }
 
   .hero__subtitle {
@@ -120,3 +122,161 @@ main {
   }
 }
 
+/* ###### Sidebar Mobile ############### */
+
+/* --- Mobile sticky header --- */
+.mobileBar,
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  html,
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .sidebar,
+  .topbar {
+    display: none;
+  }
+
+  main {
+    margin-left: 0;
+    max-width: 100vw;
+  }
+
+  .hero {
+    width: 100vw;
+    /* height: 100svh; */
+    height: calc(100dvh - 72px);
+  }
+
+  .mobileBar {
+    position: sticky;
+    top: 0;
+    z-index: 300;
+    height: 72px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--sidebar);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  }
+
+  .mobileBar__brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .mobileBar__brandText {
+    font-family: "Quantico", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: transparent;
+    -webkit-text-stroke: 1.2px #131312;
+  }
+
+  .mobileBar__toggle {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .mobileBar__toggle span {
+    width: 24px;
+    height: 2px;
+    background: #131312;
+    display: block;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .mobileMenu {
+    position: fixed;
+    inset: 72px 0 0 0;
+    z-index: 250;
+    background: var(--sidebar);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    height: 50%;
+  }
+
+  .mobileMenu__link {
+    font-family: "Quantico", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #655e5e;
+    text-decoration: none;
+  }
+
+  .mobileMenu__link:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px #b5e93b;
+  }
+
+  body.menu-open .mobileMenu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  body.menu-open .mobileBar__toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  body.menu-open .mobileBar__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.menu-open .mobileBar__toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .mobileBar {
+    height: 68px;
+    padding: 0 16px;
+  }
+
+  .mobileMenu {
+    inset: 68px 0 0 0;
+  }
+
+  .mobileBar__brandText {
+    font-size: 28px;
+  }
+
+  .mobileMenu__link {
+    font-size: 24px;
+  }
+
+  .hero {
+    height: calc(100dvh - 72px);
+  }
+
+  .hero__name {
+    gap: 8px;
+  }
+}
