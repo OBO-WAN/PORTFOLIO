@@ -364,7 +364,7 @@ section {
 body.menu-open .mobileMenu__lang {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 1.0s;
+  transition-delay: 0.75s;
 }
 
 .mobileMenu__lang a {
