@@ -239,6 +239,15 @@ body {
 
 .lang .icon--de,
 .lang .icon--en,
+.lang .icon--es {
+    width: 22px;
+    height: 25px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
 .lang .icon--vline {
     width: 22px;
     height: 25px;
@@ -272,6 +281,14 @@ body {
 
 .icon--vline {
     background-image: url("../assets/icons/language/vertical_line.svg");
+}
+
+.icon--es {
+    background-image: url("../assets/icons/language/ES.svg");
+}
+
+.icon--es:hover {
+    background-image: url("../assets/icons/language/ES:hover.svg");
 }
 
 /* Hero section */

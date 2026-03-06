@@ -36,7 +36,10 @@
   <body>
     <header class="mobileBar">
       <a class="mobileBar__brand" href="#home" aria-label="Home">
-        <span class="mobileBar__brandText">FN</span>
+        <span class="mobileBar__brandText">
+          <span class="mobileBar__brandF">F</span>
+          <span class="mobileBar__brandN">N</span>
+        </span>
       </a>
 
       <button
@@ -53,11 +56,18 @@
     </header>
 
     <nav class="mobileMenu" id="mobileMenu" aria-label="Mobile navigation">
-      <a class="mobileMenu__link" href="#contact">Contact</a>
-      <a class="mobileMenu__link" href="#my-work">My Work</a>
-      <a class="mobileMenu__link" href="#skills">Skills</a>
-      <a class="mobileMenu__link" href="#why-me">Why me</a>
-
+      <a class="mobileMenu__link mobileMenu__link--outline" href="#why-me"
+        >Why me</a
+      >
+      <a class="mobileMenu__link mobileMenu__link--outline" href="#skills"
+        >Skills</a
+      >
+      <a class="mobileMenu__link mobileMenu__link--outline" href="#my-work"
+        >My Work</a
+      >
+      <a class="mobileMenu__link mobileMenu__link--outline" href="#contact"
+        >Contact</a
+      >
       <div class="mobileMenu__lang">
         <a href="/de/" lang="de">DE</a>
         <span class="mobileMenu__divider">|</span>
@@ -91,10 +101,10 @@
       </a>
 
       <nav class="sidebar__nav" aria-label="Sections">
-        <a class="sidebar__link" href="#contact">Contact</a>
-        <a class="sidebar__link" href="#my-work">My Work</a>
-        <a class="sidebar__link" href="#skills">Skills</a>
         <a class="sidebar__link" href="#why-me">Why me</a>
+        <a class="sidebar__link" href="#skills">Skills</a>
+        <a class="sidebar__link" href="#my-work">My Work</a>
+        <a class="sidebar__link" href="#contact">Contact</a>
       </nav>
     </aside>
 
@@ -138,6 +148,15 @@
           lang="en"
           aria-label="English"
         ></a>
+        <span class="lang__divider icon icon--vline" aria-hidden="true"></span>
+
+        <a
+          class="icon icon--es"
+          href="/es/"
+          hreflang="es"
+          lang="es"
+          aria-label="Español"
+        ></a>
       </div>
     </nav>
 
@@ -160,6 +179,10 @@
           <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
         </a>
       </section>
+
+      <!-- <section>
+        <h2 id="why-me" class="section__title">Why me?</h2>
+      </section> -->
     </main>
   </body>
 </html>
