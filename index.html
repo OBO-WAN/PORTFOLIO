@@ -28,7 +28,9 @@
     />
 
     <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/mobile.css" />
+    <link rel="stylesheet" href="css/home-mobile.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/sections-mobile.css" />
 
     <script src="js/main.js" defer></script>
   </head>
@@ -180,8 +182,46 @@
         </a>
       </section>
 
-      <section id="why-me">
-        <h2 class="section__title">Why me?</h2>
+      <section id="why-me" class="whyMe">
+        <div class="whyMe__headline">
+          <img
+            src="assets/img/section/Why_me.svg"
+            alt="Why me"
+            class="whyMe__headlineSvg"
+          />
+        </div>
+
+        <div class="text-area">
+          <p>I never thought I would be here, but here I am!</p>
+        </div>
+
+        <div class="whyMe__infoBox">
+          <img
+            src="assets/img/section/I_am.svg"
+            alt="I am"
+            class="whyMe__infoSvg"
+          />
+
+          <div class="whyMe__icons">
+            <img
+              src="assets/img/section/location.svg"
+              alt="Located in city name"
+            />
+            <img
+              src="assets/img/section/remote.svg"
+              alt="Open to remote work"
+            />
+            <img src="assets/img/section/relocate.svg" alt="Open to relocate" />
+          </div>
+        </div>
+
+        <a
+          href="#skills"
+          class="section__arrow"
+          aria-label="Go to next section"
+        >
+          <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+        </a>
       </section>
     </main>
   </body>
