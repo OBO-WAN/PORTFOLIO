@@ -1,0 +1,142 @@
+/* ===== WHY ME mobile ===== */
+
+@media (max-width: 768px) {
+    .whyMe {
+        width: 100vw;
+        min-height: 100dvh;
+        box-sizing: border-box;
+        padding: 96px 24px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 28px;
+    }
+
+    .whyMe__headline {
+        position: static;
+        transform: none;
+        display: flex;
+        justify-content: start;
+        width: 100%;
+    }
+
+    .whyMe__headlineSvg {
+        width: 121px;
+        height: auto;
+        display: block;
+    }
+
+    .whyMe__content {
+        position: static;
+        transform: none;
+        left: auto;
+        margin-top: 64px;
+        max-width: 520px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .text-area__paragraph {
+        transform: none;
+        top: auto;
+        max-width: 34ch;
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .whyMe__infoBox {
+        left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .whyMe__infoSvg {
+        width: 72px;
+        height: auto;
+    }
+
+    .whyMe__icons {
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .whyMe__icons img {
+        width: min(22vw, 154px);
+        height: auto;
+    }
+
+    .whyMe__contactBtn {
+        position: static;
+        right: auto;
+        top: auto;
+        display: inline-flex;
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+    .whyMe__contactBtn img {
+        height: 44px;
+        width: auto;
+        margin-top: 48px;
+
+    }
+
+    .section__arrow {
+        display: none;
+    }
+
+    .section__arrow img {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .whyMe {
+        padding: 88px 16px 32px;
+        gap: 24px;
+    }
+
+    .whyMe__headlineSvg {
+        width: min(60vw, 240px);
+        margin-top: 12px;
+    }
+
+    .text-area__paragraph {
+        max-width: 30ch;
+        font-size: 1.2rem;
+        line-height: 1.55;
+    }
+
+    .whyMe__icons {
+        gap: 16px;
+        flex-direction: column;
+    }
+
+    .whyMe__icons img {
+        width: min(24vw, 124px);
+    }
+
+    .whyMe__contactBtn img {
+        height: 40px;
+    }
+
+    .section__arrow img {
+        height: 20px;
+    }
+}
