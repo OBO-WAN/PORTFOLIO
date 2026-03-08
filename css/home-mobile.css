@@ -197,13 +197,43 @@ section {
 
   .mobileBar__brandF {
     color: transparent;
-    -webkit-text-stroke: 0.8px #131312;
+    -webkit-text-stroke: 0.8px black;
   }
 
   .mobileBar__brandN {
     color: transparent;
-    -webkit-text-stroke: 0.8px #131312;
+    -webkit-text-stroke: 0.8px black;
+    display: inline-block;
+    animation: brandShake 2.2s ease-in-out infinite;
+    transform-origin: center;
+  }
 
+  @keyframes brandShake {
+
+    0%,
+    100% {
+      transform: rotate(0deg) translateX(0);
+    }
+
+    10% {
+      transform: rotate(-4deg) translateX(-1px);
+    }
+
+    20% {
+      transform: rotate(4deg) translateX(1px);
+    }
+
+    30% {
+      transform: rotate(-3deg) translateX(-1px);
+    }
+
+    40% {
+      transform: rotate(3deg) translateX(1px);
+    }
+
+    50% {
+      transform: rotate(0deg) translateX(0);
+    }
   }
 
   .mobileBar__toggle {
@@ -356,13 +386,13 @@ section {
   gap: 8px;
   align-items: center;
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateX(-24px) translateY(6px);
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 body.menu-open .mobileMenu__lang {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0) translateY(0);
   transition-delay: 0.75s;
 }
 
