@@ -73,14 +73,58 @@ body {
     line-height: 3.3;
     color: transparent;
     -webkit-text-stroke: 1px black;
-    transition: color 0.25s ease, transform 0.2s ease;
-    letter-spacing: -2.5px;
+    /* transition: color 0.25s ease, transform 0.2s ease; */
+    letter-spacing: -6.5px;
 }
 
-.sidebar__badgeInitials:hover {
+.sidebar__badgeInitial {
+    display: inline-block;
     color: transparent;
-    -webkit-text-stroke: 1.6px #131312;
+    -webkit-text-stroke: 1px black;
+    transform-origin: center;
+    animation: brandShake 2s ease-in-out infinite;
 }
+
+.sidebar__badgeText:hover .sidebar__badgeInitial {
+    -webkit-text-stroke: 1.6px black;
+}
+
+.sidebar__badgeInitial--f {
+    animation-delay: 0s;
+}
+
+.sidebar__badgeInitial--n {
+    animation-delay: 0.15s;
+}
+
+@keyframes brandShake {
+
+    0%,
+    100% {
+        transform: rotate(0deg) translateX(0);
+    }
+
+    10% {
+        transform: rotate(-4deg) translateX(-1px);
+    }
+
+    20% {
+        transform: rotate(4deg) translateX(1px);
+    }
+
+    30% {
+        transform: rotate(-3deg) translateX(-1px);
+    }
+
+    40% {
+        transform: rotate(3deg) translateX(1px);
+    }
+
+    50% {
+        transform: rotate(0deg) translateX(0);
+    }
+}
+
 
 .sidebar__badgeArc {
     position: absolute;
