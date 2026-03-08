@@ -329,7 +329,7 @@ main>section {
     gap: 12px;
     position: absolute;
     left: 50%;
-    bottom: 140px;
+    bottom: 240px;
     transform: translateX(-50%);
     margin: 0;
     text-align: center;
@@ -354,12 +354,12 @@ main>section {
 .hero__subtitle {
     position: absolute;
     left: 50%;
-    bottom: 88px;
+    bottom: 154px;
     transform: translateX(-50%);
     margin: 0;
     font-family: "Quantico", system-ui, sans-serif;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 36px;
     line-height: 1.2;
     color: transparent;
     -webkit-text-stroke: 1px #b5e93b;

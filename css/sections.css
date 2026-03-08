@@ -3,18 +3,19 @@
     width: calc(100vw - var(--sidebar-w));
     height: 100vh;
     flex-shrink: 0;
-    background: linear-gradient(90deg,
+    /* background: linear-gradient(90deg,
             #000 0%,
             #1a1a1a 18%,
             #2d2d2d 50%,
             #1a1a1a 82%,
-            #000 100%);
+            #000 100%); */
 }
 
 .whyMe__headline {
     position: absolute;
     left: 56px;
-    top: 16%;
+    /* top: 16%; */
+    top: 232px;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
@@ -30,33 +31,27 @@
 .whyMe__content {
     position: absolute;
     left: 240px;
-    top: 16%;
+    top: 40%;
     transform: translateY(-50%);
-
     display: flex;
     flex-direction: column;
-    gap: 40px;
-
     max-width: 560px;
 }
 
-.text-area {
-    position: absolute;
-    left: 240px;
+.text-area__paragraph {
     top: 16%;
     transform: translateY(-50%);
     max-width: 400px;
-
     color: #fff;
     font-family: 'Quantico', sans-serif;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.5;
+    font-size: large;
 }
 
 .whyMe__infoBox {
-    position: absolute;
     left: 240px;
-    top: 26%;
+    gap: 12px;
 }
 
 .whyMe__icons {
@@ -67,28 +62,38 @@
 }
 
 .whyMe__infoSvg {
-  width: 17%;
+  width: 80px;
   height: auto;
   display: block;
 }
 
 .whyMe__icons img {
-  height: 48px;
-  width: auto;
+  height: 100%;
+  width: 100%;
 }
 
+.whyMe__contactBtn {
+  position: absolute;
+  right: 240px;
+  top: 68%;     
+  display: inline-block;
+}
 
+.whyMe__contactBtn img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
 
+.whyMe__contactBtn:hover img {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
 
-
-
-
-
-/* Arrow to switch sections */
 .section__arrow {
     position: absolute;
-    right: 24px;
-    top: 80%;
+    right: 32px;
+    top: 90%;
     transform: translateY(-50%);
     display: inline-block;
 }
@@ -99,8 +104,8 @@
     display: block;
 }
 
-/* subtle hover feedback */
 .section__arrow:hover img {
     transform: translateX(6px);
-    transition: transform 0.2s ease;
+    transition: transform 1.2s ease;
 }
+
