@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="css/home-mobile.css" />
     <link rel="stylesheet" href="css/sections.css" />
     <link rel="stylesheet" href="css/sections-mobile.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/components-mobile.css" />
 
     <script src="js/main.js" defer></script>
   </head>
@@ -163,6 +165,8 @@
     </nav>
 
     <main>
+      <!-- Section: Home -->
+
       <section id="home" class="hero">
         <div class="hero__portrait">
           <img src="assets/img/portrait.svg" alt="Francisco Naranjo portrait" />
@@ -181,6 +185,8 @@
           <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
         </a>
       </section>
+
+      <!-- Section: Why Me -->
 
       <section id="why-me" class="whyMe">
         <div class="whyMe__headline">
@@ -240,6 +246,136 @@
           <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
         </a>
       </section>
+
+      <!-- Section: Skills -->
+      <section id="skills" class="skills__section">
+        <div class="skills__headline">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="assets/img/section/skills_headline_MOBILE.svg"
+            />
+            <img
+              src="assets/img/section/skills_headline.svg"
+              alt="My Skill Set"
+              class="skills__headlineSvg"
+            />
+          </picture>
+        </div>
+
+        <div class="skills__intro">
+          <span class="skills__headlineText">
+            Here is an overview of my skills. I love to be up to date with the
+            latest technologies and best practices in frontend development, and
+            I am always eager to learn new things.
+          </span>
+          <div class="skills__grid">
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/angular.svg"
+                alt="Angular"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/typescript.svg"
+                alt="TypeScript"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/javascript.svg"
+                alt="JavaScript"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/html.svg"
+                alt="HTML"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/css.svg"
+                alt="CSS"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/rest_api.svg"
+                alt="REST API"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/firebase.svg"
+                alt="Firebase"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/git.svg"
+                alt="Git"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/scrum.svg"
+                alt="Scrum"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/material-design.svg"
+                alt="Material Design"
+                class="skills__icon"
+              />
+            </div>
+
+            <div class="skills__item">
+              <img
+                src="assets/icons/frameworks/challenge.svg"
+                alt="Challenge me"
+                class="skills__icon"
+              />
+            </div>
+            <!-- <div class="skills__aside">
+              <p class="skills__asideText">
+                Im motivated to implement my skills in ongoing projects, looking
+                for new challenges to grow and expand my skill.
+              </p>
+            </div> -->
+          </div>
+        </div>
+
+        <a
+          href="#my-work"
+          class="section__arrow_skills"
+          aria-label="Go to next section"
+        >
+          <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+        </a>
+      </section>
+
+      <!-- Section My Work -->
     </main>
   </body>
 </html>

@@ -3,12 +3,6 @@
     width: calc(100vw - var(--sidebar-w));
     height: 100vh;
     flex-shrink: 0;
-    /* background: linear-gradient(90deg,
-            #000 0%,
-            #1a1a1a 18%,
-            #2d2d2d 50%,
-            #1a1a1a 82%,
-            #000 100%); */
 }
 
 .whyMe__headline {
