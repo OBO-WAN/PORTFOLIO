@@ -113,13 +113,13 @@
     }
 
     .whyMe__headlineSvg {
-        width: min(60vw, 164px);
+        width: min(60vw, 160px);
         margin-top: 12px;
     }
 
     .text-area__paragraph {
         max-width: 30ch;
-        font-size: 1.2rem;
+        font-size: 1.0rem;
         line-height: 1.55;
     }
 
