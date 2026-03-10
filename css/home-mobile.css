@@ -263,7 +263,7 @@ section {
 
   .mobileMenu {
     position: fixed;
-    inset: 72px 0 0 0;
+    inset: 0;
     z-index: 250;
     background: var(--sidebar);
     display: flex;
@@ -357,7 +357,7 @@ section {
   }
 
   .mobileMenu {
-    inset: 68px 0 0 0;
+    inset: 0;
   }
 
   .mobileBar__brandText {
