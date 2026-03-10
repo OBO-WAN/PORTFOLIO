@@ -8,8 +8,7 @@
 .whyMe__headline {
     position: absolute;
     left: 56px;
-    /* top: 16%; */
-    top: 232px;
+    top: 232 px;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
