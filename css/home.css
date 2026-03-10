@@ -179,6 +179,14 @@ body {
     font-family: "Quantico", system-ui, sans-serif;
 }
 
+/* Breakpoint for Nesthub Devices */
+
+@media (max-height: 650px) {
+    .sidebar__nav {
+        gap: 8px;
+    }
+}
+
 .sidebar__link {
     display: inline-block;
     color: rgba(0, 0, 0, 0.85);
@@ -200,6 +208,14 @@ body {
     outline: 3px solid rgba(0, 0, 0, 0.85);
     outline-offset: 4px;
     border-radius: 6px;
+}
+
+/* Breakpoint for Nesthub Devices */
+
+@media (max-height: 650px) {
+    .sidebar__link {
+        font-size: 20px;
+    }
 }
 
 /* Top right social + language */
