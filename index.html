@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="css/whyMe-mobile.css" />
     <link rel="stylesheet" href="css/skills.css" />
     <link rel="stylesheet" href="css/skills-mobile.css" />
+    <link rel="stylesheet" href="css/myWork.css" />
+    <link rel="stylesheet" href="css/myWork-mobile.css" />
 
     <script src="js/main.js" defer></script>
   </head>
@@ -169,7 +171,6 @@
 
     <main>
       <!-- Section: Home -->
-
       <section id="home" class="hero">
         <div class="hero__portrait">
           <img src="assets/img/portrait.svg" alt="Francisco Naranjo portrait" />
@@ -370,10 +371,10 @@
           </p>
         </div>
 
-         <a href="#contact" class="talkMe__contactBtn">
+        <a href="#contact" class="talkMe__contactBtn">
           <img src="assets/icons/talk_button.svg" alt="Talk to me" />
         </a>
-        
+
         <a
           href="#my-work"
           class="section__arrow_skills"
@@ -385,8 +386,24 @@
 
       <!-- Section My Work -->
 
-      <section>
+      <section id="my-work" class="myWork">
+        <div class="myWork__headline">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="assets/img/section/myWork_headline_MOBILE.svg"
+            />
+            <img
+              src="assets/img/section/My_Work.svg"
+              alt="My Work"
+              class="myWork__headlineSvg"
+            />
+          </picture>
+        </div>
 
+        <div class="myWork__content">
+          <!-- cards / slider / projects go here -->
+        </div>
       </section>
     </main>
   </body>

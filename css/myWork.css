@@ -1,0 +1,29 @@
+.myWork {
+  position: relative;
+  width: calc(100vw - var(--sidebar-w));
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.myWork__headline {
+  position: absolute;
+  left: 56px;
+  top: 25%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.myWork__headlineSvg {
+  display: block;
+  height: 200px;
+  width: auto;
+}
+
+.myWork__content {
+  position: absolute;
+  left: 160px;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -9,7 +9,7 @@
 .skills__headline {
   position: absolute;
   left: 56px;
-  top: 50%;
+  top: 75%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
@@ -273,5 +273,21 @@
 
   .section__arrow_skills {
     top: 22%;
+  }
+}
+
+/* Override for large screens */
+
+@media (min-width: 769px) {
+  .skills__intro {
+    top: auto;
+    bottom: 72px;
+    transform: none;
+  }
+
+  .skills__aside {
+    top: auto;
+    bottom: 78px;
+    transform: none;
   }
 }

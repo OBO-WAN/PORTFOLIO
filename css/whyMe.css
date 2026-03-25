@@ -8,7 +8,7 @@
 .whyMe__headline {
     position: absolute;
     left: 56px;
-    top: 232 px;
+    top: 232px;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
@@ -51,36 +51,36 @@
     margin-top: 20px;
     display: flex;
     gap: 48px;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .whyMe__infoSvg {
-  width: 80px;
-  height: auto;
-  display: block;
+    width: 80px;
+    height: auto;
+    display: block;
 }
 
 .whyMe__icons img {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .whyMe__contactBtn {
-  position: absolute;
-  right: 240px;
-  top: 68%;     
-  display: inline-block;
+    position: absolute;
+    right: 240px;
+    top: 68%;
+    display: inline-block;
 }
 
 .whyMe__contactBtn img {
-  height: 48px;
-  width: auto;
-  display: block;
+    height: 48px;
+    width: auto;
+    display: block;
 }
 
 .whyMe__contactBtn:hover img {
-  transform: translateY(-2px);
-  transition: transform 0.2s ease;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
 }
 
 .section__arrow {
@@ -101,4 +101,3 @@
     transform: translateX(6px);
     transition: transform 1.2s ease;
 }
-
