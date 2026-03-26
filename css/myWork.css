@@ -1,8 +1,9 @@
-.myWork {
+.myWork__section {
   position: relative;
   width: calc(100vw - var(--sidebar-w));
   height: 100vh;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .myWork__headline {
@@ -26,4 +27,17 @@
   left: 160px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.myWork__cards {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.myWork__cardTemplate {
+  display: block;
+  width: 300px;
+  height: auto;
+  flex: 0 0 300px;
 }
