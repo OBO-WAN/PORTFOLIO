@@ -1,9 +1,10 @@
 .myWork__section {
   position: relative;
-  width: calc(100vw - var(--sidebar-w));
+  width: calc(160px + (919px * 3) + (24px * 2) + 80px);
+  min-width: calc(100vw - var(--sidebar-w));
   height: 100vh;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .myWork__headline {
@@ -14,6 +15,58 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
+}
+
+.myWork__headlineSvg {
+  display: block;
+  height: 200px;
+  width: auto;
+}
+
+.myWork__section {
+  position: relative;
+  width: calc(56px + 919px + 24px + 919px + 24px + 919px + 80px);
+  min-width: calc(100vw - var(--sidebar-w));
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.myWork__headline {
+  position: absolute;
+  left: 56px;
+  top: 25%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.myWork__headlineSvg {
+  display: block;
+  height: 200px;
+  width: auto;
+}
+
+.myWork__section {
+  position: relative;
+  width: calc((100vw - var(--sidebar-w)) + (919px * 2) + (24px * 2));
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.myWork__headline {
+  position: absolute;
+  left: 56px;
+  top: 25%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .myWork__headlineSvg {
@@ -25,19 +78,21 @@
 .myWork__content {
   position: absolute;
   left: 160px;
-  top: 50%;
+  top: 48%;
   transform: translateY(-50%);
 }
 
 .myWork__cards {
   display: flex;
   gap: 24px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
-.myWork__cardTemplate {
-  display: block;
-  width: 300px;
-  height: auto;
-  flex: 0 0 300px;
+.workCard {
+  flex: 0 0 919px;
+  width: 919px;
+  min-height: 560px;
+  border: 1px solid rgba(181, 233, 59, 0.28);
+  border-radius: 20px;
+  background: rgba(139, 183, 95, 0.18);
 }
