@@ -80,12 +80,26 @@
   left: 160px;
   top: 48%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
 }
 
 .myWork__cards {
   display: flex;
   gap: 24px;
   align-items: stretch;
+}
+
+.myWork__ongoing {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 420px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  z-index: 3;
 }
 
 .workCard {
@@ -95,17 +109,6 @@
   border: 1px solid rgba(181, 233, 59, 0.28);
   border-radius: 20px;
   background: rgba(139, 183, 95, 0.18);
-}
-/* 
-.myWork__ongoing {
-  position: absolute;
-  top: 230px;
-  left: 1120px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  width: 420px;
-  z-index: 3;
 }
 
 .myWork__ongoingNumber {
@@ -170,4 +173,26 @@
 .myWork__ongoingBtn:focus-visible {
   outline: 3px solid #fff;
   outline-offset: 4px;
-} */
+}
+
+.myWork__arrow {
+  position: absolute;
+  right: -300px;
+  padding-right: 12px;
+  top: 90%;
+  transform: translateY(-50%);
+  display: inline-block;
+  z-index: 4;
+  pointer-events: auto;
+}
+
+.myWork__arrow img {
+  display: block;
+  width: auto;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+.myWork__arrow:hover img {
+  transform: translateX(6px);
+}

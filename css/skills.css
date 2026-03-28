@@ -81,7 +81,7 @@
 .section__arrow_skills {
   position: absolute;
   right: 24px;
-  top: 30%;
+  top: 24%;
   transform: translateY(-50%);
   display: inline-block;
 }
