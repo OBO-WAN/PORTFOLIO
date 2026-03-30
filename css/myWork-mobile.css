@@ -1,0 +1,230 @@
+@media (max-width: 768px) {
+  .myWork__section {
+    position: relative;
+    width: 100vw;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    padding: 124px 20px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .myWork__headline {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .myWork__headlineSvg {
+    display: block;
+    width: 170px;
+    height: auto;
+  }
+
+  .myWork__content {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .myWork__cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .workCard {
+    width: 100%;
+    min-height: auto;
+    flex: none;
+    padding: 18px 16px 18px;
+    border-radius: 20px;
+  }
+
+  .workCard__header {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .workCard__eyebrow {
+    font-size: 48px;
+    -webkit-text-stroke: 1.2px #b5e93b;
+  }
+
+  .workCard__title {
+    margin: 8px 0 0;
+    font-size: 24px;
+    line-height: 1.05;
+  }
+
+  .workCard__body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .workCard__details {
+    width: 100%;
+    max-width: none;
+    padding-left: 22px;
+    gap: 22px;
+  }
+
+  .workCard__detailItem {
+    padding-left: 2px;
+  }
+
+  .workCard__detailItem::before {
+    top: 4px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .workCard__label {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .workCard__text {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .workCard__media {
+    width: 100%;
+    gap: 14px;
+    padding-top: 0;
+    align-items: stretch;
+  }
+
+  .workCard__previewWrap {
+    width: 100%;
+    border-radius: 22px;
+  }
+
+  .workCard__preview {
+    width: 100%;
+    height: auto;
+  }
+
+  .workCard__actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .workCard__btn {
+    min-width: 110px;
+    min-height: 42px;
+    padding: 0 18px;
+    font-size: 13px;
+  }
+
+  .myWork__ongoing,
+  .myWork__arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .myWork__section {
+    padding: 88px 16px 36px;
+  }
+
+  .myWork__headline,
+  .myWork__content {
+    max-width: 300px;
+  }
+
+  .myWork__headlineSvg {
+    width: 155px;
+  }
+
+  .workCard {
+    padding: 16px 14px 16px;
+  }
+
+  .workCard__header {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .workCard__eyebrow {
+    font-size: 42px;
+  }
+
+  .workCard__title {
+    margin-top: 6px;
+    font-size: 20px;
+  }
+
+  .workCard__details {
+    padding-left: 20px;
+    gap: 20px;
+  }
+
+  .workCard__label {
+    font-size: 13px;
+  }
+
+  .workCard__text {
+    font-size: 12px;
+    line-height: 1.38;
+  }
+
+  .workCard__btn {
+    min-width: 96px;
+    min-height: 40px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .myWork__section {
+    padding: 82px 14px 32px;
+  }
+
+  .myWork__headline,
+  .myWork__content {
+    max-width: 280px;
+  }
+
+  .myWork__headlineSvg {
+    width: 145px;
+  }
+
+  .workCard__title {
+    font-size: 18px;
+  }
+
+  .workCard__details {
+    gap: 18px;
+  }
+
+  .workCard__text {
+    font-size: 11.5px;
+  }
+
+  .workCard__actions {
+    gap: 10px;
+  }
+}
