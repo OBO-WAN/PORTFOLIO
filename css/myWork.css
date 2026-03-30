@@ -1,58 +1,7 @@
 .myWork__section {
   position: relative;
-  width: calc(160px + (919px * 3) + (24px * 2) + 80px);
-  min-width: calc(100vw - var(--sidebar-w));
-  height: 100vh;
-  flex-shrink: 0;
-  overflow: visible;
-}
-
-.myWork__headline {
-  position: absolute;
-  left: 56px;
-  top: 25%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.myWork__headlineSvg {
-  display: block;
-  height: 200px;
-  width: auto;
-}
-
-.myWork__section {
-  position: relative;
-  width: calc(56px + 919px + 24px + 919px + 24px + 919px + 80px);
-  min-width: calc(100vw - var(--sidebar-w));
-  height: 100vh;
-  flex-shrink: 0;
-  overflow: visible;
-}
-
-.myWork__headline {
-  position: absolute;
-  left: 56px;
-  top: 25%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.myWork__headlineSvg {
-  display: block;
-  height: 200px;
-  width: auto;
-}
-
-.myWork__section {
-  position: relative;
   width: calc((100vw - var(--sidebar-w)) + (919px * 2) + (24px * 2));
+  min-width: calc(100vw - var(--sidebar-w));
   height: 100vh;
   flex-shrink: 0;
   overflow: visible;
@@ -91,6 +40,156 @@
   align-items: stretch;
 }
 
+.workCard {
+  flex: 0 0 919px;
+  width: 919px;
+  min-height: 560px;
+  padding: 22px 28px 28px;
+  box-sizing: border-box;
+  border: 1px solid rgba(181, 233, 59, 0.28);
+  border-radius: 20px;
+  background: rgba(139, 183, 95, 0.18);
+}
+
+.workCard__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.workCard__eyebrow {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: "Quantico", system-ui, sans-serif;
+  font-size: 72px;
+  line-height: 0.9;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1.6px #b5e93b;
+}
+
+.workCard__title {
+  margin: 14px 0 0;
+  font-family: "Quantico", system-ui, sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 700;
+  color: #b5e93b;
+}
+
+.workCard__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 12px 0 0 0;
+}
+
+.workCard__details {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.workCard__detailItem {
+  position: relative;
+  padding-left: 28px;
+}
+
+.workCard__detailItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  background-image: url("../assets/img/projects/marker.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.workCard__label {
+  margin: 0 0 14px;
+  font-family: "Quantico", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #f2f2f2;
+}
+
+.workCard__text {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 400;
+  color: #f2f2f2;
+}
+
+.workCard__media {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 8px;
+}
+
+.workCard__previewWrap {
+  width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.workCard__preview {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.workCard__actions {
+  display: flex;
+  gap: 16px;
+}
+
+.workCard__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 112px;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid #7fbf00;
+  color: #7fbf00;
+  text-decoration: none;
+  font-family: "Quantico", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.workCard__btn:hover {
+  transform: translateY(-1px);
+}
+
+.workCard__btn--primary {
+  background: #b5e93b;
+  color: #111;
+  border-color: #b5e93b;
+}
+
+.workCard__btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(181, 233, 59, 0.22);
+}
+
 .myWork__ongoing {
   position: relative;
   top: 0;
@@ -100,15 +199,6 @@
   align-items: flex-start;
   gap: 14px;
   z-index: 3;
-}
-
-.workCard {
-  flex: 0 0 919px;
-  width: 919px;
-  min-height: 560px;
-  border: 1px solid rgba(181, 233, 59, 0.28);
-  border-radius: 20px;
-  background: rgba(139, 183, 95, 0.18);
 }
 
 .myWork__ongoingNumber {
@@ -178,7 +268,6 @@
 .myWork__arrow {
   position: absolute;
   right: -300px;
-  padding-right: 12px;
   top: 90%;
   transform: translateY(-50%);
   display: inline-block;
