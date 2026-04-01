@@ -136,8 +136,8 @@
   width: 360px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
+  align-items: stretch;
+  gap: 16px;
   padding-top: 8px;
 }
 
@@ -156,6 +156,7 @@
 .workCard__actions {
   display: flex;
   gap: 16px;
+  padding-top: 18px;
 }
 
 .workCard__btn {
@@ -196,9 +197,16 @@
   left: 0;
   width: 420px;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 14px;
+  gap: 20px;
   z-index: 3;
+}
+
+.myWork__ongoingHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .myWork__ongoingNumber {
@@ -215,7 +223,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 8px;
 }
 
 .myWork__ongoingTitle {
@@ -279,7 +286,6 @@
   display: block;
   width: auto;
   height: 32px;
-  margin: 0 12px 0 0;
   transition: transform 0.2s ease;
 }
 
