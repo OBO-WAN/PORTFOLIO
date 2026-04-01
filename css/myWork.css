@@ -279,6 +279,7 @@
   display: block;
   width: auto;
   height: 32px;
+  margin: 0 12px 0 0;
   transition: transform 0.2s ease;
 }
 
