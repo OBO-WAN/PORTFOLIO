@@ -65,3 +65,17 @@ if (window.innerWidth > 768) {
     { passive: false },
   );
 }
+
+// Toggle work card details
+
+document.querySelectorAll(".workCard__toggle").forEach((button) => {
+  button.addEventListener("click", () => {
+    const card = button.closest(".workCard");
+    const isOpen = card.classList.toggle("workCard--open");
+
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.innerHTML = isOpen
+      ? 'Show less <span class="workCard__toggleIcon" aria-hidden="true">▼</span>'
+      : 'Show me more <span class="workCard__toggleIcon" aria-hidden="true">▼</span>';
+  });
+});
