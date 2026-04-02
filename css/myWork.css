@@ -1,6 +1,6 @@
 .myWork__section {
   position: relative;
-  width: calc((100vw - var(--sidebar-w)) + (919px * 2) + (24px * 2));
+  width: calc(160px + (919px * 3) + (24px * 2) + 32px + 420px);
   min-width: calc(100vw - var(--sidebar-w));
   height: 100vh;
   flex-shrink: 0;
@@ -291,4 +291,11 @@
 
 .myWork__arrow:hover img {
   transform: translateX(6px);
+}
+
+@media (max-width: 1024px) {
+  .myWork__arrow {
+    right: 32px;
+    top: 90%;
+  }
 }
