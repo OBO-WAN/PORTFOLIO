@@ -4,7 +4,7 @@
   flex-shrink: 0;
   display: flex;
   align-items: flex-end;
-  gap: 28px;
+  gap: 25px;
   padding: 0 24px 28px 32px;
   box-sizing: border-box;
 }
@@ -209,80 +209,6 @@
   filter: brightness(1.05);
 }
 
-.contact__info {
-  width: 360px;
-  min-height: 620px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 32px;
-  flex-shrink: 0;
-}
-
-.contact__infoLead {
-  margin: 0 0 12px;
-  color: #b5e93b;
-  font-family: "Quantico", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.2;
-  font-weight: 700;
-  text-align: center;
-}
-
-.contact__infoText {
-  margin: 0 0 28px;
-  max-width: 360px;
-  color: #fff;
-  text-align: center;
-  font-family: "Quantico", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.35;
-  font-weight: 700;
-}
-
-.contact__details {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-self: center;
-  width: 100%;
-  max-width: 320px;
-}
-
-.contact__detail {
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  color: #fff;
-  text-decoration: none;
-  font-family: "Quantico", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-.contact__detailIcon {
-  width: 22px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact__detailSvg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  color: #fff;
-}
-
-.contact__detailLabel,
-.contact__detailValue {
-  white-space: nowrap;
-}
-
 .contact__backArrow {
   align-self: center;
   margin: auto 0 110px;
@@ -301,32 +227,6 @@
 .contact__backArrow:hover img {
   transform: rotate(180deg) translateX(6px);
   transition: transform 0.2s ease;
-}
-
-.contact__footer {
-  width: 100%;
-  max-width: 320px;
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 14px;
-}
-
-.contact__footerLink,
-.contact__copyright {
-  margin: 0;
-  color: #fff;
-  text-decoration: none;
-  font-family: "Quantico", system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.15;
-  font-weight: 700;
-  text-align: right;
-}
-
-.contact__footerLink:hover {
-  color: #b5e93b;
 }
 
 @media (max-width: 1024px) {
@@ -378,40 +278,11 @@
     font-size: 14px;
   }
 
-  .contact__info {
-    width: 300px;
-    min-height: 560px;
-    margin-bottom: 24px;
-  }
-
-  .contact__infoText {
-    max-width: 300px;
-    font-size: 14px;
-  }
-
-  .contact__details,
-  .contact__footer {
-    max-width: 270px;
-  }
-
-  .contact__detail {
-    font-size: 14px;
-  }
-
   .contact__backArrow {
     margin-bottom: 90px;
   }
 
   .contact__backArrow img {
     height: 28px;
-  }
-
-  .contact__footer {
-    gap: 12px;
-  }
-
-  .contact__footerLink,
-  .contact__copyright {
-    font-size: 12px;
   }
 }
