@@ -4,7 +4,7 @@
   flex-shrink: 0;
   display: flex;
   align-items: flex-end;
-  gap: 80px;
+  gap: 30px;
   padding: 0 24px 28px 32px;
   box-sizing: border-box;
 }
@@ -292,5 +292,18 @@
 
   .contact__backArrow img {
     height: 28px;
+  }
+}
+@media (max-width: 1440px) {
+  .contact {
+    width: max(calc(100vw - var(--sidebar-w)), 1360px);
+    gap: 40px;
+    padding: 0 32px 28px;
+  }
+
+  .contact__references,
+  .contact__middleArrow,
+  .contact__formWrap {
+    flex-shrink: 0;
   }
 }
