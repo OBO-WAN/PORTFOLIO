@@ -297,7 +297,7 @@
 @media (max-width: 1440px) {
   .contact {
     width: max(calc(100vw - var(--sidebar-w)), 1360px);
-    gap: 40px;
+    gap: 24px;
     padding: 0 32px 28px;
   }
 
