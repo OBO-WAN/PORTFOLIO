@@ -115,7 +115,7 @@
 
 .contact__footerArrow {
   position: absolute;
-  top: 64%;
+  top: 60%;
   right: calc((var(--sidebar-w) - 32px) / 2);
   transform: translateY(-50%);
   display: flex;
@@ -123,6 +123,8 @@
   justify-content: center;
   padding-top: 0;
   z-index: 1;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .contact__footerArrow img {
@@ -135,6 +137,12 @@
 
 .contact__footerArrow:hover img {
   transform: rotate(180deg) translateX(6px);
+}
+
+.contact__footerArrow:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 6px;
+  border-radius: 12px;
 }
 
 .contact__legal {
@@ -161,4 +169,9 @@
 
 .contact__footerLink:hover {
   color: #b5e93b;
+}
+
+.contact__footerSection {
+  scroll-snap-align: start;
+  scroll-margin-left: var(--sidebar-w);
 }

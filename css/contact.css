@@ -16,17 +16,25 @@
   align-self: center;
   margin-bottom: 78px;
   flex-shrink: 0;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .contact__middleArrow img {
   display: block;
   width: auto;
   height: 32px;
+  transition: transform 0.2s ease;
 }
 
 .contact__middleArrow:hover img {
   transform: translateX(6px);
-  transition: transform 0.2s ease;
+}
+
+.contact__middleArrow:focus-visible {
+  outline: 3px solid #b5e93b;
+  outline-offset: 6px;
+  border-radius: 12px;
 }
 
 .contact__references {
