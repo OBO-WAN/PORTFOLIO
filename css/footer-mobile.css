@@ -12,6 +12,7 @@
     box-sizing: border-box;
     padding: 28px 16px 30px;
     background: #b5e93b;
+    justify-content: center;
   }
 
   .contact__footerMain,
@@ -30,17 +31,59 @@
   }
 
   .footerMobile__brand {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    width: 90px;
+    height: 120px;
+    display: grid;
+    place-items: center;
     text-decoration: none;
   }
 
-  .footerMobile__brandImage {
-    display: block;
-    width: 108px;
-    max-width: 100%;
-    height: auto;
+  .footerMobile__brandArc {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+    transform-origin: 32px 32px;
+  }
+
+  .footerMobile__brandArcText {
+    font-family: "Quantico", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.3px;
+    text-transform: lowercase;
+    fill: rgba(61, 61, 30, 1);
+  }
+
+  .footerMobile__brand:hover .footerMobile__brandArc {
+    animation: badgeSwing 2.8s linear infinite;
+  }
+
+  .footerMobile__brandInitials {
+    font-family: "Quantico", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 3.3;
+    letter-spacing: -6.5px;
+    color: transparent;
+    -webkit-text-stroke: 1.2px #3d3d1e;
+  }
+
+  .footerMobile__brandInitial {
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 1.2px #3d3d1e;
+    transform-origin: center;
+    animation: brandShake 2s ease-in-out infinite;
+  }
+
+  .footerMobile__brandInitial--f {
+    animation-delay: 1.5s;
+  }
+
+  .footerMobile__brandInitial--n {
+    animation-delay: 2s;
   }
 
   .footerMobile__copyright {
@@ -68,6 +111,11 @@
     line-height: 1.2;
     font-weight: 700;
   }
+
+  .footerMobile__link:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px #3d3d1e;
+  }
 }
 
 @media (max-width: 390px) {
@@ -79,8 +127,19 @@
     gap: 10px;
   }
 
-  .footerMobile__brandImage {
-    width: 96px;
+  .footerMobile__brand {
+    width: 84px;
+    height: 112px;
+  }
+
+  .footerMobile__brandInitials {
+    font-size: 36px;
+    line-height: 3.2;
+    letter-spacing: -5.8px;
+  }
+
+  .footerMobile__brandArcText {
+    font-size: 8.5px;
   }
 
   .footerMobile__copyright,
