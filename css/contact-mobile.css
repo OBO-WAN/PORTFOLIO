@@ -78,6 +78,7 @@
     align-self: center;
     gap: 18px;
     margin-top: 8px;
+    margin-bottom: 48px;
   }
 
   .contactMobile__track {
@@ -270,5 +271,331 @@
 
   .contactMobile__dot--active {
     width: 24px;
+  }
+}
+
+/* Contact ME */
+
+@media (max-width: 768px) {
+  .contactMobile__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .contactMobile__contentHeadline {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  .contactMobile__contentHeadlineSvg {
+    display: block;
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .contactMobile__contentText {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .contactMobile__lead {
+    margin: 0;
+    color: #b5e93b;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .contactMobile__description {
+    margin: 0;
+    color: #f2f2f2;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 390px) {
+  .contactMobile__content {
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .contactMobile__contentHeadlineSvg {
+    width: 144px;
+  }
+
+  .contactMobile__contentText {
+    gap: 16px;
+  }
+
+  .contactMobile__lead {
+    font-size: 14px;
+  }
+
+  .contactMobile__description {
+    font-size: 12px;
+    line-height: 1.42;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactMobile__details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .contactMobile__detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #f2f2f2;
+  }
+
+  .contactMobile__detailIcon {
+    flex-shrink: 0;
+    width: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  .contactMobile__detailText {
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 390px) {
+  .contactMobile__details {
+    gap: 12px;
+  }
+
+  .contactMobile__detail {
+    gap: 9px;
+  }
+
+  .contactMobile__detailIcon {
+    width: 18px;
+    font-size: 14px;
+  }
+
+  .contactMobile__detailText {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactMobile__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .contactMobile__input,
+  .contactMobile__textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+    border: 1.5px solid #b5e93b;
+    border-radius: 999px;
+    color: #f2f2f2;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    outline: none;
+  }
+
+  .contactMobile__input {
+    height: 58px;
+    padding: 0 22px;
+  }
+
+  .contactMobile__textarea {
+    min-height: 256px;
+    padding: 22px;
+    border-radius: 34px;
+    resize: none;
+  }
+
+  .contactMobile__input::placeholder,
+  .contactMobile__textarea::placeholder {
+    color: #d8f89a;
+    opacity: 1;
+  }
+
+  .contactMobile__input:focus,
+  .contactMobile__textarea:focus {
+    box-shadow: 0 0 0 1px #b5e93b inset;
+  }
+}
+
+@media (max-width: 390px) {
+  .contactMobile__form {
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .contactMobile__input {
+    height: 54px;
+    padding: 0 18px;
+    font-size: 12px;
+  }
+
+  .contactMobile__textarea {
+    min-height: 228px;
+    padding: 18px;
+    border-radius: 30px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactMobile__actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 6px;
+  }
+
+  .contactMobile__privacy {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .contactMobile__checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    margin: 1px 0 0;
+    flex-shrink: 0;
+    border: 1.5px solid #f2f2f2;
+    background: transparent;
+    position: relative;
+  }
+
+  .contactMobile__checkbox:checked::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    background: #b5e93b;
+  }
+
+  .contactMobile__privacyText {
+    color: #b5e93b;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+
+  .contactMobile__submit {
+    align-self: flex-end;
+    min-width: 124px;
+    height: 42px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 999px;
+    background: #b7b7b7;
+    color: #696969;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 390px) {
+  .contactMobile__actions {
+    gap: 16px;
+  }
+
+  .contactMobile__checkbox {
+    width: 16px;
+    height: 16px;
+  }
+
+  .contactMobile__privacyText {
+    font-size: 11px;
+    line-height: 1.38;
+  }
+
+  .contactMobile__submit {
+    min-width: 116px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactMobile__socialSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    margin-top: 36px;
+  }
+
+  .contactMobile__backToTop {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .contactMobile__backToTopIcon {
+    display: block;
+    width: 22px;
+    height: auto;
+  }
+
+  .contactMobile__socialImage {
+    display: block;
+    width: 112px;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .contactMobile__socialSection {
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .contactMobile__backToTopIcon {
+    width: 24px;
+  }
+
+  .contactMobile__socialImage {
+    width: 104px;
   }
 }

@@ -874,6 +874,117 @@
               ></button>
             </div>
           </div>
+          <div class="contactMobile__content">
+            <picture class="contactMobile__contentHeadline">
+              <source
+                media="(max-width: 768px)"
+                srcset="assets/img/section/contact_mobile.svg"
+              />
+              <img
+                src="assets/img/section/contact_mobile.svg"
+                alt="Contact me"
+                class="contactMobile__contentHeadlineSvg"
+              />
+            </picture>
+
+            <div class="contactMobile__contentText">
+              <p class="contactMobile__lead">Let us work together.</p>
+
+              <p class="contactMobile__description">
+                Encourage people to contact you and describe what role you are
+                interested in. Express confidence in your ability to make a
+                meaningful contribution to a team through your expertise and
+                enthusiasm for improving your skills.
+              </p>
+            </div>
+          </div>
+          <div class="contactMobile__details">
+            <a href="mailto:francisco@naranjo.me" class="contactMobile__detail">
+              <span class="contactMobile__detailIcon" aria-hidden="true"
+                >✉</span
+              >
+              <span class="contactMobile__detailText"
+                >E-mail: francisco@naranjo.me</span
+              >
+            </a>
+
+            <a href="tel:+4915712345668" class="contactMobile__detail">
+              <span class="contactMobile__detailIcon" aria-hidden="true"
+                >✆</span
+              >
+              <span class="contactMobile__detailText"
+                >Tel: 0157 123 456 68</span
+              >
+            </a>
+          </div>
+          <form
+            class="contactMobile__form"
+            id="contactMobileForm"
+            action="#"
+            method="post"
+          >
+            <input
+              class="contactMobile__input"
+              type="text"
+              name="name"
+              placeholder="Your name"
+              required
+            />
+
+            <input
+              class="contactMobile__input"
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+
+            <textarea
+              class="contactMobile__textarea"
+              name="message"
+              placeholder="Your message"
+              rows="8"
+              required
+            ></textarea>
+          </form>
+          <div class="contactMobile__actions">
+            <label class="contactMobile__privacy">
+              <input class="contactMobile__checkbox" type="checkbox" required />
+              <span class="contactMobile__privacyText">
+                I’ve read the privacy policy and agree to the processing of my
+                data as outlined.
+              </span>
+            </label>
+
+            <button
+              type="submit"
+              form="contactMobileForm"
+              class="contactMobile__submit"
+            >
+              Send
+            </button>
+          </div>
+
+          <div class="contactMobile__socialSection">
+            <a
+              href="#contact"
+              class="contactMobile__backToTop"
+              aria-label="Back to top of contact section"
+            >
+              <img
+                src="assets/img/section/ArrowUP.svg"
+                alt=""
+                aria-hidden="true"
+                class="contactMobile__backToTopIcon"
+              />
+            </a>
+
+            <img
+              src="assets/img/section/socialMedia_mobile.svg"
+              alt="GitHub, email and LinkedIn"
+              class="contactMobile__socialImage"
+            />
+          </div>
         </div>
       </section>
 
@@ -923,6 +1034,43 @@
           <a href="#" class="contact__footerLink">Legal notice</a>
           <a href="#" class="contact__footerLink">Privacy policy</a>
           <p class="contact__copyright">© Francisco Naranjo 2026</p>
+        </div>
+
+        <div class="footerMobile">
+          <a class="footerMobile__brand" href="#home" aria-label="Home">
+            <svg
+              class="footerMobile__brandArc"
+              viewBox="0 -12 64 76"
+              aria-hidden="true"
+            >
+              <path
+                id="footerMobileArcPath"
+                d="M 4 40 A 28 32 0 0 1 60 40"
+                fill="none"
+              ></path>
+              <text class="footerMobile__brandArcText">
+                <textPath
+                  href="#footerMobileArcPath"
+                  startOffset="50%"
+                  text-anchor="middle"
+                >
+                  frontend developer
+                </textPath>
+              </text>
+            </svg>
+
+            <span class="footerMobile__brandInitials">
+              <span class="footerMobile__brandInitial footerMobile__brandInitial--f">F</span>
+              <span class="footerMobile__brandInitial footerMobile__brandInitial--n">N</span>
+            </span>
+          </a>
+
+          <p class="footerMobile__copyright">© Francisco Naranjo 2026</p>
+
+          <div class="footerMobile__legal">
+            <a href="#" class="footerMobile__link">Legal notice</a>
+            <a href="#" class="footerMobile__link">Privacy policy</a>
+          </div>
         </div>
       </footer>
     </main>
