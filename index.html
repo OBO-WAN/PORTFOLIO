@@ -654,7 +654,6 @@
 
       <!-- Section References & Contact -->
       <section id="contact" class="contact">
-        
         <div class="contact__references">
           <img
             src="assets/img/section/references.svg"
@@ -770,7 +769,10 @@
         <!-- Mobile Contact Section -->
 
         <div class="contactMobile">
-          <div class="contactMobile__intro" aria-labelledby="contactMobileTitle">
+          <div
+            class="contactMobile__intro"
+            aria-labelledby="contactMobileTitle"
+          >
             <picture class="contactMobile__headline">
               <source
                 media="(max-width: 768px)"
@@ -787,6 +789,90 @@
             <p class="contactMobile__introText">
               Here’s what my colleagues said about me
             </p>
+          </div>
+          <div class="contactMobile__carousel" aria-label="Testimonials">
+            <div class="contactMobile__track">
+              <article class="contactMobile__card contactMobile__card--active">
+                <div class="contactMobile__cardQuote">
+                  <p>
+                    “Michael had to develop, format and deliver content in
+                    collaboration with the team members. He is a reliable and
+                    friendly person.”
+                  </p>
+                </div>
+
+                <div
+                  class="contactMobile__cardDivider"
+                  aria-hidden="true"
+                ></div>
+
+                <div class="contactMobile__cardAuthor">
+                  <h3 class="contactMobile__cardName">Noah Mueller</h3>
+                  <p class="contactMobile__cardProject">Project Pollo Loco</p>
+                </div>
+              </article>
+
+              <article class="contactMobile__card" aria-hidden="true">
+                <div class="contactMobile__cardQuote">
+                  <p>
+                    “Michael is a reliable and friendly person. Work in a
+                    structured way and write a clear code. I recommend him as a
+                    colleague.”
+                  </p>
+                </div>
+
+                <div
+                  class="contactMobile__cardDivider"
+                  aria-hidden="true"
+                ></div>
+
+                <div class="contactMobile__cardAuthor">
+                  <h3 class="contactMobile__cardName">Tim Thiessen</h3>
+                  <p class="contactMobile__cardProject">Project Join</p>
+                </div>
+              </article>
+
+              <article class="contactMobile__card" aria-hidden="true">
+                <div class="contactMobile__cardQuote">
+                  <p>
+                    “He is a trustworthy teamplayer and can cope with the stress
+                    of deadlines. Structured work and clear code.”
+                  </p>
+                </div>
+
+                <div
+                  class="contactMobile__cardDivider"
+                  aria-hidden="true"
+                ></div>
+
+                <div class="contactMobile__cardAuthor">
+                  <h3 class="contactMobile__cardName">Evelyn Marx</h3>
+                  <p class="contactMobile__cardProject">Project DA Bubble</p>
+                </div>
+              </article>
+            </div>
+
+            <div
+              class="contactMobile__pagination"
+              aria-label="Carousel pagination"
+            >
+              <button
+                class="contactMobile__dot contactMobile__dot--active"
+                type="button"
+                aria-label="Show testimonial 1"
+                aria-current="true"
+              ></button>
+              <button
+                class="contactMobile__dot"
+                type="button"
+                aria-label="Show testimonial 2"
+              ></button>
+              <button
+                class="contactMobile__dot"
+                type="button"
+                aria-label="Show testimonial 3"
+              ></button>
+            </div>
           </div>
         </div>
       </section>
