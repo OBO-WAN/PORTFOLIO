@@ -1,5 +1,4 @@
 // Menu toggle for mobile
-
 const mobileToggle = document.querySelector(".mobileBar__toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
 const mobileMenuLinks = document.querySelectorAll(".mobileMenu__link");
@@ -10,7 +9,10 @@ function isMenuOpen() {
 
 function setMenuState(open) {
   document.body.classList.toggle("menu-open", open);
-  mobileToggle.setAttribute("aria-expanded", String(open));
+
+  if (mobileToggle) {
+    mobileToggle.setAttribute("aria-expanded", String(open));
+  }
 }
 
 function closeMenu() {
@@ -28,8 +30,9 @@ function handleToggleClick(event) {
 
 function handleOutsideClick(event) {
   if (!isMenuOpen()) return;
-  if (mobileMenu.contains(event.target)) return;
-  if (mobileToggle.contains(event.target)) return;
+  if (mobileMenu && mobileMenu.contains(event.target)) return;
+  if (mobileToggle && mobileToggle.contains(event.target)) return;
+
   closeMenu();
 }
 
@@ -41,54 +44,60 @@ function handleEscapeKey(event) {
 
 function initMobileMenu() {
   if (!mobileToggle || !mobileMenu) return;
+
   mobileToggle.addEventListener("click", handleToggleClick);
-  mobileMenuLinks.forEach((link) => link.addEventListener("click", closeMenu));
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
   document.addEventListener("click", handleOutsideClick);
   document.addEventListener("keydown", handleEscapeKey);
 }
 
-initMobileMenu();
+function initDesktopWheelScroll() {
+  const main = document.querySelector("main");
+  if (!main || window.innerWidth <= 768) return;
 
-// Scroll horizontally on desktop when using mouse wheel
-const main = document.querySelector("main");
-if (window.innerWidth > 768) {
   window.addEventListener(
     "wheel",
-    (e) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        main.scrollLeft += e.deltaY;
-        e.preventDefault();
-      }
+    (event) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+
+      main.scrollLeft += event.deltaY;
+      event.preventDefault();
     },
-    { passive: false },
+    { passive: false }
   );
 }
 
-// Toggle work card details
+function initWorkCardToggles() {
+  const toggleButtons = document.querySelectorAll(".workCard__toggle");
 
-document.querySelectorAll(".workCard__toggle").forEach((button) => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".workCard");
-    const isOpen = card.classList.toggle("workCard--open");
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".workCard");
+      if (!card) return;
 
-    button.setAttribute("aria-expanded", String(isOpen));
-    button.innerHTML = isOpen
-      ? 'Show less <span class="workCard__toggleIcon" aria-hidden="true">▼</span>'
-      : 'Show me more <span class="workCard__toggleIcon" aria-hidden="true">▼</span>';
+      const isOpen = card.classList.toggle("workCard--open");
+      button.setAttribute("aria-expanded", String(isOpen));
+      button.innerHTML = isOpen
+        ? 'Show less <span class="workCard__toggleIcon" aria-hidden="true">▼</span>'
+        : 'Show me more <span class="workCard__toggleIcon" aria-hidden="true">▼</span>';
+    });
   });
-});
+}
 
-// Mobile testimonials carousel
-document.addEventListener("DOMContentLoaded", () => {
+function setupMobileContactCarousel() {
   const carousel = document.querySelector(".contactMobile__track");
   if (!carousel) return;
 
   const slides = [...carousel.querySelectorAll(".contactMobile__card")];
   const buttons = [...document.querySelectorAll(".contactMobile__dot")];
-
   if (!slides.length || slides.length !== buttons.length) return;
 
-  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
 
   function setActiveButton(activeIndex) {
     buttons.forEach((button, index) => {
@@ -105,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const first = slides[0].getBoundingClientRect();
     const second = slides[1].getBoundingClientRect();
-
     return second.left - first.left;
   }
 
@@ -130,26 +138,21 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveButton(index);
   }
 
-  function handleButtonClick(index) {
-    return () => {
-      scrollToSlide(index);
-    };
-  }
-
-  function syncButtonsWithScroll() {
-    requestAnimationFrame(() => {
-      setActiveButton(getActiveSlideIndex());
-    });
-  }
-
   function bindButtonEvents() {
     buttons.forEach((button, index) => {
-      button.addEventListener("click", handleButtonClick(index));
+      button.addEventListener("click", () => {
+        scrollToSlide(index);
+      });
     });
   }
 
   function bindCarouselEvents() {
-    carousel.addEventListener("scroll", syncButtonsWithScroll);
+    carousel.addEventListener("scroll", () => {
+      requestAnimationFrame(() => {
+        setActiveButton(getActiveSlideIndex());
+      });
+    });
+
     window.addEventListener("resize", () => {
       setActiveButton(getActiveSlideIndex());
     });
@@ -158,4 +161,26 @@ document.addEventListener("DOMContentLoaded", () => {
   bindButtonEvents();
   bindCarouselEvents();
   setActiveButton(0);
+}
+
+function setupSubmitToggle(checkboxSelector, buttonSelector) {
+  const checkbox = document.querySelector(checkboxSelector);
+  const button = document.querySelector(buttonSelector);
+  if (!checkbox || !button) return;
+
+  function updateButtonState() {
+    button.disabled = !checkbox.checked;
+  }
+
+  checkbox.addEventListener("change", updateButtonState);
+  updateButtonState();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initMobileMenu();
+  initDesktopWheelScroll();
+  initWorkCardToggles();
+  setupMobileContactCarousel();
+  setupSubmitToggle("#contactMobilePolicy", ".contactMobile__submit");
+  setupSubmitToggle("#contactPolicy", ".contact__submit");
 });

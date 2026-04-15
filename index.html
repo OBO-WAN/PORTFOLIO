@@ -665,7 +665,7 @@
             <article class="referenceCard">
               <div class="referenceCard__quote">
                 <p>
-                  “Michael is a reliable and friendly person. Work in a
+                  “Francisco is a reliable and friendly person. Work in a
                   structured way and write a clear code. I recommend him as a
                   colleague.”
                 </p>
@@ -698,7 +698,7 @@
             <article class="referenceCard">
               <div class="referenceCard__quote">
                 <p>
-                  “Michael had to develop, format and deliver content in
+                  “He had to develop, format and deliver content in
                   collaboration with the team members. He is a reliable and
                   friendly person.”
                 </p>
@@ -707,8 +707,8 @@
               <div class="referenceCard__divider" aria-hidden="true"></div>
 
               <div class="referenceCard__author">
-                <h3 class="referenceCard__name">Noah Mueller</h3>
-                <p class="referenceCard__project">Project Sharkie</p>
+                <h3 class="referenceCard__name">Ulrike Albeseder</h3>
+                <p class="referenceCard__project">Melange à Deux</p>
               </div>
             </article>
           </div>
@@ -754,15 +754,20 @@
               required
             ></textarea>
 
-            <label class="contact__privacy">
-              <input class="contact__checkbox" type="checkbox" required />
+            <label class="contact__privacy" for="contactPolicy">
+              <input
+                class="contact__checkbox"
+                id="contactPolicy"
+                type="checkbox"
+                required
+              />
               <span class="contact__privacyText">
                 I've read the privacy policy and agree to the processing of my
                 data as outlined.
               </span>
             </label>
 
-            <button type="submit" class="contact__submit">Send</button>
+            <button type="submit" class="contact__submit" disabled>Send</button>
           </form>
         </div>
 
@@ -948,8 +953,13 @@
             ></textarea>
           </form>
           <div class="contactMobile__actions">
-            <label class="contactMobile__privacy">
-              <input class="contactMobile__checkbox" type="checkbox" required />
+            <label class="contactMobile__privacy" for="contactMobilePolicy">
+              <input
+                class="contactMobile__checkbox"
+                id="contactMobilePolicy"
+                type="checkbox"
+                required
+              />
               <span class="contactMobile__privacyText">
                 I’ve read the privacy policy and agree to the processing of my
                 data as outlined.
@@ -960,6 +970,7 @@
               type="submit"
               form="contactMobileForm"
               class="contactMobile__submit"
+              disabled
             >
               Send
             </button>
@@ -979,11 +990,29 @@
               />
             </a>
 
-            <img
-              src="assets/img/section/socialMedia_mobile.svg"
-              alt="GitHub, email and LinkedIn"
-              class="contactMobile__socialImage"
-            />
+            <div class="contactMobile__socialLinks" aria-label="Social media">
+              <a
+                class="contactMobile__socialLink contactMobile__socialLink--mail"
+                href="mailto:francisco@naranjo.me"
+                aria-label="Email"
+              ></a>
+
+              <a
+                class="contactMobile__socialLink contactMobile__socialLink--linkedin"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              ></a>
+
+              <a
+                class="contactMobile__socialLink contactMobile__socialLink--github"
+                href="https://github.com/OBO-WAN"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              ></a>
+            </div>
           </div>
         </div>
       </section>
@@ -1060,8 +1089,14 @@
             </svg>
 
             <span class="footerMobile__brandInitials">
-              <span class="footerMobile__brandInitial footerMobile__brandInitial--f">F</span>
-              <span class="footerMobile__brandInitial footerMobile__brandInitial--n">N</span>
+              <span
+                class="footerMobile__brandInitial footerMobile__brandInitial--f"
+                >F</span
+              >
+              <span
+                class="footerMobile__brandInitial footerMobile__brandInitial--n"
+                >N</span
+              >
             </span>
           </a>
 

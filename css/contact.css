@@ -307,3 +307,14 @@
     flex-shrink: 0;
   }
 }
+
+.contact__submit:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.contact__submit:not(:disabled) {
+  background: #b5e93b;
+  color: #131312;
+  cursor: pointer;
+}
