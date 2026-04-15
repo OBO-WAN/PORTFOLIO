@@ -209,6 +209,8 @@
     align-items: flex-start;
     gap: 14px;
     margin-top: 18px;
+    scroll-margin-top: 72px;
+
   }
 
   .contactMobile__contentHeadline {
@@ -342,6 +344,14 @@
     align-items: flex-start;
     gap: 10px;
     cursor: pointer;
+  }
+
+  .contactMobile__anchor {
+    display: block;
+    position: relative;
+    top: -72px;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .contactMobile__checkbox {
@@ -499,6 +509,7 @@
   .contactMobile__content {
     gap: 12px;
     margin-top: 16px;
+    scroll-margin-top: 72px;
   }
 
   .contactMobile__contentHeadlineSvg {
