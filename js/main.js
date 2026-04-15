@@ -93,6 +93,7 @@ function setupMobileContactCarousel() {
 
   const slides = [...carousel.querySelectorAll(".contactMobile__card")];
   const buttons = [...document.querySelectorAll(".contactMobile__dot")];
+
   if (!slides.length || slides.length !== buttons.length) return;
 
   function clamp(value, min, max) {
@@ -163,17 +164,53 @@ function setupMobileContactCarousel() {
   setActiveButton(0);
 }
 
-function setupSubmitToggle(checkboxSelector, buttonSelector) {
+function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
+  const form = document.querySelector(formSelector);
   const checkbox = document.querySelector(checkboxSelector);
   const button = document.querySelector(buttonSelector);
-  if (!checkbox || !button) return;
+
+  if (!form || !checkbox || !button) return;
+
+  const fields = [...form.querySelectorAll("input, textarea")];
 
   function updateButtonState() {
-    button.disabled = !checkbox.checked;
+    const formIsValid = form.checkValidity();
+    button.disabled = !formIsValid || !checkbox.checked;
   }
+
+  fields.forEach((field) => {
+    field.addEventListener("input", updateButtonState);
+    field.addEventListener("change", updateButtonState);
+  });
 
   checkbox.addEventListener("change", updateButtonState);
   updateButtonState();
+}
+
+// IDs for contact form anchors
+function setupContactFormAnchors() {
+  const formLinks = document.querySelectorAll('a[href="#contact-form"]');
+  if (!formLinks.length) return;
+
+  function getTargetSelector() {
+    return window.innerWidth <= 768
+      ? "#contact-form-mobile"
+      : "#contact-form-desktop";
+  }
+
+  formLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const target = document.querySelector(getTargetSelector());
+      if (!target) return;
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -181,6 +218,17 @@ document.addEventListener("DOMContentLoaded", () => {
   initDesktopWheelScroll();
   initWorkCardToggles();
   setupMobileContactCarousel();
-  setupSubmitToggle("#contactMobilePolicy", ".contactMobile__submit");
-  setupSubmitToggle("#contactPolicy", ".contact__submit");
+  setupContactFormAnchors();
+
+  setupFormValidation(
+    ".contact__form",
+    "#contactPolicy",
+    ".contact__submit"
+  );
+
+  setupFormValidation(
+    "#contact-form-mobile",
+    "#contactMobilePolicy",
+    ".contactMobile__submit"
+  );
 });
