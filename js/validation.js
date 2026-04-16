@@ -1,3 +1,46 @@
+function getMessages() {
+  const language = document.documentElement.lang || "en";
+  const shortLanguage = language.slice(0, 2).toLowerCase();
+
+  const messages = {
+    en: {
+      nameRequired: "Please enter your name",
+      nameShort: "Name must have 2+ characters",
+      nameInvalid: "Please use letters only",
+      emailRequired: "Please enter your e-mail",
+      emailInvalid: "Please enter a valid e-mail",
+      messageRequired: "Please enter your message",
+      messageShort: "Message must have 10+ characters",
+      policyRequired: "Please agree to the privacy policy",
+    },
+
+    es: {
+      nameRequired: "Por favor, escribe tu nombre",
+      nameShort: "El nombre debe tener al menos 2 caracteres",
+      nameInvalid: "Por favor, usa solo letras",
+      emailRequired: "Por favor, escribe tu correo electrónico",
+      emailInvalid: "Por favor, escribe un correo electrónico válido",
+      messageRequired: "Por favor, escribe tu mensaje",
+      messageShort: "El mensaje debe tener al menos 10 caracteres",
+      policyRequired: "Por favor, acepta la política de privacidad",
+    },
+
+    de: {
+      nameRequired: "Bitte gib deinen Namen ein",
+      nameShort: "Der Name muss mindestens 2 Zeichen haben",
+      nameInvalid: "Bitte verwende nur Buchstaben",
+      emailRequired: "Bitte gib deine E-Mail-Adresse ein",
+      emailInvalid: "Bitte gib eine gültige E-Mail-Adresse ein",
+      messageRequired: "Bitte gib deine Nachricht ein",
+      messageShort: "Die Nachricht muss mindestens 10 Zeichen haben",
+      policyRequired: "Bitte akzeptiere die Datenschutzerklärung",
+    },
+  };
+
+  return messages[shortLanguage] || messages.en;
+}
+
+
 function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
   const form = document.querySelector(formSelector);
   const checkbox = document.querySelector(checkboxSelector);
@@ -50,20 +93,22 @@ function getValidator(name) {
 
 function validateName(value) {
   const text = value.trim();
+  const messages = getMessages();
 
-  if (!text) return "Please enter your name";
-  if (text.length < 2) return "Name must have 2+ characters";
-  if (!/^[a-zA-ZÀ-ÿ' -]+$/.test(text)) return "Please use letters only";
+  if (!text) return messages.nameRequired;
+  if (text.length < 2) return messages.nameShort;
+  if (!/^[a-zA-ZÀ-ÿ' -]+$/.test(text)) return messages.nameInvalid;
 
   return "";
 }
 
 function validateEmail(value) {
   const text = value.trim();
+  const messages = getMessages();
 
-  if (!text) return "Please enter your e-mail";
+  if (!text) return messages.emailRequired;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(text)) {
-    return "Please enter a valid e-mail";
+    return messages.emailInvalid;
   }
 
   return "";
@@ -71,11 +116,17 @@ function validateEmail(value) {
 
 function validateMessage(value) {
   const text = value.trim();
+  const messages = getMessages();
 
-  if (!text) return "Please enter your message";
-  if (text.length < 10) return "Message must have 10+ characters";
+  if (!text) return messages.messageRequired;
+  if (text.length < 10) return messages.messageShort;
 
   return "";
+}
+
+function getPolicyMessage() {
+  const messages = getMessages();
+  return messages.policyRequired;
 }
 
 function getErrorClass(field, classes) {
