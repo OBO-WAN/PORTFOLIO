@@ -164,51 +164,25 @@ function setupMobileContactCarousel() {
   setActiveButton(0);
 }
 
-function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
-  const form = document.querySelector(formSelector);
-  const checkbox = document.querySelector(checkboxSelector);
-  const button = document.querySelector(buttonSelector);
-
-  if (!form || !checkbox || !button) return;
-
-  const fields = [...form.querySelectorAll("input, textarea")];
-
-  function updateButtonState() {
-    const formIsValid = form.checkValidity();
-    button.disabled = !formIsValid || !checkbox.checked;
-  }
-
-  fields.forEach((field) => {
-    field.addEventListener("input", updateButtonState);
-    field.addEventListener("change", updateButtonState);
-  });
-
-  checkbox.addEventListener("change", updateButtonState);
-  updateButtonState();
+// IDs for contact form anchors
+function getContactFormSelector() {
+  return window.innerWidth <= 768
+    ? "#contact-form-mobile"
+    : "#contact-form-desktop";
 }
 
-// IDs for contact form anchors
 function setupContactFormAnchors() {
-  const formLinks = document.querySelectorAll('a[href="#contact-form"]');
-  if (!formLinks.length) return;
+  const links = document.querySelectorAll('a[href="#contact-form"]');
+  if (!links.length) return;
 
-  function getTargetSelector() {
-    return window.innerWidth <= 768
-      ? "#contact-form-mobile"
-      : "#contact-form-desktop";
-  }
-
-  formLinks.forEach((link) => {
+  links.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
 
-      const target = document.querySelector(getTargetSelector());
+      const target = document.querySelector(getContactFormSelector());
       if (!target) return;
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 }

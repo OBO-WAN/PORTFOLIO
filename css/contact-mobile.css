@@ -637,3 +637,15 @@
   color: #131312;
   cursor: pointer;
 }
+
+.contactMobile__input--error,
+.contactMobile__textarea--error {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.contactMobile__input--error::placeholder,
+.contactMobile__textarea--error::placeholder {
+  color: #ff6b6b;
+  opacity: 1;
+}

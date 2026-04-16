@@ -318,3 +318,23 @@
   color: #131312;
   cursor: pointer;
 }
+
+.contact__input--error,
+.contact__textarea--error {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.contact__input--error::placeholder,
+.contact__textarea--error::placeholder {
+  color: #ff6b6b;
+  opacity: 1;
+}
+
+.contactMobile__error {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #d93025;
+  font-family: "Quantico", system-ui, sans-serif;
+  line-height: 1.3;
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,7 +40,9 @@
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/footer-mobile.css" />
 
+    <script src="js/validation.js"></script>
     <script src="js/main.js" defer></script>
+    
   </head>
 
   <body>
@@ -378,7 +380,7 @@
           </p>
         </div>
 
-        <a href="#contact-form" class="talkMe__contactBtn">
+        <a href="#contact-mobile-start" class="talkMe__contactBtn">
           <img src="assets/icons/talk_button.svg" alt="Talk to me" />
         </a>
 
@@ -732,21 +734,21 @@
             class="contact__formHeadline"
           />
 
-          <form class="contact__form" action="#" method="post">
+          <form class="contact__form" action="#" method="post" novalidate>
             <input
               class="contact__input"
               type="text"
               name="name"
               placeholder="Your name"
-              required
+              autocomplete="name"
             />
 
             <input
               class="contact__input"
-              type="email"
+              type="text"
               name="email"
               placeholder="Your e-mail"
-              required
+              autocomplete="email"
             />
 
             <textarea
@@ -754,7 +756,6 @@
               name="message"
               placeholder="Your message"
               rows="8"
-              required
             ></textarea>
 
             <label class="contact__privacy" for="contactPolicy">
@@ -762,7 +763,6 @@
                 class="contact__checkbox"
                 id="contactPolicy"
                 type="checkbox"
-                required
               />
               <span class="contact__privacyText">
                 I've read the privacy policy and agree to the processing of my
@@ -931,21 +931,22 @@
             id="contact-form-mobile"
             action="#"
             method="post"
+            novalidate
           >
             <input
               class="contactMobile__input"
               type="text"
               name="name"
               placeholder="Your name"
-              required
+              autocomplete="name"
             />
 
             <input
               class="contactMobile__input"
-              type="email"
+              type="text"
               name="email"
               placeholder="Your Email"
-              required
+              autocomplete="email"
             />
 
             <textarea
@@ -953,7 +954,6 @@
               name="message"
               placeholder="Your message"
               rows="8"
-              required
             ></textarea>
           </form>
           <div class="contactMobile__actions">
@@ -962,7 +962,6 @@
                 class="contactMobile__checkbox"
                 id="contactMobilePolicy"
                 type="checkbox"
-                required
               />
               <span class="contactMobile__privacyText">
                 I’ve read the privacy policy and agree to the processing of my
