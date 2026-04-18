@@ -17,12 +17,12 @@
         position: static;
         transform: none;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         width: 100%;
     }
 
     .whyMe__headlineSvg {
-        width: 121px;
+        width: 240px;
         height: auto;
         display: block;
     }
@@ -61,7 +61,7 @@
     }
 
     .whyMe__infoSvg {
-        width: 72px;
+        width: 94px;
         height: auto;
     }
 
@@ -113,7 +113,7 @@
     }
 
     .whyMe__headlineSvg {
-        width: min(60vw, 160px);
+        width: min(60vw, 180px);
         margin-top: 12px;
     }
 
