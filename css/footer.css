@@ -115,7 +115,7 @@
 
 .contact__footerArrow {
   position: absolute;
-  top: 60%;
+  top: 75%;
   right: calc((var(--sidebar-w) - 32px) / 2);
   transform: translateY(-50%);
   display: flex;

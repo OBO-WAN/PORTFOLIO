@@ -58,7 +58,6 @@
     font-family: var(--legal-font);
   }
 
-  /* Legal page override for home.css: keep the full social/language block visible. */
   .topbar {
     left: auto;
     right: clamp(24px, 3vw, 48px);
@@ -475,7 +474,7 @@
     --legal-right-pad-left: 56px;
     --legal-right-pad-right: 48px;
     --legal-title-w: 60px;
-    --legal-body-size: 18px;
+    --legal-body-size: 16px;
     --legal-heading-size: 14px;
   }
 }
