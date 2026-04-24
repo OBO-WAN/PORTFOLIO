@@ -345,7 +345,7 @@ main.legalPage {
   .legal__column--left {
     grid-template-columns: 64px 1fr;
     column-gap: 16px;
-    padding: 20px 20px 20px 48px;
+    padding: 0px 20px 20px 48px;
     align-content: center;
   }
 
@@ -358,13 +358,13 @@ main.legalPage {
   }
 
   .legal__leftContent {
-    width: 64%;
+    width: 74%;
     max-width: none;
     padding-top: 0;
   }
 
   .legal__column--right {
-    padding: 66px 112px 12px 20px;
+    padding: 100px 200px 52px 200px;
   }
 
   .legal__block {
@@ -430,7 +430,7 @@ main.legalPage {
 
 @media (min-width: 1441px) {
   main.legalPage {
-    overflow-y: auto;
+    overflow-y: hidden;
   }
 
   .legal__column--left {
