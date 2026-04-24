@@ -174,7 +174,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
     align-items: center;
     font-family: "Quantico", system-ui, sans-serif;
 }
