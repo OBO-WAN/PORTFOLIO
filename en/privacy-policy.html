@@ -16,11 +16,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/home-mobile.css" />
     <link rel="stylesheet" href="../css/legal.css" />
+    <link rel="stylesheet" href="../css/contact-mobile.css" />
+    <link rel="stylesheet" href="../css/footer-mobile.css" />
     <link rel="stylesheet" href="../css/legal-mobile.css" />
   </head>
 
   <body>
+    <header class="mobileBar">
+      <a class="mobileBar__brand" href="./" aria-label="Home">
+        <span class="mobileBar__brandText">
+          <span class="mobileBar__brandF">F</span>
+          <span class="mobileBar__brandN">N</span>
+        </span>
+      </a>
+
+      <button
+        class="mobileBar__toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav class="mobileMenu" id="mobileMenu" aria-label="Mobile navigation">
+      <a class="mobileMenu__link mobileMenu__link--outline" href="./#why-me">Why me</a>
+      <a class="mobileMenu__link mobileMenu__link--outline" href="./#skills">Skills</a>
+      <a class="mobileMenu__link mobileMenu__link--outline" href="./#my-work">My Work</a>
+      <a class="mobileMenu__link mobileMenu__link--outline" href="./#contact-mobile-start">Contact</a>
+
+      <div class="mobileMenu__lang">
+        <a href="../de/datenschutz.html" lang="de" hreflang="de">DE</a>
+        <span class="mobileMenu__divider">|</span>
+        <a href="./privacy-policy.html" lang="en" hreflang="en" aria-current="page">EN</a>
+        <span class="mobileMenu__divider">|</span>
+        <a href="../es/privacidad.html" lang="es" hreflang="es">ES</a>
+      </div>
+    </nav>
     <aside class="sidebar" aria-label="Primary">
       <a class="sidebar__badgeText" href="./" aria-label="Home">
         <svg class="sidebar__badgeArc" viewBox="0 -12 64 76" aria-hidden="true">
@@ -82,7 +120,21 @@
       <section class="legal">
         <div class="legal__columns">
           <div class="legal__column legal__column--left">
+            <a
+              href="./"
+              class="legal__mobileBack legalMobileOnly"
+              aria-label="Back to home"
+            >
+              <img
+                src="../assets/img/legalNotice/ArrowBack.svg"
+                alt=""
+                aria-hidden="true"
+                class="legal__mobileBackIcon"
+              />
+            </a>
+
             <div class="legal__headline">
+              <h1 class="legal__mobileTitle">Privacy Policy</h1>
               <img src="../assets/img/legalNotice/privacePolicy.svg" alt="Privacy policy" class="legal__headlineSvg" />
             </div>
 
@@ -183,6 +235,120 @@
           <div class="legal__endStripe" aria-hidden="true"></div>
         </div>
       </section>
+
+      <div
+        class="contactMobile__socialSection legalMobile__socialSection legalMobileOnly"
+        aria-label="Social media"
+      >
+        <a
+          href="#legal-start"
+          class="contactMobile__backToTop"
+          aria-label="Back to the beginning of the privacy policy"
+        >
+          <img
+            src="../assets/img/section/ArrowUP.svg"
+            alt=""
+            aria-hidden="true"
+            class="contactMobile__backToTopIcon"
+          />
+        </a>
+
+        <div class="contactMobile__socialLinks" aria-label="Social media">
+          <a
+            class="contactMobile__socialLink contactMobile__socialLink--mail"
+            href="mailto:francisco@naranjo.me"
+            aria-label="Email"
+          ></a>
+
+          <a
+            class="contactMobile__socialLink contactMobile__socialLink--linkedin"
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          ></a>
+
+          <a
+            class="contactMobile__socialLink contactMobile__socialLink--github"
+            href="https://github.com/OBO-WAN"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          ></a>
+        </div>
+      </div>
+
+      <footer id="footer" class="contact__footerSection legalMobileOnly">
+        <div class="footerMobile">
+          <a class="footerMobile__brand" href="./" aria-label="Home">
+            <svg
+              class="footerMobile__brandArc"
+              viewBox="0 -12 64 76"
+              aria-hidden="true"
+            >
+              <path
+                id="footerMobileArcPath"
+                d="M 4 40 A 28 32 0 0 1 60 40"
+                fill="none"
+              ></path>
+              <text class="footerMobile__brandArcText">
+                <textPath
+                  href="#footerMobileArcPath"
+                  startOffset="50%"
+                  text-anchor="middle"
+                >
+                  frontend developer
+                </textPath>
+              </text>
+            </svg>
+
+            <span class="footerMobile__brandInitials">
+              <span
+                class="footerMobile__brandInitial footerMobile__brandInitial--f"
+                >F</span
+              >
+              <span
+                class="footerMobile__brandInitial footerMobile__brandInitial--n"
+                >N</span
+              >
+            </span>
+          </a>
+
+          <p class="footerMobile__copyright">© Francisco Naranjo 2026</p>
+
+          <div class="footerMobile__legal">
+            <a href="./legal-notice.html" class="footerMobile__link">Legal notice</a>
+            <a href="./privacy-policy.html" class="footerMobile__link">Privacy policy</a>
+          </div>
+        </div>
+      </footer>
     </main>
+
+    <script>
+      (() => {
+        const toggle = document.querySelector(".mobileBar__toggle");
+        const menu = document.getElementById("mobileMenu");
+
+        if (!toggle || !menu) return;
+
+        const closeMenu = () => {
+          document.body.classList.remove("menu-open");
+          toggle.setAttribute("aria-expanded", "false");
+        };
+
+        toggle.addEventListener("click", () => {
+          const isOpen = document.body.classList.toggle("menu-open");
+          toggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeMenu();
+        });
+      })();
+    </script>
   </body>
 </html>

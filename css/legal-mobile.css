@@ -1,5 +1,372 @@
+/* legal-mobile.css
+   Mobile / tablet-portrait legal notice layout.
+   Desktop starts in legal.css at 769px. */
+
+.legal__mobileTitle,
+.legalMobileOnly {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
-  main.legalPage {
+  :root {
+    --legal-mobile-accent: var(--sidebar, #b5e93b);
+    --legal-mobile-bg: var(--bg, #000);
+    --legal-mobile-text: var(--text, #f2f2f2);
+    --legal-mobile-footer-text: #3d3d1e;
+    --legal-mobile-font: "Quantico", system-ui, sans-serif;
+    --legal-mobile-page-max: 620px;
+    --legal-mobile-gutter: 40px;
+    --legal-mobile-title-size: 42px;
+    --legal-mobile-heading-size: 25px;
+    --legal-mobile-body-size: 18px;
+    --legal-mobile-line-height: 1.18;
+    --legal-mobile-block-gap: 24px;
+  }
+
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    background: var(--legal-mobile-bg);
+  }
+
+  body {
+    color: var(--legal-mobile-text);
+    font-family: var(--legal-mobile-font);
+  }
+
+  .sidebar,
+  .topbar {
     display: none !important;
+  }
+
+  .mobileBar {
+    position: sticky;
+    top: 0;
+  }
+
+  .mobileBar__brand[href],
+  .mobileMenu a[href] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  main.legalPage,
+  main.legalPage *,
+  main.legalPage *::before,
+  main.legalPage *::after {
+    box-sizing: border-box;
+  }
+
+  main.legalPage {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    min-width: 0;
+    max-width: none;
+    min-height: calc(100dvh - 72px);
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background: var(--legal-mobile-bg);
+    color: var(--legal-mobile-text);
+    font-family: var(--legal-mobile-font);
+  }
+
+  main.legalPage > .legal {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: var(--legal-mobile-page-max);
+    height: auto;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 28px var(--legal-mobile-gutter) 0;
+    background: var(--legal-mobile-bg);
+    color: var(--legal-mobile-text);
+  }
+
+  .legal__columns,
+  .legal__column,
+  .legal__column--left,
+  .legal__column--right,
+  .legal__leftContent {
+    position: static;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  .legal__headline {
+    position: static;
+    width: 100%;
+    margin: 0 0 34px;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .legal__headlineSvg {
+    display: none;
+  }
+
+  .legal__mobileTitle {
+    display: block;
+    margin: 0;
+    color: #000;
+    -webkit-text-stroke: 1px var(--legal-mobile-accent);
+    text-shadow:
+      1px 0 0 var(--legal-mobile-accent),
+      -1px 0 0 var(--legal-mobile-accent),
+      0 1px 0 var(--legal-mobile-accent),
+      0 -1px 0 var(--legal-mobile-accent);
+    font-family: var(--legal-mobile-font);
+    font-size: var(--legal-mobile-title-size);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .legal__block {
+    width: 100%;
+    margin: 0 0 var(--legal-mobile-block-gap);
+    color: var(--legal-mobile-text);
+    font-family: var(--legal-mobile-font);
+    font-size: var(--legal-mobile-body-size);
+    font-weight: 700;
+    line-height: var(--legal-mobile-line-height);
+  }
+
+  .legal__block h2,
+  .legal__label {
+    margin: 0 0 3px;
+    color: var(--legal-mobile-accent);
+    font-family: var(--legal-mobile-font);
+    font-size: var(--legal-mobile-heading-size);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .legal__block p {
+    margin: 0 0 14px;
+  }
+
+  .legal__block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal__block ul {
+    margin: 0;
+    padding-left: 1.45em;
+  }
+
+  .legal__block li {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .legal__middleArrow,
+  .legal__aside,
+  .legal__endStripe {
+    display: none !important;
+  }
+
+  .legalMobileOnly {
+    display: flex;
+  }
+
+  .legal__mobileBack {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin: 0 0 34px;
+    text-decoration: none;
+  }
+
+  .legal__mobileBackIcon {
+    display: block;
+    width: 30px;
+    height: auto;
+  }
+
+  .legalMobile__socialSection {
+    width: 100vw;
+    max-width: none;
+    margin: 28px 0 0;
+    padding: 48px 16px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 52px;
+    background: var(--legal-mobile-bg);
+  }
+
+  .legalMobile__socialSection .contactMobile__backToTop {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    text-decoration: none;
+  }
+
+  .legalMobile__socialSection .contactMobile__backToTopIcon {
+    display: block;
+    width: 22px;
+    height: auto;
+  }
+
+  .legalMobile__socialSection .contactMobile__socialLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .legalMobile__socialSection .contactMobile__socialLink {
+    width: 36px;
+    height: 36px;
+  }
+
+  #footer.legalMobileOnly {
+    display: flex;
+    width: 100vw;
+    min-height: auto;
+    box-sizing: border-box;
+    padding: 24px 16px 30px;
+    justify-content: center;
+    background: linear-gradient(180deg, #b5e93b 0%, #aee733 58%, #8fca15 100%);
+  }
+
+  #footer.legalMobileOnly .footerMobile {
+    width: 100%;
+    max-width: 390px;
+  }
+
+  /* Keep the footer logo geometry from footer-mobile.css.
+     Do not override .footerMobile__brand or .footerMobile__brandInitials here;
+     otherwise the arc and initials no longer align. */
+
+  #footer.legalMobileOnly .footerMobile__copyright,
+  #footer.legalMobileOnly .footerMobile__link {
+    color: var(--legal-mobile-footer-text);
+  }
+}
+
+/* Tablet portrait */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  main.legalPage > .legal {
+    padding-top: 42px;
+  }
+}
+
+/* Mobile L */
+@media screen and (max-width: 425px) {
+  :root {
+    --legal-mobile-page-max: 425px;
+    --legal-mobile-gutter: 20px;
+    --legal-mobile-title-size: 30px;
+    --legal-mobile-heading-size: 20px;
+    --legal-mobile-body-size: 15px;
+    --legal-mobile-line-height: 1.16;
+    --legal-mobile-block-gap: 25px;
+  }
+
+  main.legalPage > .legal {
+    padding-top: 20px;
+  }
+
+  .legal__mobileBack {
+    margin-bottom: 28px;
+  }
+
+  .legal__headline {
+    margin-bottom: 38px;
+  }
+
+  .legalMobile__socialSection {
+    margin-top: 20px;
+    padding-top: 42px;
+    padding-bottom: 50px;
+    gap: 46px;
+  }
+}
+
+/* Mobile M */
+@media screen and (max-width: 375px) {
+  :root {
+    --legal-mobile-gutter: 18px;
+    --legal-mobile-title-size: 29px;
+    --legal-mobile-heading-size: 19px;
+    --legal-mobile-body-size: 14px;
+    --legal-mobile-block-gap: 24px;
+  }
+
+  .legalMobile__socialSection .contactMobile__socialLink {
+    width: 34px;
+    height: 34px;
+  }
+
+  #footer.legalMobileOnly .footerMobile__copyright,
+  #footer.legalMobileOnly .footerMobile__link {
+    font-size: 13px;
+  }
+}
+
+/* Mobile S */
+@media screen and (max-width: 320px) {
+  :root {
+    --legal-mobile-gutter: 16px;
+    --legal-mobile-title-size: 26px;
+    --legal-mobile-heading-size: 18px;
+    --legal-mobile-body-size: 13px;
+    --legal-mobile-block-gap: 22px;
+  }
+
+  main.legalPage {
+    min-height: calc(100dvh - 68px);
+  }
+
+  .legal__mobileBack {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 24px;
+  }
+
+  .legal__mobileBackIcon {
+    width: 26px;
+  }
+
+  .legal__headline {
+    margin-bottom: 30px;
+  }
+
+  .legalMobile__socialSection {
+    gap: 36px;
+    padding-top: 34px;
+    padding-bottom: 42px;
+  }
+
+  .legalMobile__socialSection .contactMobile__socialLinks {
+    gap: 10px;
+  }
+
+  .legalMobile__socialSection .contactMobile__socialLink {
+    width: 32px;
+    height: 32px;
   }
 }
