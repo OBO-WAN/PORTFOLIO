@@ -130,7 +130,7 @@
 
   .legal__headline {
     position: absolute;
-    top: 25%;
+    top: 28%;
     left: var(--legal-left-pad-left);
     width: var(--legal-title-w);
     transform: translateY(-50%);
@@ -487,13 +487,13 @@
     --legal-content-top: clamp(102px, 9vh, 190px);
     --legal-left-pad-left: clamp(78px, 5.4vw, 210px);
     --legal-left-content-offset: clamp(148px, 8vw, 320px);
-    --legal-left-content-w: clamp(470px, 28vw, 760px);
-    --legal-right-content-w: clamp(560px, 28vw, 860px);
+    --legal-left-content-w: clamp(660px, 28vw, 760px);
+    --legal-right-content-w: clamp(660px, 28vw, 860px);
     --legal-right-pad-left: clamp(56px, 4.3vw, 170px);
     --legal-right-pad-right: clamp(48px, 3.2vw, 120px);
     --legal-title-w: clamp(58px, 3.8vw, 128px);
-    --legal-body-size: clamp(11px, 0.38vw, 16px);
-    --legal-heading-size: clamp(12px, 0.46vw, 19px);
+    --legal-body-size: clamp(16px, 0.38vw, 16px);
+    --legal-heading-size: clamp(18px, 0.46vw, 19px);
     --legal-line-height: 1.24;
   }
 
@@ -530,3 +530,166 @@
     bottom: clamp(54px, 6vh, 130px);
   }
 }
+
+/* Per-page headline modifiers
+   Use these for longer localized vertical SVG headlines so the base
+   .legal__headline layout can stay stable for the shorter titles. */
+@media screen and (min-width: 769px) {
+  .legal__headline--privacy-de {
+    width: clamp(40px, 3.8vw, 50px);
+  }
+
+  .legal__headline--privacy-de .legal__headlineSvg {
+    max-height: 58vh;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .legal__headline--privacy-de {
+    width: 42px;
+  }
+
+  .legal__headline--privacy-de .legal__headlineSvg {
+    max-height: 54vh;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1444px) {
+  .legal__headline--privacy-de {
+    width: 48px;
+  }
+
+  .legal__headline--privacy-de .legal__headlineSvg {
+    max-height: 56vh;
+  }
+}
+
+@media screen and (min-width: 1445px) {
+  .legal__headline--privacy-de {
+    width: clamp(54px, 3.2vw, 104px);
+    top: 33%;
+  }
+
+  .legal__headline--privacy-de .legal__headlineSvg {
+    max-height: 62vh;
+  }
+}
+
+/* Per-page headline modifiers: English and Spanish variants */
+@media screen and (min-width: 769px) {
+  .legal__headline--privacy-en {
+    width: clamp(42px, 4vw, 54px);
+  }
+
+  .legal__headline--privacy-en .legal__headlineSvg {
+    max-height: 62vh;
+  }
+
+  .legal__headline--notice-es {
+    width: clamp(48px, 4.2vw, 58px);
+  }
+
+  .legal__headline--notice-es .legal__headlineSvg {
+    max-height: 64vh;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .legal__headline--privacy-en {
+    width: 46px;
+  }
+
+  .legal__headline--privacy-en .legal__headlineSvg {
+    max-height: 58vh;
+  }
+
+  .legal__headline--notice-es {
+    width: 48px;
+  }
+
+  .legal__headline--notice-es .legal__headlineSvg {
+    max-height: 60vh;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1444px) {
+  .legal__headline--privacy-en {
+    width: 52px;
+    top: 30%;
+  }
+
+  .legal__headline--privacy-en .legal__headlineSvg {
+    max-height: 60vh;
+  }
+
+  .legal__headline--notice-es {
+    width: 56px;
+  }
+
+  .legal__headline--notice-es .legal__headlineSvg {
+    max-height: 62vh;
+  }
+}
+
+@media screen and (min-width: 1445px) {
+  .legal__headline--privacy-en {
+    width: clamp(54px, 3.4vw, 108px);
+    top: 33%;
+  }
+
+  .legal__headline--privacy-en .legal__headlineSvg {
+    max-height: 66vh;
+  }
+
+  .legal__headline--notice-es {
+    width: clamp(58px, 3.6vw, 114px);
+  }
+
+  .legal__headline--notice-es .legal__headlineSvg {
+    max-height: 68vh;
+  }
+}
+
+/* Per-page headline modifier: Spanish privacy policy */
+@media screen and (min-width: 769px) {
+  .legal__headline--privacy-es {
+    width: clamp(40px, 3.9vw, 54px);
+  }
+
+  .legal__headline--privacy-es .legal__headlineSvg {
+    max-height: 60vh;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .legal__headline--privacy-es {
+    width: 80px;
+  }
+
+  .legal__headline--privacy-es .legal__headlineSvg {
+    max-height: 56vh;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1444px) {
+  .legal__headline--privacy-es {
+    width: 96px;
+    top: 31%;
+  }
+
+  .legal__headline--privacy-es .legal__headlineSvg {
+    max-height: 58vh;
+  }
+}
+
+@media screen and (min-width: 1445px) {
+  .legal__headline--privacy-es {
+    width: clamp(96px, 3.3vw, 108px);
+    top: 31%;
+  }
+
+  .legal__headline--privacy-es .legal__headlineSvg {
+    max-height: 64vh;
+  }
+}
+
