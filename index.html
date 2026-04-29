@@ -43,6 +43,7 @@
     <script src="js/validation.js"></script>
     <script src="js/main.js" defer></script>
     <script src="js/submit.js" defer></script>
+    <script src="js/language.js" defer></script>
   </head>
 
   <body>
@@ -84,11 +85,11 @@
         Contact
       </a>
       <div class="mobileMenu__lang">
-        <a href="./de/" lang="de">DE</a>
+        <a href="./de/" lang="de" data-lang-link>DE</a>
         <span class="mobileMenu__divider">|</span>
-        <a href="./" lang="en">EN</a>
+        <a href="./" lang="en" data-lang-link>EN</a>
         <span class="mobileMenu__divider">|</span>
-        <a href="./es/" lang="es">ES</a>
+        <a href="./es/" lang="es" data-lang-link>ES</a>
       </div>
     </nav>
 
@@ -154,6 +155,7 @@
           hreflang="de"
           lang="de"
           aria-label="Deutsch"
+          data-lang-link
         ></a>
 
         <span class="lang__divider icon icon--vline" aria-hidden="true"></span>
@@ -165,7 +167,9 @@
           lang="en"
           aria-current="page"
           aria-label="English"
+          data-lang-link
         ></a>
+
         <span class="lang__divider icon icon--vline" aria-hidden="true"></span>
 
         <a
@@ -174,6 +178,7 @@
           hreflang="es"
           lang="es"
           aria-label="Español"
+          data-lang-link
         ></a>
       </div>
     </nav>
@@ -1064,8 +1069,12 @@
         </div>
 
         <div class="contact__legal">
-          <a href="./en/legal-notice.html" class="contact__footerLink">Legal notice</a>
-          <a href="./en/privacy-policy.html" class="contact__footerLink">Privacy policy</a>
+          <a href="./en/legal-notice.html" class="contact__footerLink"
+            >Legal notice</a
+          >
+          <a href="./en/privacy-policy.html" class="contact__footerLink"
+            >Privacy policy</a
+          >
           <p class="contact__copyright">© Francisco Naranjo 2026</p>
         </div>
 
@@ -1107,8 +1116,12 @@
           <p class="footerMobile__copyright">© Francisco Naranjo 2026</p>
 
           <div class="footerMobile__legal">
-            <a href="./en/legal-notice.html" class="footerMobile__link">Legal notice</a>
-            <a href="./en/privacy-policy.html" class="footerMobile__link">Privacy policy</a>
+            <a href="./en/legal-notice.html" class="footerMobile__link"
+              >Legal notice</a
+            >
+            <a href="./en/privacy-policy.html" class="footerMobile__link"
+              >Privacy policy</a
+            >
           </div>
         </div>
       </footer>

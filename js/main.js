@@ -187,12 +187,42 @@ function setupContactFormAnchors() {
   });
 }
 
+function setupSectionAnchorScrolling() {
+  const main = document.querySelector("main");
+  const sectionLinks = document.querySelectorAll('a[href^="#"]');
+
+  if (!main || !sectionLinks.length) return;
+
+  sectionLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "start",
+      });
+
+      history.pushState(null, "", href);
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initDesktopWheelScroll();
   initWorkCardToggles();
   setupMobileContactCarousel();
   setupContactFormAnchors();
+  setupSectionAnchorScrolling();
 
   setupFormValidation(
     ".contact__form",
