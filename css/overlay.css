@@ -1,0 +1,90 @@
+.formOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.72);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 9999;
+  font-family: "Quantico", system-ui, sans-serif;
+}
+
+.formOverlay--active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.formOverlay__box {
+  position: relative;
+  width: min(100%, 520px);
+  padding: 40px 32px 32px;
+  background: #000;
+  border: 2px solid #b6ff00;
+  border-radius: 24px;
+  box-shadow: 0 0 32px rgba(182, 255, 0, 0.18);
+  text-align: center;
+  font-family: inherit;
+}
+
+.formOverlay__title {
+  margin: 0 0 16px;
+  color: #b6ff00;
+  font-family: inherit;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.formOverlay__text {
+  margin: 0;
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.formOverlay__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #b6ff00;
+  border-radius: 50%;
+  background: transparent;
+  color: #b6ff00;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.formOverlay__close:hover,
+.formOverlay__close:focus-visible {
+  background: rgba(182, 255, 0, 0.12);
+  transform: scale(1.05);
+  outline: none;
+}
+
+.body--noScroll {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .formOverlay__box {
+    padding: 32px 20px 24px;
+    border-radius: 20px;
+  }
+
+  .formOverlay__text {
+    font-size: 14px;
+  }
+}

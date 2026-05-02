@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="../css/contact-mobile.css" />
     <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="../css/footer-mobile.css" />
+    <link rel="stylesheet" href="../css/overlay.css" />
 
     <script src="../js/validation.js"></script>
     <script src="../js/main.js" defer></script>
@@ -948,7 +949,10 @@
             </div>
           </div>
           <div class="contactMobile__details">
-            <a href="mailto:kontakt@francisco-naranjo.de" class="contactMobile__detail">
+            <a
+              href="mailto:kontakt@francisco-naranjo.de"
+              class="contactMobile__detail"
+            >
               <span class="contactMobile__detailIcon" aria-hidden="true"
                 >✉</span
               >
@@ -1076,12 +1080,17 @@
             </p>
 
             <div class="contact__details">
-              <a href="mailto:kontakt@francisco-naranjo.de" class="contact__detail">
+              <a
+                href="mailto:kontakt@francisco-naranjo.de"
+                class="contact__detail"
+              >
                 <span class="contact__detailIcon" aria-hidden="true">
                   <!-- svg -->
                 </span>
                 <span class="contact__detailLabel">Correo:</span>
-                <span class="contact__detailValue">kontakt@francisco-naranjo.de</span>
+                <span class="contact__detailValue"
+                  >kontakt@francisco-naranjo.de</span
+                >
               </a>
 
               <a href="tel:+4917640213984" class="contact__detail">
@@ -1165,5 +1174,33 @@
         </div>
       </footer>
     </main>
+
+    <!-- Overlays -->
+    <div class="formOverlay" id="formOverlay" aria-hidden="true">
+      <div
+        class="formOverlay__box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="formOverlayTitle"
+      >
+        <button
+          class="formOverlay__close"
+          id="formOverlayClose"
+          type="button"
+          aria-label="Cerrar confirmación"
+        >
+          ✕
+        </button>
+
+        <h2 class="formOverlay__title" id="formOverlayTitle">
+          ¡Mensaje enviado!
+        </h2>
+
+        <p class="formOverlay__text">
+          Gracias por tu mensaje. Me pondré en contacto contigo lo antes
+          posible.
+        </p>
+      </div>
+    </div>
   </body>
 </html>
