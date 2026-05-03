@@ -40,7 +40,6 @@ function getMessages() {
   return messages[shortLanguage] || messages.en;
 }
 
-
 function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
   const form = document.querySelector(formSelector);
   const checkbox = document.querySelector(checkboxSelector);
@@ -50,11 +49,11 @@ function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
 
   const fields = getFormFields(form);
   const classes = getErrorClasses(formSelector);
-  saveDefaultPlaceholders(fields);
 
-  bindFieldEvents(fields, form, classes, button, checkbox);
+  bindFieldEvents(fields, classes, checkbox, button);
   bindCheckboxEvents(checkbox, fields, button);
   bindSubmitEvent(form, fields, checkbox, button, classes);
+
   updateButtonState(fields, checkbox, button);
 }
 
@@ -71,14 +70,6 @@ function getErrorClasses(formSelector) {
       ? "contact__textarea--error"
       : "contactMobile__textarea--error",
   };
-}
-
-function saveDefaultPlaceholders(fields) {
-  fields.forEach((field) => {
-    if (!field.dataset.defaultPlaceholder) {
-      field.dataset.defaultPlaceholder = field.placeholder || "";
-    }
-  });
 }
 
 function getValidator(name) {
@@ -124,27 +115,25 @@ function validateMessage(value) {
   return "";
 }
 
-function getPolicyMessage() {
-  const messages = getMessages();
-  return messages.policyRequired;
-}
-
 function getErrorClass(field, classes) {
   return field.tagName === "TEXTAREA" ? classes.textarea : classes.input;
 }
 
-function showFieldError(field, message, classes) {
+function setFieldError(field, message, classes, showMessage = false) {
   field.classList.add(getErrorClass(field, classes));
-  field.value = "";
-  field.placeholder = message;
+  field.setCustomValidity(message);
+
+  if (showMessage) {
+    field.reportValidity();
+  }
 }
 
 function clearFieldError(field, classes) {
   field.classList.remove(classes.input, classes.textarea);
-  field.placeholder = field.dataset.defaultPlaceholder || "";
+  field.setCustomValidity("");
 }
 
-function validateField(field, classes, mode = "live") {
+function validateField(field, classes, showMessage = false) {
   const validator = getValidator(field.name);
   const message = validator ? validator(field.value) : "";
 
@@ -153,11 +142,27 @@ function validateField(field, classes, mode = "live") {
     return true;
   }
 
-  if (mode === "blur" || mode === "submit") {
-    showFieldError(field, message, classes);
+  setFieldError(field, message, classes, showMessage);
+  return false;
+}
+
+function validateAllFields(fields, classes, showMessage = false) {
+  let allValid = true;
+
+  fields.forEach((field) => {
+    const fieldIsValid = validateField(field, classes, false);
+
+    if (!fieldIsValid) {
+      allValid = false;
+    }
+  });
+
+  if (showMessage) {
+    const firstInvalidField = fields.find((field) => !field.checkValidity());
+    firstInvalidField?.reportValidity();
   }
 
-  return false;
+  return allValid;
 }
 
 function isPolicyAccepted(checkbox) {
@@ -173,26 +178,18 @@ function updateButtonState(fields, checkbox, button) {
   button.disabled = !(fieldsAreValid && isPolicyAccepted(checkbox));
 }
 
-function handleFieldFocus(field, classes) {
-  clearFieldError(field, classes);
-}
-
 function handleFieldInput(field, fields, checkbox, button, classes) {
-  clearFieldError(field, classes);
+  validateField(field, classes, false);
   updateButtonState(fields, checkbox, button);
 }
 
 function handleFieldBlur(field, fields, checkbox, button, classes) {
-  validateField(field, classes, "blur");
+  validateField(field, classes, true);
   updateButtonState(fields, checkbox, button);
 }
 
-function bindFieldEvents(fields, form, classes, button, checkbox) {
+function bindFieldEvents(fields, classes, checkbox, button) {
   fields.forEach((field) => {
-    field.addEventListener("focus", () => {
-      handleFieldFocus(field, classes);
-    });
-
     field.addEventListener("input", () => {
       handleFieldInput(field, fields, checkbox, button, classes);
     });
@@ -211,12 +208,15 @@ function bindCheckboxEvents(checkbox, fields, button) {
 
 function bindSubmitEvent(form, fields, checkbox, button, classes) {
   form.addEventListener("submit", (event) => {
-    const fieldsAreValid = fields.every((field) => {
-      return validateField(field, classes, "submit");
-    });
+    const fieldsAreValid = validateAllFields(fields, classes, true);
+    const policyAccepted = isPolicyAccepted(checkbox);
 
-    if (!fieldsAreValid || !isPolicyAccepted(checkbox)) {
+    if (!fieldsAreValid || !policyAccepted) {
       event.preventDefault();
+
+      if (!policyAccepted) {
+        checkbox.focus();
+      }
     }
 
     updateButtonState(fields, checkbox, button);
