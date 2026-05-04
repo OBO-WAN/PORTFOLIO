@@ -119,7 +119,7 @@
 
     formOverlayTimeoutId = window.setTimeout(() => {
       closeFormOverlay();
-    }, 1500);
+    }, 4000);
   }
 
   function closeFormOverlay() {
