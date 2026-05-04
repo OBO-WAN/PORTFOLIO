@@ -88,3 +88,60 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 768px) {
+  .formOverlay {
+    padding: 24px 20px;
+  }
+
+  .formOverlay__box {
+    width: min(100%, 560px);
+    padding: 40px 22px 28px;
+    border-radius: 22px;
+  }
+
+  .formOverlay__title {
+    font-size: clamp(30px, 8vw, 44px);
+    padding-right: 34px;
+  }
+
+  .formOverlay__text {
+    font-size: 16px;
+  }
+
+  .formOverlay__close {
+    top: 14px;
+    right: 14px;
+    width: 48px;
+    height: 48px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 430px) {
+  .formOverlay {
+    padding: 20px;
+  }
+
+  .formOverlay__box {
+    padding: 42px 18px 26px;
+  }
+
+  .formOverlay__title {
+    font-size: clamp(26px, 7.6vw, 34px);
+    padding-right: 42px;
+  }
+
+  .formOverlay__text {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .formOverlay__close {
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    font-size: 28px;
+  }
+}
