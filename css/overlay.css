@@ -33,12 +33,13 @@
 }
 
 .formOverlay__title {
-  margin: 0 0 16px;
+  margin: 0 auto 16px;
   color: #b6ff00;
   font-family: inherit;
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
   line-height: 1.1;
+  text-align: center;
 }
 
 .formOverlay__text {
@@ -54,6 +55,9 @@
   position: absolute;
   top: 14px;
   right: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
   border: 2px solid #b6ff00;
@@ -63,6 +67,7 @@
   font-family: inherit;
   font-size: 20px;
   font-weight: 700;
+  line-height: 1;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
 }
@@ -79,30 +84,21 @@
 }
 
 @media (max-width: 768px) {
-  .formOverlay__box {
-    padding: 32px 20px 24px;
-    border-radius: 20px;
-  }
-
-  .formOverlay__text {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
   .formOverlay {
     padding: 24px 20px;
   }
 
   .formOverlay__box {
     width: min(100%, 560px);
-    padding: 40px 22px 28px;
+    padding: 46px 22px 28px;
     border-radius: 22px;
   }
 
   .formOverlay__title {
+    max-width: calc(100% - 86px);
     font-size: clamp(30px, 8vw, 44px);
-    padding-right: 34px;
+    padding: 0;
+    text-align: center;
   }
 
   .formOverlay__text {
@@ -124,12 +120,14 @@
   }
 
   .formOverlay__box {
-    padding: 42px 18px 26px;
+    padding: 44px 18px 26px;
   }
 
   .formOverlay__title {
+    max-width: calc(100% - 76px);
     font-size: clamp(26px, 7.6vw, 34px);
-    padding-right: 42px;
+    padding: 0;
+    text-align: center;
   }
 
   .formOverlay__text {
