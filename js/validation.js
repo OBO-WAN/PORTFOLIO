@@ -75,7 +75,7 @@ function prepareFields(fields) {
 }
 
 function getPrivacyLabel(checkbox) {
-  return checkbox.closest("label");
+  return checkbox.closest(".contact__privacy, .contactMobile__privacy");
 }
 
 function preparePrivacy(checkbox, privacyLabel) {

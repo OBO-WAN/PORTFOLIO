@@ -391,10 +391,16 @@
     font-weight: 700;
   }
 
-  .contactMobile__privacyText a {
-    color: inherit;
+  .contactMobile__privacyText a,
+  .contactMobile__privacyText a:visited {
+    color: #f2f2f2;
     text-decoration: underline;
     text-underline-offset: 2px;
+  }
+
+  .contactMobile__privacyText a:hover,
+  .contactMobile__privacyText a:focus-visible {
+    color: #ffffff;
   }
 
   .contactMobile__privacy::after {
