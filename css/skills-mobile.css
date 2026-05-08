@@ -28,6 +28,10 @@
     height: auto;
   }
 
+  .skills__headlineSvg--habilidades-es {
+    width: 260px;
+  }
+
   .skills__intro {
     position: static;
     transform: none;

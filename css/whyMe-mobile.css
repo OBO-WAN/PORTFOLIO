@@ -10,14 +10,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        gap: 28px;
+        gap: 64px;
     }
 
     .whyMe__headline {
         position: static;
         transform: none;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         width: 100%;
     }
 
@@ -30,10 +30,6 @@
     .whyMe__headlineSvg--sobre-mi-es {
         width: 200px;
     }
-
-      .myWork__headlineSvg--mi-trabajo-es {
-    width: 200px;
-  }
 
     .whyMe__content {
         position: static;
@@ -51,6 +47,7 @@
 
     .text-area__paragraph {
         transform: none;
+        text-align: justify;
         top: auto;
         max-width: 34ch;
         margin: 0;

@@ -32,6 +32,10 @@
     height: auto;
   }
 
+  .myWork__headlineSvg--mi-trabajo-es {
+    width: 200px;
+  }
+
   .myWork__content {
     position: static;
     left: auto;

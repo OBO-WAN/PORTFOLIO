@@ -17,17 +17,12 @@
 
 .whyMe__headlineSvg {
     display: block;
-    height: 200px;
+    height: 240px;
     width: auto;
 }
 
-/* Spanish */
-
 .whyMe__headlineSvg--sobre-mi-es {
-  width: 188px;
-}
-.myWork__headlineSvg--mi-trabajo-es {
-  width: 280px;
+  width: 80px;
 }
 
 .whyMe__content {

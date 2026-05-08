@@ -22,6 +22,10 @@
   width: auto;
 }
 
+.skills__headlineSvg--habilidades-es {
+  width: 100px;
+}
+
 .skills__intro {
   position: absolute;
   left: 180px;
