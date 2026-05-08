@@ -209,6 +209,8 @@
     align-items: flex-start;
     gap: 14px;
     margin-top: 18px;
+    scroll-margin-top: 72px;
+
   }
 
   .contactMobile__contentHeadline {
@@ -344,6 +346,15 @@
     cursor: pointer;
   }
 
+  .contactMobile__anchor {
+    display: block;
+    width: 100%;
+    height: 0;
+    scroll-margin-top: 72px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   .contactMobile__checkbox {
     appearance: none;
     -webkit-appearance: none;
@@ -426,6 +437,12 @@
   }
 }
 
+@media (max-width: 520px) {
+  .contactMobile__anchor {
+    scroll-margin-top: 68px;
+  }
+}
+
 @media (max-width: 390px) {
   #contact {
     padding: 32px 14px 28px;
@@ -499,6 +516,7 @@
   .contactMobile__content {
     gap: 12px;
     margin-top: 16px;
+    scroll-margin-top: 72px;
   }
 
   .contactMobile__contentHeadlineSvg {
@@ -605,7 +623,6 @@
   background-image: url("../assets/icons/github_button.svg");
 }
 
-
 .contactMobile__socialLink:active {
   transform: scale(0.96);
 }
@@ -629,35 +646,43 @@
 
 .contactMobile__input--error,
 .contactMobile__textarea--error {
-  border-color: #ff6b6b;
-  color: #ff6b6b;
+  border-color: #ff3b1f;
+  color: #ff3b1f;
 }
 
 .contactMobile__input--error::placeholder,
 .contactMobile__textarea--error::placeholder {
-  color: #ff6b6b;
+  color: #ff3b1f;
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  #contact-mobile-start {
-    scroll-margin-top: 104px;
-  }
+.contactMobile__input--error:focus,
+.contactMobile__textarea--error:focus {
+  box-shadow: 0 0 0 1px #ff3b1f inset;
 }
 
-@media (max-width: 520px) {
-  #contact-mobile-start {
-    scroll-margin-top: 92px;
-  }
+.contactMobile__input:-webkit-autofill,
+.contactMobile__textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
+  -webkit-text-fill-color: #f2f2f2 !important;
+  caret-color: #f2f2f2;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.contactMobile__input--error:-webkit-autofill,
+.contactMobile__textarea--error:-webkit-autofill {
+  -webkit-text-fill-color: #ff3b1f !important;
 }
 
 @media (max-width: 768px) {
+  #contact-mobile-start,
   #contact-form-mobile {
     scroll-margin-top: 104px;
   }
 }
 
 @media (max-width: 520px) {
+  #contact-mobile-start,
   #contact-form-mobile {
     scroll-margin-top: 92px;
   }

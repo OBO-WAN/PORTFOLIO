@@ -4,34 +4,34 @@ function getMessages() {
 
   const messages = {
     en: {
-      nameRequired: "Please enter your name",
+      nameRequired: "Your name is required",
       nameShort: "Name must have 2+ characters",
       nameInvalid: "Please use letters only",
-      emailRequired: "Please enter your e-mail",
+      emailRequired: "Your e-mail is required",
       emailInvalid: "Please enter a valid e-mail",
-      messageRequired: "Please enter your message",
+      messageRequired: "Your message is required",
       messageShort: "Message must have 10+ characters",
       policyRequired: "Please agree to the privacy policy",
     },
 
     es: {
-      nameRequired: "Por favor, escribe tu nombre",
+      nameRequired: "Tu nombre es obligatorio",
       nameShort: "El nombre debe tener al menos 2 caracteres",
       nameInvalid: "Por favor, usa solo letras",
-      emailRequired: "Por favor, escribe tu correo electrónico",
-      emailInvalid: "Por favor, escribe un correo electrónico válido",
-      messageRequired: "Por favor, escribe tu mensaje",
+      emailRequired: "Tu correo electrónico es obligatorio",
+      emailInvalid: "Introduce un correo electrónico válido",
+      messageRequired: "Tu mensaje es obligatorio",
       messageShort: "El mensaje debe tener al menos 10 caracteres",
-      policyRequired: "Por favor, acepta la política de privacidad",
+      policyRequired: "Acepta la política de privacidad",
     },
 
     de: {
-      nameRequired: "Bitte gib deinen Namen ein",
+      nameRequired: "Dein Name ist erforderlich",
       nameShort: "Der Name muss mindestens 2 Zeichen haben",
       nameInvalid: "Bitte verwende nur Buchstaben",
-      emailRequired: "Bitte gib deine E-Mail-Adresse ein",
+      emailRequired: "Deine E-Mail ist erforderlich",
       emailInvalid: "Bitte gib eine gültige E-Mail-Adresse ein",
-      messageRequired: "Bitte gib deine Nachricht ein",
+      messageRequired: "Deine Nachricht ist erforderlich",
       messageShort: "Die Nachricht muss mindestens 10 Zeichen haben",
       policyRequired: "Bitte akzeptiere die Datenschutzerklärung",
     },
@@ -47,9 +47,12 @@ function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
 
   if (!form || !checkbox || !button) return;
 
+  form.setAttribute("novalidate", "");
+
   const fields = getFormFields(form);
   const classes = getErrorClasses(formSelector);
 
+  prepareFields(fields);
   bindFieldEvents(fields, classes, checkbox, button);
   bindCheckboxEvents(checkbox, fields, button);
   bindSubmitEvent(form, fields, checkbox, button, classes);
@@ -59,6 +62,13 @@ function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
 
 function getFormFields(form) {
   return [...form.querySelectorAll("input[name], textarea[name]")];
+}
+
+function prepareFields(fields) {
+  fields.forEach((field) => {
+    field.dataset.defaultPlaceholder = field.getAttribute("placeholder") || "";
+    field.setAttribute("aria-invalid", "false");
+  });
 }
 
 function getErrorClasses(formSelector) {
@@ -119,48 +129,78 @@ function getErrorClass(field, classes) {
   return field.tagName === "TEXTAREA" ? classes.textarea : classes.input;
 }
 
-function setFieldError(field, message, classes, showMessage = false) {
-  field.classList.add(getErrorClass(field, classes));
-  field.setCustomValidity(message);
+function restorePlaceholder(field) {
+  field.setAttribute("placeholder", field.dataset.defaultPlaceholder || "");
+}
 
-  if (showMessage) {
-    field.reportValidity();
+function getFieldValidationValue(field) {
+  if (
+    field.dataset.isShowingError === "true" &&
+    typeof field.dataset.userValue === "string"
+  ) {
+    return field.dataset.userValue;
   }
+
+  return field.value;
+}
+
+function setFieldError(field, message, classes) {
+  const currentValue = getFieldValidationValue(field);
+
+  field.classList.add(getErrorClass(field, classes));
+  field.dataset.errorMessage = message;
+  field.setAttribute("aria-invalid", "true");
+
+  if (currentValue.trim()) {
+    if (field.dataset.isShowingError !== "true") {
+      field.dataset.userValue = field.value;
+    }
+
+    field.dataset.isShowingError = "true";
+    field.value = message;
+    restorePlaceholder(field);
+    return;
+  }
+
+  field.value = "";
+  delete field.dataset.userValue;
+  delete field.dataset.isShowingError;
+  field.setAttribute("placeholder", message);
 }
 
 function clearFieldError(field, classes) {
   field.classList.remove(classes.input, classes.textarea);
-  field.setCustomValidity("");
+  delete field.dataset.errorMessage;
+  delete field.dataset.userValue;
+  delete field.dataset.isShowingError;
+  field.setAttribute("aria-invalid", "false");
+  restorePlaceholder(field);
 }
 
-function validateField(field, classes, showMessage = false) {
+function validateField(field, classes) {
   const validator = getValidator(field.name);
-  const message = validator ? validator(field.value) : "";
+  const value = getFieldValidationValue(field);
+  const message = validator ? validator(value) : "";
 
   if (!message) {
     clearFieldError(field, classes);
     return true;
   }
 
-  setFieldError(field, message, classes, showMessage);
+  setFieldError(field, message, classes);
   return false;
 }
 
-function validateAllFields(fields, classes, showMessage = false) {
+function validateAllFields(fields, classes) {
   let allValid = true;
 
   fields.forEach((field) => {
-    const fieldIsValid = validateField(field, classes, false);
+    const fieldIsValid = validateField(field, classes);
 
     if (!fieldIsValid) {
       allValid = false;
     }
   });
-
-  if (showMessage) {
-    const firstInvalidField = fields.find((field) => !field.checkValidity());
-    firstInvalidField?.reportValidity();
-  }
 
   return allValid;
 }
@@ -169,29 +209,47 @@ function isPolicyAccepted(checkbox) {
   return checkbox.checked;
 }
 
-function updateButtonState(fields, checkbox, button) {
-  const fieldsAreValid = fields.every((field) => {
+function areFieldsValid(fields) {
+  return fields.every((field) => {
     const validator = getValidator(field.name);
-    return validator ? !validator(field.value) : true;
-  });
+    const value = getFieldValidationValue(field);
 
-  button.disabled = !(fieldsAreValid && isPolicyAccepted(checkbox));
+    return validator ? !validator(value) : true;
+  });
 }
 
-function handleFieldInput(field, fields, checkbox, button, classes) {
-  validateField(field, classes, false);
+function updateButtonState(fields, checkbox, button) {
+  button.disabled = !(areFieldsValid(fields) && isPolicyAccepted(checkbox));
+}
+
+function handleFieldFocus(field, classes) {
+  if (
+    field.dataset.isShowingError === "true" &&
+    typeof field.dataset.userValue === "string"
+  ) {
+    field.value = field.dataset.userValue;
+  }
+
+  clearFieldError(field, classes);
+}
+
+function handleFieldInput(fields, checkbox, button) {
   updateButtonState(fields, checkbox, button);
 }
 
 function handleFieldBlur(field, fields, checkbox, button, classes) {
-  validateField(field, classes, true);
+  validateField(field, classes);
   updateButtonState(fields, checkbox, button);
 }
 
 function bindFieldEvents(fields, classes, checkbox, button) {
   fields.forEach((field) => {
+    field.addEventListener("focus", () => {
+      handleFieldFocus(field, classes);
+    });
+
     field.addEventListener("input", () => {
-      handleFieldInput(field, fields, checkbox, button, classes);
+      handleFieldInput(fields, checkbox, button);
     });
 
     field.addEventListener("blur", () => {
@@ -208,13 +266,25 @@ function bindCheckboxEvents(checkbox, fields, button) {
 
 function bindSubmitEvent(form, fields, checkbox, button, classes) {
   form.addEventListener("submit", (event) => {
-    const fieldsAreValid = validateAllFields(fields, classes, true);
+    const fieldsAreValid = validateAllFields(fields, classes);
     const policyAccepted = isPolicyAccepted(checkbox);
 
     if (!fieldsAreValid || !policyAccepted) {
       event.preventDefault();
 
-      if (!policyAccepted) {
+      const firstInvalidField = fields.find((field) => {
+        const validator = getValidator(field.name);
+        const value = getFieldValidationValue(field);
+
+        return validator ? validator(value) : false;
+      });
+
+      if (firstInvalidField) {
+        firstInvalidField.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      } else if (!policyAccepted) {
         checkbox.focus();
       }
     }

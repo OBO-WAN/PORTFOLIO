@@ -193,9 +193,17 @@
     );
   }
 
+  function updateButtonStateAfterSubmit(form, checkbox, button, source) {
+    const submission = getSubmission(form, source);
+    button.disabled = !(isValidSubmission(submission) && checkbox.checked);
+  }
+
   async function sendSubmission(submission) {
     if (isLocalDevelopment) {
-      console.info("Local development mode: PHP mail request skipped.", submission);
+      console.info(
+        "Local development mode: PHP mail request skipped.",
+        submission
+      );
 
       await new Promise((resolve) => window.setTimeout(resolve, 400));
 
@@ -237,26 +245,25 @@
     const messages = getMessages();
     const defaultButtonText = getDefaultButtonText(button);
 
-    button.disabled = !checkbox.checked;
-
-    checkbox.addEventListener("change", () => {
-      button.disabled = !checkbox.checked;
-    });
-
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const submission = getSubmission(form, source);
 
       if (!isValidSubmission(submission) || !checkbox.checked) {
+        updateButtonStateAfterSubmit(form, checkbox, button, source);
         return;
       }
+
+      let wasSuccessful = false;
 
       try {
         button.disabled = true;
         setButtonText(button, messages.sending);
 
         await sendSubmission(submission);
+
+        wasSuccessful = true;
 
         form.reset();
         checkbox.checked = false;
@@ -269,7 +276,12 @@
       } finally {
         window.setTimeout(() => {
           setButtonText(button, defaultButtonText);
-          button.disabled = !checkbox.checked;
+
+          if (wasSuccessful) {
+            button.disabled = true;
+          } else {
+            updateButtonStateAfterSubmit(form, checkbox, button, source);
+          }
         }, 2000);
       }
     });
