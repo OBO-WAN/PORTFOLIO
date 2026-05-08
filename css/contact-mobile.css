@@ -209,8 +209,6 @@
     align-items: flex-start;
     gap: 14px;
     margin-top: 18px;
-    scroll-margin-top: 72px;
-
   }
 
   .contactMobile__contentHeadline {
@@ -340,46 +338,92 @@
   }
 
   .contactMobile__privacy {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 4px;
+    align-items: start;
     cursor: pointer;
   }
 
-  .contactMobile__anchor {
-    display: block;
-    width: 100%;
-    height: 0;
-    scroll-margin-top: 72px;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
   .contactMobile__checkbox {
+    grid-column: 1;
+    grid-row: 1;
     appearance: none;
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
     margin: 1px 0 0;
-    flex-shrink: 0;
     border: 1.5px solid #f2f2f2;
     background: transparent;
     position: relative;
   }
 
-  .contactMobile__checkbox:checked::after {
-    content: "";
-    position: absolute;
-    inset: 3px;
+  .contactMobile__checkbox:checked {
+    border-color: #b5e93b;
     background: #b5e93b;
   }
 
+  .contactMobile__checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid #131312;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .contactMobile__checkbox:focus-visible {
+    outline: 2px solid #b5e93b;
+    outline-offset: 4px;
+  }
+
   .contactMobile__privacyText {
+    grid-column: 2;
+    grid-row: 1;
     color: #b5e93b;
     font-family: "Quantico", system-ui, sans-serif;
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.3;
     font-weight: 700;
+  }
+
+  .contactMobile__privacyText a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .contactMobile__privacy::after {
+    content: "";
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 22px;
+    color: #ff3b1f;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  .contactMobile__privacy--error::after {
+    content: attr(data-error-message);
+  }
+
+  .contactMobile__privacy--error .contactMobile__checkbox {
+    border-color: #ff3b1f;
+  }
+
+  .contactMobile__privacy--error .contactMobile__checkbox:focus-visible {
+    outline-color: #ff3b1f;
+  }
+
+  .contactMobile__privacy--error .contactMobile__checkbox:checked {
+    border-color: #b5e93b;
+    background: #b5e93b;
   }
 
   .contactMobile__submit {
@@ -434,12 +478,6 @@
     background-position: center;
     background-size: contain;
     text-decoration: none;
-  }
-}
-
-@media (max-width: 520px) {
-  .contactMobile__anchor {
-    scroll-margin-top: 68px;
   }
 }
 
@@ -516,7 +554,6 @@
   .contactMobile__content {
     gap: 12px;
     margin-top: 16px;
-    scroll-margin-top: 72px;
   }
 
   .contactMobile__contentHeadlineSvg {
@@ -574,16 +611,6 @@
 
   .contactMobile__actions {
     gap: 16px;
-  }
-
-  .contactMobile__checkbox {
-    width: 16px;
-    height: 16px;
-  }
-
-  .contactMobile__privacyText {
-    font-size: 11px;
-    line-height: 1.38;
   }
 
   .contactMobile__submit {
@@ -661,19 +688,6 @@
   box-shadow: 0 0 0 1px #ff3b1f inset;
 }
 
-.contactMobile__input:-webkit-autofill,
-.contactMobile__textarea:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
-  -webkit-text-fill-color: #f2f2f2 !important;
-  caret-color: #f2f2f2;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-.contactMobile__input--error:-webkit-autofill,
-.contactMobile__textarea--error:-webkit-autofill {
-  -webkit-text-fill-color: #ff3b1f !important;
-}
-
 @media (max-width: 768px) {
   #contact-mobile-start,
   #contact-form-mobile {
@@ -686,4 +700,42 @@
   #contact-form-mobile {
     scroll-margin-top: 92px;
   }
+}
+
+/* Prevent browser/autofill from changing the mobile form design */
+.contactMobile__input:-webkit-autofill,
+.contactMobile__input:-webkit-autofill:hover,
+.contactMobile__input:-webkit-autofill:focus,
+.contactMobile__input:-webkit-autofill:active,
+.contactMobile__textarea:-webkit-autofill,
+.contactMobile__textarea:-webkit-autofill:hover,
+.contactMobile__textarea:-webkit-autofill:focus,
+.contactMobile__textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
+  -webkit-text-fill-color: #f2f2f2 !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  caret-color: #f2f2f2;
+  color-scheme: dark;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.contactMobile__input--error:-webkit-autofill,
+.contactMobile__input--error:-webkit-autofill:hover,
+.contactMobile__input--error:-webkit-autofill:focus,
+.contactMobile__input--error:-webkit-autofill:active,
+.contactMobile__textarea--error:-webkit-autofill,
+.contactMobile__textarea--error:-webkit-autofill:hover,
+.contactMobile__textarea--error:-webkit-autofill:focus,
+.contactMobile__textarea--error:-webkit-autofill:active {
+  -webkit-text-fill-color: #ff3b1f !important;
+  caret-color: #ff3b1f;
+}
+
+.contactMobile__input--valid,
+.contactMobile__textarea--valid {
+  border-color: #b5e93b;
+  box-shadow:
+    0 0 0 1px #b5e93b inset,
+    0 0 10px rgba(181, 233, 59, 0.28);
 }

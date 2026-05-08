@@ -11,7 +11,7 @@ function getMessages() {
       emailInvalid: "Please enter a valid e-mail",
       messageRequired: "Your message is required",
       messageShort: "Message must have 10+ characters",
-      policyRequired: "Please agree to the privacy policy",
+      policyRequired: "Please accept the privacy policy.",
     },
 
     es: {
@@ -22,7 +22,7 @@ function getMessages() {
       emailInvalid: "Introduce un correo electrónico válido",
       messageRequired: "Tu mensaje es obligatorio",
       messageShort: "El mensaje debe tener al menos 10 caracteres",
-      policyRequired: "Acepta la política de privacidad",
+      policyRequired: "Acepta la política de privacidad.",
     },
 
     de: {
@@ -33,7 +33,7 @@ function getMessages() {
       emailInvalid: "Bitte gib eine gültige E-Mail-Adresse ein",
       messageRequired: "Deine Nachricht ist erforderlich",
       messageShort: "Die Nachricht muss mindestens 10 Zeichen haben",
-      policyRequired: "Bitte akzeptiere die Datenschutzerklärung",
+      policyRequired: "Bitte akzeptiere die Datenschutzerklärung.",
     },
   };
 
@@ -50,12 +50,15 @@ function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
   form.setAttribute("novalidate", "");
 
   const fields = getFormFields(form);
-  const classes = getErrorClasses(formSelector);
+  const classes = getFormClasses(formSelector);
+  const privacyLabel = getPrivacyLabel(checkbox);
 
   prepareFields(fields);
+  preparePrivacy(checkbox, privacyLabel);
   bindFieldEvents(fields, classes, checkbox, button);
-  bindCheckboxEvents(checkbox, fields, button);
-  bindSubmitEvent(form, fields, checkbox, button, classes);
+  bindCheckboxEvents(checkbox, privacyLabel, fields, button, classes);
+  bindSubmitEvent(form, fields, checkbox, privacyLabel, button, classes);
+  bindResetEvent(form, fields, checkbox, privacyLabel, button, classes);
 
   updateButtonState(fields, checkbox, button);
 }
@@ -71,14 +74,37 @@ function prepareFields(fields) {
   });
 }
 
-function getErrorClasses(formSelector) {
+function getPrivacyLabel(checkbox) {
+  return checkbox.closest("label");
+}
+
+function preparePrivacy(checkbox, privacyLabel) {
+  checkbox.setAttribute("aria-invalid", "false");
+
+  if (privacyLabel) {
+    privacyLabel.removeAttribute("data-error-message");
+  }
+}
+
+function getFormClasses(formSelector) {
   const isDesktop = formSelector === ".contact__form";
 
   return {
-    input: isDesktop ? "contact__input--error" : "contactMobile__input--error",
-    textarea: isDesktop
+    inputError: isDesktop
+      ? "contact__input--error"
+      : "contactMobile__input--error",
+    textareaError: isDesktop
       ? "contact__textarea--error"
       : "contactMobile__textarea--error",
+    inputValid: isDesktop
+      ? "contact__input--valid"
+      : "contactMobile__input--valid",
+    textareaValid: isDesktop
+      ? "contact__textarea--valid"
+      : "contactMobile__textarea--valid",
+    privacyError: isDesktop
+      ? "contact__privacy--error"
+      : "contactMobile__privacy--error",
   };
 }
 
@@ -126,7 +152,15 @@ function validateMessage(value) {
 }
 
 function getErrorClass(field, classes) {
-  return field.tagName === "TEXTAREA" ? classes.textarea : classes.input;
+  return field.tagName === "TEXTAREA"
+    ? classes.textareaError
+    : classes.inputError;
+}
+
+function getValidClass(field, classes) {
+  return field.tagName === "TEXTAREA"
+    ? classes.textareaValid
+    : classes.inputValid;
 }
 
 function restorePlaceholder(field) {
@@ -144,9 +178,19 @@ function getFieldValidationValue(field) {
   return field.value;
 }
 
+function removeFieldStateClasses(field, classes) {
+  field.classList.remove(
+    classes.inputError,
+    classes.textareaError,
+    classes.inputValid,
+    classes.textareaValid
+  );
+}
+
 function setFieldError(field, message, classes) {
   const currentValue = getFieldValidationValue(field);
 
+  removeFieldStateClasses(field, classes);
   field.classList.add(getErrorClass(field, classes));
   field.dataset.errorMessage = message;
   field.setAttribute("aria-invalid", "true");
@@ -168,11 +212,18 @@ function setFieldError(field, message, classes) {
   field.setAttribute("placeholder", message);
 }
 
-function clearFieldError(field, classes) {
-  field.classList.remove(classes.input, classes.textarea);
+function clearFieldState(field, classes) {
+  removeFieldStateClasses(field, classes);
   delete field.dataset.errorMessage;
   delete field.dataset.userValue;
   delete field.dataset.isShowingError;
+  field.setAttribute("aria-invalid", "false");
+  restorePlaceholder(field);
+}
+
+function setFieldValid(field, classes) {
+  removeFieldStateClasses(field, classes);
+  field.classList.add(getValidClass(field, classes));
   field.setAttribute("aria-invalid", "false");
   restorePlaceholder(field);
 }
@@ -183,7 +234,12 @@ function validateField(field, classes) {
   const message = validator ? validator(value) : "";
 
   if (!message) {
-    clearFieldError(field, classes);
+    if (value.trim()) {
+      setFieldValid(field, classes);
+    } else {
+      clearFieldState(field, classes);
+    }
+
     return true;
   }
 
@@ -209,6 +265,36 @@ function isPolicyAccepted(checkbox) {
   return checkbox.checked;
 }
 
+function setPrivacyError(checkbox, privacyLabel, classes) {
+  const messages = getMessages();
+
+  checkbox.setAttribute("aria-invalid", "true");
+
+  if (privacyLabel) {
+    privacyLabel.classList.add(classes.privacyError);
+    privacyLabel.dataset.errorMessage = messages.policyRequired;
+  }
+}
+
+function clearPrivacyError(checkbox, privacyLabel, classes) {
+  checkbox.setAttribute("aria-invalid", "false");
+
+  if (privacyLabel) {
+    privacyLabel.classList.remove(classes.privacyError);
+    privacyLabel.removeAttribute("data-error-message");
+  }
+}
+
+function validatePrivacy(checkbox, privacyLabel, classes) {
+  if (isPolicyAccepted(checkbox)) {
+    clearPrivacyError(checkbox, privacyLabel, classes);
+    return true;
+  }
+
+  setPrivacyError(checkbox, privacyLabel, classes);
+  return false;
+}
+
 function areFieldsValid(fields) {
   return fields.every((field) => {
     const validator = getValidator(field.name);
@@ -230,7 +316,7 @@ function handleFieldFocus(field, classes) {
     field.value = field.dataset.userValue;
   }
 
-  clearFieldError(field, classes);
+  clearFieldState(field, classes);
 }
 
 function handleFieldInput(fields, checkbox, button) {
@@ -258,16 +344,34 @@ function bindFieldEvents(fields, classes, checkbox, button) {
   });
 }
 
-function bindCheckboxEvents(checkbox, fields, button) {
+function bindCheckboxEvents(checkbox, privacyLabel, fields, button, classes) {
   checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      clearPrivacyError(checkbox, privacyLabel, classes);
+    } else {
+      validatePrivacy(checkbox, privacyLabel, classes);
+    }
+
+    updateButtonState(fields, checkbox, button);
+  });
+
+  checkbox.addEventListener("blur", () => {
+    validatePrivacy(checkbox, privacyLabel, classes);
     updateButtonState(fields, checkbox, button);
   });
 }
 
-function bindSubmitEvent(form, fields, checkbox, button, classes) {
+function bindSubmitEvent(
+  form,
+  fields,
+  checkbox,
+  privacyLabel,
+  button,
+  classes
+) {
   form.addEventListener("submit", (event) => {
     const fieldsAreValid = validateAllFields(fields, classes);
-    const policyAccepted = isPolicyAccepted(checkbox);
+    const policyAccepted = validatePrivacy(checkbox, privacyLabel, classes);
 
     if (!fieldsAreValid || !policyAccepted) {
       event.preventDefault();
@@ -290,5 +394,18 @@ function bindSubmitEvent(form, fields, checkbox, button, classes) {
     }
 
     updateButtonState(fields, checkbox, button);
+  });
+}
+
+function bindResetEvent(form, fields, checkbox, privacyLabel, button, classes) {
+  form.addEventListener("reset", () => {
+    window.setTimeout(() => {
+      fields.forEach((field) => {
+        clearFieldState(field, classes);
+      });
+
+      clearPrivacyError(checkbox, privacyLabel, classes);
+      updateButtonState(fields, checkbox, button);
+    }, 0);
   });
 }
