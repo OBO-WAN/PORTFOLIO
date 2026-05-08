@@ -27,6 +27,14 @@
         display: block;
     }
 
+    .whyMe__headlineSvg--sobre-mi-es {
+        width: 200px;
+    }
+
+      .myWork__headlineSvg--mi-trabajo-es {
+    width: 200px;
+  }
+
     .whyMe__content {
         position: static;
         transform: none;
@@ -113,7 +121,7 @@
     }
 
     .whyMe__headlineSvg {
-        width: min(60vw, 180px);
+        width: min(60vw, 168px);
         margin-top: 12px;
     }
 

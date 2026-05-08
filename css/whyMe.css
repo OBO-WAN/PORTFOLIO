@@ -21,6 +21,15 @@
     width: auto;
 }
 
+/* Spanish */
+
+.whyMe__headlineSvg--sobre-mi-es {
+  width: 188px;
+}
+.myWork__headlineSvg--mi-trabajo-es {
+  width: 280px;
+}
+
 .whyMe__content {
     position: absolute;
     left: 240px;
