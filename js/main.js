@@ -1,4 +1,3 @@
-// Menu toggle for mobile
 const mobileToggle = document.querySelector(".mobileBar__toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
 const mobileMenuLinks = document.querySelectorAll(".mobileMenu__link");
@@ -187,6 +186,33 @@ function setupContactFormAnchors() {
   });
 }
 
+function getAnchorTarget(href) {
+  if (href === "#contact") {
+    return (
+      document.querySelector(getContactFormSelector()) ||
+      document.querySelector("#contact")
+    );
+  }
+
+  return document.querySelector(href);
+}
+
+function scrollToAnchorTarget(href, behavior = "smooth") {
+  if (!href || href === "#") return false;
+
+  const target = getAnchorTarget(href);
+
+  if (!target) return false;
+
+  target.scrollIntoView({
+    behavior,
+    block: "nearest",
+    inline: "start",
+  });
+
+  return true;
+}
+
 function setupSectionAnchorScrolling() {
   const main = document.querySelector("main");
   const sectionLinks = document.querySelectorAll('a[href^="#"]');
@@ -197,22 +223,21 @@ function setupSectionAnchorScrolling() {
     link.addEventListener("click", (event) => {
       const href = link.getAttribute("href");
 
-      if (!href || href === "#") return;
-
-      const target = document.querySelector(href);
-
-      if (!target) return;
+      if (!scrollToAnchorTarget(href)) return;
 
       event.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "start",
-      });
-
       history.pushState(null, "", href);
     });
+  });
+}
+
+function setupInitialHashScrolling() {
+  const href = window.location.hash;
+
+  if (!href) return;
+
+  requestAnimationFrame(() => {
+    scrollToAnchorTarget(href, "auto");
   });
 }
 
@@ -223,6 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileContactCarousel();
   setupContactFormAnchors();
   setupSectionAnchorScrolling();
+  setupInitialHashScrolling();
 
   setupFormValidation(
     ".contact__form",

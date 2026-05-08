@@ -32,7 +32,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 32px 12px;
-    gap: 32px;
+    gap: 16px;
     z-index: 50;
 }
 
@@ -174,7 +174,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     align-items: center;
     font-family: "Quantico", system-ui, sans-serif;
 }
