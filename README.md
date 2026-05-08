@@ -1,4 +1,4 @@
-# Francisco Naranjo Portfolio
+# Portfolio
 
 Multilingual personal portfolio website for **Francisco Naranjo** (Frontend Developer), built with vanilla HTML/CSS/JavaScript and a lightweight PHP mail endpoint.
 
