@@ -4,7 +4,7 @@
     width: 100vw;
     min-height: 100dvh;
     box-sizing: border-box;
-    padding: 124px 20px 48px;
+    padding: 52px 20px 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,7 +172,7 @@
   }
 
   .skills__headlineSvg {
-    width: 155px;
+    width: 200px;
   }
 
   .skills__headlineText {

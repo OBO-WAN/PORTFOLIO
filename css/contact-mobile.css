@@ -348,8 +348,9 @@
 
   .contactMobile__anchor {
     display: block;
-    position: relative;
-    top: -72px;
+    width: 100%;
+    height: 0;
+    scroll-margin-top: 72px;
     visibility: hidden;
     pointer-events: none;
   }
@@ -433,6 +434,13 @@
     background-position: center;
     background-size: contain;
     text-decoration: none;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .contactMobile__anchor {
+    scroll-margin-top: 68px;
   }
 }
 
@@ -648,4 +656,16 @@
 .contactMobile__textarea--error::placeholder {
   color: #ff6b6b;
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  #contact-mobile-start {
+    scroll-margin-top: 104px;
+  }
+}
+
+@media (max-width: 520px) {
+  #contact-mobile-start {
+    scroll-margin-top: 92px;
+  }
 }

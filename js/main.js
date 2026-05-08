@@ -55,17 +55,25 @@ function initMobileMenu() {
 
 function initDesktopWheelScroll() {
   const main = document.querySelector("main");
-  if (!main || window.innerWidth <= 768) return;
+  if (!main) return;
 
   window.addEventListener(
     "wheel",
     (event) => {
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      if (window.innerWidth <= 768) return;
+      if (main.scrollWidth <= main.clientWidth) return;
 
-      main.scrollLeft += event.deltaY;
+      const delta =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY)
+          ? event.deltaX
+          : event.deltaY;
+
+      if (!delta) return;
+
+      main.scrollLeft += delta;
       event.preventDefault();
     },
-    { passive: false }
+    { passive: false },
   );
 }
 
@@ -204,6 +212,16 @@ function scrollToAnchorTarget(href, behavior = "smooth") {
 
   if (!target) return false;
 
+  if (window.innerWidth <= 768) {
+    target.scrollIntoView({
+      behavior,
+      block: "start",
+      inline: "nearest",
+    });
+
+    return true;
+  }
+
   target.scrollIntoView({
     behavior,
     block: "nearest",
@@ -250,15 +268,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSectionAnchorScrolling();
   setupInitialHashScrolling();
 
-  setupFormValidation(
-    ".contact__form",
-    "#contactPolicy",
-    ".contact__submit"
-  );
+  setupFormValidation(".contact__form", "#contactPolicy", ".contact__submit");
 
   setupFormValidation(
     "#contact-form-mobile",
     "#contactMobilePolicy",
-    ".contactMobile__submit"
+    ".contactMobile__submit",
   );
 });

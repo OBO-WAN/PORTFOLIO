@@ -153,15 +153,23 @@ section {
 
   main {
     display: block;
+    width: 100%;
     height: auto;
     margin-left: 0;
     max-width: 100vw;
+    overflow-x: hidden;
+    scroll-snap-type: none !important;
+    overscroll-behavior-x: none;
   }
 
-  main>section {
-    width: 100vw;
+  main > section {
+    width: 100%;
+    max-width: 100vw;
     height: auto;
-    min-height: 100dvh;
+    min-height: calc(100dvh - 72px);
+    scroll-snap-align: none !important;
+    scroll-margin-left: 0;
+    scroll-margin-top: 72px;
   }
 
   .hero {
@@ -367,6 +375,11 @@ section {
 
   .mobileMenu__link {
     font-size: 28px;
+  }
+
+  main > section {
+    min-height: calc(100dvh - 68px);
+    scroll-margin-top: 68px;
   }
 
   .hero {
