@@ -115,7 +115,7 @@
 
 @media (max-width: 520px) {
   .skills__section {
-    padding: 88px 16px 36px;
+    padding: 52px 16px 36px;
   }
 
   .skills__headline,
@@ -162,7 +162,7 @@
 
 @media (max-width: 390px) {
   .skills__section {
-    padding: 82px 14px 32px;
+    padding: 52px 14px 32px;
   }
 
   .skills__headline,

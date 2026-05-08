@@ -209,8 +209,6 @@
     align-items: flex-start;
     gap: 14px;
     margin-top: 18px;
-    scroll-margin-top: 72px;
-
   }
 
   .contactMobile__contentHeadline {
@@ -346,15 +344,6 @@
     cursor: pointer;
   }
 
-  .contactMobile__anchor {
-    display: block;
-    width: 100%;
-    height: 0;
-    scroll-margin-top: 72px;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
   .contactMobile__checkbox {
     appearance: none;
     -webkit-appearance: none;
@@ -437,13 +426,6 @@
   }
 }
 
-
-@media (max-width: 520px) {
-  .contactMobile__anchor {
-    scroll-margin-top: 68px;
-  }
-}
-
 @media (max-width: 390px) {
   #contact {
     padding: 32px 14px 28px;
@@ -517,7 +499,6 @@
   .contactMobile__content {
     gap: 12px;
     margin-top: 16px;
-    scroll-margin-top: 72px;
   }
 
   .contactMobile__contentHeadlineSvg {
@@ -666,6 +647,18 @@
 
 @media (max-width: 520px) {
   #contact-mobile-start {
+    scroll-margin-top: 92px;
+  }
+}
+
+@media (max-width: 768px) {
+  #contact-form-mobile {
+    scroll-margin-top: 104px;
+  }
+}
+
+@media (max-width: 520px) {
+  #contact-form-mobile {
     scroll-margin-top: 92px;
   }
 }

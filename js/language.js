@@ -1,68 +1,91 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const languageLinks = document.querySelectorAll("[data-lang-link]");
-  const sectionIds = ["home", "why-me", "skills", "my-work", "contact"];
+function getVisibleAnchorForLanguageSwitch() {
+  const isMobile = window.innerWidth <= 768;
 
-  function isMobileView() {
-    return window.innerWidth <= 768;
-  }
+  if (isMobile) {
+    const mobileContact = document.querySelector("#contact-mobile-start");
 
-  function getCurrentSectionId() {
-    let currentSection = "home";
-    let smallestDistance = Infinity;
+    if (mobileContact) {
+      const rect = mobileContact.getBoundingClientRect();
+      const isContactVisible =
+        rect.top < window.innerHeight * 0.65 && rect.bottom > 0;
 
-    sectionIds.forEach((sectionId) => {
-      const section = document.getElementById(sectionId);
+      if (isContactVisible) {
+        return "#contact-mobile-start";
+      }
+    }
 
-      if (!section) return;
+    const sections = [...document.querySelectorAll("main > section[id]")];
+    let bestSection = null;
+    let bestDistance = Infinity;
 
+    sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
+      const distance = Math.abs(rect.top - 104);
 
-      const sectionCenter = isMobileView()
-        ? rect.top + rect.height / 2
-        : rect.left + rect.width / 2;
-
-      const viewportCenter = isMobileView()
-        ? window.innerHeight / 2
-        : window.innerWidth / 2;
-
-      const distance = Math.abs(sectionCenter - viewportCenter);
-
-      if (distance < smallestDistance) {
-        smallestDistance = distance;
-        currentSection = sectionId;
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestSection = section;
       }
     });
 
-    return currentSection;
+    return bestSection ? `#${bestSection.id}` : "";
   }
 
-  function scrollToHashSection() {
-    if (!window.location.hash) return;
+  const sections = [...document.querySelectorAll("main > section[id]")];
+  let bestSection = null;
+  let bestDistance = Infinity;
 
-    const target = document.querySelector(window.location.hash);
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const distance = Math.abs(rect.left);
 
-    if (!target) return;
-
-    setTimeout(() => {
-      target.scrollIntoView({
-        behavior: "auto",
-        block: "start",
-        inline: "start",
-      });
-    }, 50);
-  }
-
-  languageLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      const targetUrl = new URL(link.getAttribute("href"), window.location.href);
-      const currentSectionId = getCurrentSectionId();
-
-      targetUrl.hash = currentSectionId;
-      window.location.href = targetUrl.toString();
-    });
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestSection = section;
+    }
   });
 
-  scrollToHashSection();
-});
+  if (bestSection && bestSection.id === "contact") {
+    const desktopForm = document.querySelector("#contact-form-desktop");
+
+    if (desktopForm) {
+      const formRect = desktopForm.getBoundingClientRect();
+      const formIsCloser = Math.abs(formRect.left) < Math.abs(bestSection.getBoundingClientRect().left);
+
+      if (formIsCloser) {
+        return "#contact";
+      }
+    }
+  }
+
+  return bestSection ? `#${bestSection.id}` : "";
+}
+
+function setupLanguageAnchorPreservation() {
+  const languageLinks = document.querySelectorAll("[data-lang-link]");
+
+  languageLinks.forEach((link) => {
+    link.addEventListener(
+      "click",
+      (event) => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        const anchor = getVisibleAnchorForLanguageSwitch();
+        const nextUrl = new URL(href, window.location.href);
+
+        if (anchor) {
+          nextUrl.hash = anchor;
+        }
+
+        window.location.href = nextUrl.toString();
+      },
+      true
+    );
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupLanguageAnchorPreservation);
