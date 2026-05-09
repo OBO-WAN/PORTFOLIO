@@ -403,35 +403,6 @@
     color: #ffffff;
   }
 
-  .contactMobile__privacy::after {
-    content: "";
-    grid-column: 2;
-    grid-row: 2;
-    min-height: 22px;
-    color: #ff3b1f;
-    font-family: "Quantico", system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.3;
-    font-weight: 700;
-  }
-
-  .contactMobile__privacy--error::after {
-    content: attr(data-error-message);
-  }
-
-  .contactMobile__privacy--error .contactMobile__checkbox {
-    border-color: #ff3b1f;
-  }
-
-  .contactMobile__privacy--error .contactMobile__checkbox:focus-visible {
-    outline-color: #ff3b1f;
-  }
-
-  .contactMobile__privacy--error .contactMobile__checkbox:checked {
-    border-color: #b5e93b;
-    background: #b5e93b;
-  }
-
   .contactMobile__submit {
     align-self: flex-end;
     min-width: 124px;
@@ -666,34 +637,6 @@
   border-radius: 999px;
 }
 
-.contactMobile__submit:disabled {
-  cursor: not-allowed;
-  opacity: 1;
-}
-
-.contactMobile__submit:not(:disabled) {
-  background: #b5e93b;
-  color: #131312;
-  cursor: pointer;
-}
-
-.contactMobile__input--error,
-.contactMobile__textarea--error {
-  border-color: #ff3b1f;
-  color: #ff3b1f;
-}
-
-.contactMobile__input--error::placeholder,
-.contactMobile__textarea--error::placeholder {
-  color: #ff3b1f;
-  opacity: 1;
-}
-
-.contactMobile__input--error:focus,
-.contactMobile__textarea--error:focus {
-  box-shadow: 0 0 0 1px #ff3b1f inset;
-}
-
 @media (max-width: 768px) {
   #contact-mobile-start,
   #contact-form-mobile {
@@ -706,42 +649,4 @@
   #contact-form-mobile {
     scroll-margin-top: 92px;
   }
-}
-
-/* Prevent browser/autofill from changing the mobile form design */
-.contactMobile__input:-webkit-autofill,
-.contactMobile__input:-webkit-autofill:hover,
-.contactMobile__input:-webkit-autofill:focus,
-.contactMobile__input:-webkit-autofill:active,
-.contactMobile__textarea:-webkit-autofill,
-.contactMobile__textarea:-webkit-autofill:hover,
-.contactMobile__textarea:-webkit-autofill:focus,
-.contactMobile__textarea:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
-  -webkit-text-fill-color: #f2f2f2 !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  caret-color: #f2f2f2;
-  color-scheme: dark;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-.contactMobile__input--error:-webkit-autofill,
-.contactMobile__input--error:-webkit-autofill:hover,
-.contactMobile__input--error:-webkit-autofill:focus,
-.contactMobile__input--error:-webkit-autofill:active,
-.contactMobile__textarea--error:-webkit-autofill,
-.contactMobile__textarea--error:-webkit-autofill:hover,
-.contactMobile__textarea--error:-webkit-autofill:focus,
-.contactMobile__textarea--error:-webkit-autofill:active {
-  -webkit-text-fill-color: #ff3b1f !important;
-  caret-color: #ff3b1f;
-}
-
-.contactMobile__input--valid,
-.contactMobile__textarea--valid {
-  border-color: #b5e93b;
-  box-shadow:
-    0 0 0 1px #b5e93b inset,
-    0 0 10px rgba(181, 233, 59, 0.28);
 }

@@ -52,10 +52,10 @@
 }
 
 .whyMe__icons {
-    margin-top: 20px;
+    margin-top: 36px;
     display: flex;
-    gap: 48px;
-    align-items: center;
+    gap: 32px;
+    align-items: flex-start;
 }
 
 .whyMe__infoSvg {
@@ -64,9 +64,49 @@
     display: block;
 }
 
-.whyMe__icons img {
+.whyMe__icons > img {
     height: 100%;
     width: 100%;
+}
+
+.whyMe__infoItem {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 156px;
+    text-align: center;
+}
+
+.whyMe__infoItem > .whyMe__infoIcon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 40px;
+    max-width: 46px;
+    max-height: 40px;
+    object-fit: contain;
+}
+
+.whyMe__infoIcon--location {
+    width: 33px;
+}
+
+.whyMe__infoIcon--remote {
+    width: 46px;
+}
+
+.whyMe__infoIcon--relocate {
+    width: 30px;
+}
+
+.whyMe__infoText {
+    max-width: 108px;
+    color: #FFFDFD;
+    font-family: "Quantico", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    text-align: center;
 }
 
 .whyMe__contactBtn {
