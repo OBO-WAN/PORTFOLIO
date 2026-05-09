@@ -231,6 +231,19 @@ function scrollToAnchorTarget(href, behavior = "smooth") {
   return true;
 }
 
+function isMobileViewport() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function shouldUseNativeMobileAnchor(link, href) {
+  return (
+    isMobileViewport() &&
+    link.classList.contains("mobileMenu__link") &&
+    href !== "#contact" &&
+    href !== "#contact-form"
+  );
+}
+
 function setupSectionAnchorScrolling() {
   const main = document.querySelector("main");
   const sectionLinks = document.querySelectorAll('a[href^="#"]');
@@ -240,6 +253,11 @@ function setupSectionAnchorScrolling() {
   sectionLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       const href = link.getAttribute("href");
+
+      if (shouldUseNativeMobileAnchor(link, href)) {
+        closeMenu();
+        return;
+      }
 
       if (!scrollToAnchorTarget(href)) return;
 
