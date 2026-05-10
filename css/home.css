@@ -9,9 +9,7 @@ html,
 body {
     height: 100%;
     margin: 0;
-    overflow-y: hidden;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
 
 
@@ -362,11 +360,15 @@ body {
 /* Hero section */
 main {
     margin-left: var(--sidebar-w);
+    width: calc(100vw - var(--sidebar-w));
     display: flex;
     flex-direction: row;
     height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
 }
 
 main>section {

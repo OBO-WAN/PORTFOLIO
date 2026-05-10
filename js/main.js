@@ -45,6 +45,7 @@ function initMobileMenu() {
   if (!mobileToggle || !mobileMenu) return;
 
   mobileToggle.addEventListener("click", handleToggleClick);
+
   mobileMenuLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
@@ -57,10 +58,13 @@ function initDesktopWheelScroll() {
   const main = document.querySelector("main");
   if (!main) return;
 
+  const WHEEL_SCROLL_SPEED = 8;
+
   window.addEventListener(
     "wheel",
     (event) => {
       if (window.innerWidth <= 768) return;
+      if (event.ctrlKey || event.metaKey) return;
       if (main.scrollWidth <= main.clientWidth) return;
 
       const delta =
@@ -70,8 +74,13 @@ function initDesktopWheelScroll() {
 
       if (!delta) return;
 
-      main.scrollLeft += delta;
       event.preventDefault();
+
+      main.scrollBy({
+        left: delta * WHEEL_SCROLL_SPEED,
+        top: 0,
+        behavior: "auto",
+      });
     },
     { passive: false },
   );
@@ -86,7 +95,9 @@ function initWorkCardToggles() {
       if (!card) return;
 
       const isOpen = card.classList.toggle("workCard--open");
+
       button.setAttribute("aria-expanded", String(isOpen));
+
       button.innerHTML = isOpen
         ? 'Show less <span class="workCard__toggleIcon" aria-hidden="true">▼</span>'
         : 'Show me more <span class="workCard__toggleIcon" aria-hidden="true">▼</span>';
@@ -110,6 +121,7 @@ function setupMobileContactCarousel() {
   function setActiveButton(activeIndex) {
     buttons.forEach((button, index) => {
       const isActive = index === activeIndex;
+
       button.classList.toggle("contactMobile__dot--active", isActive);
       button.setAttribute("aria-current", isActive ? "true" : "false");
     });
@@ -122,6 +134,7 @@ function setupMobileContactCarousel() {
 
     const first = slides[0].getBoundingClientRect();
     const second = slides[1].getBoundingClientRect();
+
     return second.left - first.left;
   }
 
@@ -130,6 +143,7 @@ function setupMobileContactCarousel() {
     if (!step) return 0;
 
     const index = Math.round(carousel.scrollLeft / step);
+
     return clamp(index, 0, slides.length - 1);
   }
 
@@ -171,7 +185,6 @@ function setupMobileContactCarousel() {
   setActiveButton(0);
 }
 
-// IDs for contact form anchors
 function getContactFormSelector() {
   return window.innerWidth <= 768
     ? "#contact-form-mobile"
@@ -189,7 +202,10 @@ function setupContactFormAnchors() {
       const target = document.querySelector(getContactFormSelector());
       if (!target) return;
 
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   });
 }
@@ -209,7 +225,6 @@ function scrollToAnchorTarget(href, behavior = "smooth") {
   if (!href || href === "#") return false;
 
   const target = getAnchorTarget(href);
-
   if (!target) return false;
 
   if (window.innerWidth <= 768) {
@@ -269,7 +284,6 @@ function setupSectionAnchorScrolling() {
 
 function setupInitialHashScrolling() {
   const href = window.location.hash;
-
   if (!href) return;
 
   requestAnimationFrame(() => {
