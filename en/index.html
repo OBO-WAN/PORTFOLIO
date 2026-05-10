@@ -31,6 +31,9 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="../css/aos-custom.css" />
+
     <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/home-mobile.css" />
     <link rel="stylesheet" href="../css/whyMe.css" />
@@ -46,7 +49,9 @@
     <link rel="stylesheet" href="../css/footer-mobile.css" />
     <link rel="stylesheet" href="../css/overlay.css" />
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="../js/validation.js"></script>
+    <script src="../js/aos.js" defer></script>
     <script src="../js/main.js" defer></script>
     <script src="../js/submit.js" defer></script>
     <script src="../js/language.js" defer></script>
@@ -191,7 +196,7 @@
 
     <main>
       <!-- Section: Home -->
-      <section id="home" class="hero">
+      <section id="home" class="hero" data-aos="portfolio-fade">
         <div class="hero__portrait">
           <img
             src="../assets/img/portrait.webp"
@@ -219,7 +224,7 @@
 
       <!-- Section: Why Me -->
 
-      <section id="why-me" class="whyMe">
+      <section id="why-me" class="whyMe" data-aos="portfolio-fade">
         <div class="whyMe__headline">
           <picture>
             <source
@@ -305,7 +310,7 @@
       </section>
 
       <!-- Section: Skills -->
-      <section id="skills" class="skills__section">
+      <section id="skills" class="skills__section" data-aos="portfolio-fade">
         <div class="skills__headline">
           <picture>
             <source
@@ -443,7 +448,7 @@
 
       <!-- Section My Work -->
 
-      <section id="my-work" class="myWork__section">
+      <section id="my-work" class="myWork__section" data-aos="portfolio-fade">
         <div class="myWork__headline">
           <picture>
             <source
@@ -710,7 +715,7 @@
       </section>
 
       <!-- Section References & Contact -->
-      <section id="contact" class="contact">
+      <section id="contact" class="contact" data-aos="portfolio-fade">
         <div class="contact__references">
           <img
             src="../assets/img/section/references.svg"
@@ -1088,7 +1093,7 @@
 
       <!-- footer -->
 
-      <footer id="footer" class="contact__footerSection">
+      <footer id="footer" class="contact__footerSection" data-aos="portfolio-fade">
         <div class="contact__footerMain">
           <div class="contact__info">
             <p class="contact__infoLead">Let us work together.</p>

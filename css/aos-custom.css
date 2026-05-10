@@ -1,0 +1,23 @@
+[data-aos="portfolio-fade"] {
+  opacity: 1;
+}
+
+body.aos-ready [data-aos="portfolio-fade"] {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 1300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+body.aos-ready [data-aos="portfolio-fade"].aos-animate {
+  opacity: 1;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos="portfolio-fade"] {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}

@@ -279,17 +279,8 @@ function scrollToAnchorTarget(href, behavior = "smooth") {
   return scrollToDesktopAnchorTarget(target, behavior);
 }
 
-function isMobileViewport() {
-  return window.matchMedia("(max-width: 768px)").matches;
-}
-
 function shouldUseNativeMobileAnchor(link, href) {
-  return (
-    isMobileViewport() &&
-    link.classList.contains("mobileMenu__link") &&
-    href !== "#contact" &&
-    href !== "#contact-form"
-  );
+  return false;
 }
 
 function setupSectionAnchorScrolling() {
@@ -347,6 +338,10 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSectionAnchorScrolling();
   setupInitialHashScrolling();
   setupHashChangeScrolling();
+
+  if (window.PortfolioAOS) {
+    window.PortfolioAOS.init();
+  }
 
   setupFormValidation(".contact__form", "#contactPolicy", ".contact__submit");
 
