@@ -191,34 +191,73 @@ function getContactFormSelector() {
     : "#contact-form-desktop";
 }
 
-function setupContactFormAnchors() {
-  const links = document.querySelectorAll('a[href="#contact-form"]');
-  if (!links.length) return;
-
-  links.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      const target = document.querySelector(getContactFormSelector());
-      if (!target) return;
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  });
-}
-
 function getAnchorTarget(href) {
-  if (href === "#contact") {
+  if (href === "#contact" || href === "#contact-form") {
     return (
       document.querySelector(getContactFormSelector()) ||
       document.querySelector("#contact")
     );
   }
 
-  return document.querySelector(href);
+  try {
+    return document.querySelector(href);
+  } catch (error) {
+    return null;
+  }
+}
+
+function getMainScroller() {
+  return document.querySelector("main");
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function getMainScrollLeftForTarget(main, target) {
+  const mainRect = main.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const rawLeft = main.scrollLeft + targetRect.left - mainRect.left;
+  const maxLeft = main.scrollWidth - main.clientWidth;
+
+  return clamp(rawLeft, 0, maxLeft);
+}
+
+let restoreMainSnapTimer = null;
+
+function temporarilyDisableMainSnap(main, behavior) {
+  if (!main) return;
+
+  window.clearTimeout(restoreMainSnapTimer);
+  main.style.scrollSnapType = "none";
+
+  const restoreDelay = behavior === "smooth" ? 700 : 0;
+  restoreMainSnapTimer = window.setTimeout(() => {
+    main.style.scrollSnapType = "";
+  }, restoreDelay);
+}
+
+function isMainSnapTarget(main, target) {
+  return target.parentElement === main;
+}
+
+function scrollToDesktopAnchorTarget(target, behavior) {
+  const main = getMainScroller();
+  if (!main) return false;
+
+  const left = getMainScrollLeftForTarget(main, target);
+
+  if (!isMainSnapTarget(main, target)) {
+    temporarilyDisableMainSnap(main, behavior);
+  }
+
+  main.scrollTo({
+    left,
+    top: 0,
+    behavior,
+  });
+
+  return true;
 }
 
 function scrollToAnchorTarget(href, behavior = "smooth") {
@@ -237,13 +276,7 @@ function scrollToAnchorTarget(href, behavior = "smooth") {
     return true;
   }
 
-  target.scrollIntoView({
-    behavior,
-    block: "nearest",
-    inline: "start",
-  });
-
-  return true;
+  return scrollToDesktopAnchorTarget(target, behavior);
 }
 
 function isMobileViewport() {
@@ -278,6 +311,7 @@ function setupSectionAnchorScrolling() {
 
       event.preventDefault();
       history.pushState(null, "", href);
+      closeMenu();
     });
   });
 }
@@ -289,6 +323,20 @@ function setupInitialHashScrolling() {
   requestAnimationFrame(() => {
     scrollToAnchorTarget(href, "auto");
   });
+
+  window.addEventListener(
+    "load",
+    () => {
+      scrollToAnchorTarget(href, "auto");
+    },
+    { once: true },
+  );
+}
+
+function setupHashChangeScrolling() {
+  window.addEventListener("hashchange", () => {
+    scrollToAnchorTarget(window.location.hash, "smooth");
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -296,9 +344,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initDesktopWheelScroll();
   initWorkCardToggles();
   setupMobileContactCarousel();
-  setupContactFormAnchors();
   setupSectionAnchorScrolling();
   setupInitialHashScrolling();
+  setupHashChangeScrolling();
 
   setupFormValidation(".contact__form", "#contactPolicy", ".contact__submit");
 

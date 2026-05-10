@@ -369,6 +369,7 @@ main {
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
     scroll-behavior: smooth;
+    scroll-padding-left: 0;
 }
 
 main>section {
@@ -376,7 +377,7 @@ main>section {
     height: 100vh;
     flex-shrink: 0;
     scroll-snap-align: start;
-    scroll-margin-left: var(--sidebar-w);
+    scroll-margin-left: 0;
 }
 
 .hero {

@@ -31,13 +31,15 @@ function getVisibleAnchorForLanguageSwitch() {
     return bestSection ? `#${bestSection.id}` : "";
   }
 
+  const main = document.querySelector("main");
+  const mainLeft = main ? main.getBoundingClientRect().left : 0;
   const sections = [...document.querySelectorAll("main > section[id]")];
   let bestSection = null;
   let bestDistance = Infinity;
 
   sections.forEach((section) => {
     const rect = section.getBoundingClientRect();
-    const distance = Math.abs(rect.left);
+    const distance = Math.abs(rect.left - mainLeft);
 
     if (distance < bestDistance) {
       bestDistance = distance;
@@ -50,7 +52,10 @@ function getVisibleAnchorForLanguageSwitch() {
 
     if (desktopForm) {
       const formRect = desktopForm.getBoundingClientRect();
-      const formIsCloser = Math.abs(formRect.left) < Math.abs(bestSection.getBoundingClientRect().left);
+      const sectionRect = bestSection.getBoundingClientRect();
+      const formIsCloser =
+        Math.abs(formRect.left - mainLeft) <
+        Math.abs(sectionRect.left - mainLeft);
 
       if (formIsCloser) {
         return "#contact";

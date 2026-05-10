@@ -173,5 +173,5 @@
 
 .contact__footerSection {
   scroll-snap-align: start;
-  scroll-margin-left: var(--sidebar-w);
+  scroll-margin-left: 0;
 }
