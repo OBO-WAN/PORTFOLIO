@@ -1,0 +1,56 @@
+/* Body text readability fixes
+   Keeps decorative text, headings, labels, buttons, arrows, and badge/arc text unchanged.
+   Load this file after the existing project CSS files.
+   Preserves Quantico explicitly on the overridden readable text fields. */
+
+:root {
+  --readability-font: "Quantico", system-ui, sans-serif;
+}
+
+/* Desktop/tablet readable form text */
+.contact__input,
+.contact__textarea {
+  font-family: var(--readability-font);
+  font-size: 16px;
+}
+
+/* Small overlay body copy */
+.formOverlay__text {
+  font-family: var(--readability-font);
+  font-size: 16px;
+}
+
+/* Skills body copy */
+.skills__headlineText,
+.skills__asideText {
+  font-family: var(--readability-font);
+  font-size: 16px;
+}
+
+/* Work/project body copy */
+.workCard__text,
+.myWork__ongoingText {
+  font-family: var(--readability-font);
+  font-size: 16px;
+}
+
+/* Mobile contact body copy and form text */
+.contactMobile__introText,
+.contactMobile__cardQuote p,
+.contactMobile__lead,
+.contactMobile__description,
+.contactMobile__detailText,
+.contactMobile__input,
+.contactMobile__textarea {
+  font-family: var(--readability-font);
+  font-size: 16px;
+}
+
+/* Legal mobile body copy: prevent small-screen breakpoints from dropping below 16px
+   while preserving the project's existing legal font variable. */
+@media screen and (max-width: 768px) {
+  :root {
+    --legal-mobile-body-size: 16px;
+    --legal-mobile-font: "Quantico", system-ui, sans-serif;
+  }
+}
