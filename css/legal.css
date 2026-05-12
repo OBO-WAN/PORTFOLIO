@@ -77,7 +77,8 @@
     max-width: var(--legal-view-w);
     height: 100vh;
     margin-left: var(--sidebar-w, 106px);
-    overflow: visible;
+    overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: none;
     overscroll-behavior-x: contain;
     background: var(--legal-bg);
