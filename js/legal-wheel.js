@@ -28,4 +28,32 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { passive: false },
   );
+
+  document.querySelectorAll('a[href="#legal-start"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      main.scrollTo({
+        left: 0,
+        top: 0,
+        behavior: "smooth",
+      });
+
+      history.replaceState(null, "", "#legal-start");
+    });
+  });
+
+  document.querySelectorAll('a[href="#legal-end"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      main.scrollTo({
+        left: main.scrollWidth - main.clientWidth,
+        top: 0,
+        behavior: "smooth",
+      });
+
+      history.replaceState(null, "", "#legal-end");
+    });
+  });
 });
