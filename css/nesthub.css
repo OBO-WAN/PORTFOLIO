@@ -1,0 +1,735 @@
+/* Nest Hub / compact landscape display overrides
+   Load this file after all existing project CSS files.
+
+   This file is intentionally separate from mobile CSS.
+   It targets wide but short screens such as Google Nest Hub (1024x600)
+   and similar compact landscape devices. */
+
+/* Google Nest Hub and similar compact landscape screens */
+@media screen and (min-width: 769px) and (max-width: 1100px) and (max-height: 650px) {
+  /* The sidebar has padding in the base CSS. Border-box prevents it from
+     becoming taller/wider than --sidebar-w on short screens. */
+  .sidebar {
+    box-sizing: border-box;
+    width: var(--sidebar-w);
+    height: 100vh;
+    padding: 18px 8px;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .sidebar__badgeText {
+    width: 78px;
+    height: 86px;
+  }
+
+  .sidebar__badgeInitials {
+    font-size: 32px;
+    line-height: 2.6;
+    letter-spacing: -5px;
+  }
+
+  .sidebar__badgeArcText {
+    font-size: 8px;
+  }
+
+  .sidebar__nav {
+    gap: 5px;
+  }
+
+  .sidebar__link {
+    font-size: 18px;
+    line-height: 1;
+    padding: 3px 0;
+  }
+
+  .topbar {
+    top: 18px;
+    right: 24px;
+    gap: 20px;
+  }
+
+  .social {
+    gap: 8px;
+  }
+
+  .social__btn,
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .lang .icon--de,
+  .lang .icon--en,
+  .lang .icon--es,
+  .lang .icon--vline {
+    width: 20px;
+    height: 22px;
+  }
+
+  .hero,
+  .whyMe,
+  .skills__section,
+  .contact,
+  .contact__footerSection {
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero__arrow,
+  .section__arrow,
+  .section__arrow_skills,
+  .myWork__arrow,
+  .contact__middleArrow,
+  .contact__footerArrow {
+    right: 20px;
+  }
+
+  .hero__arrow img,
+  .section__arrow img,
+  .section__arrow_skills img,
+  .myWork__arrow img,
+  .contact__middleArrow img,
+  .contact__footerArrow img {
+    height: 28px;
+  }
+
+  /* Home */
+  .hero__portrait img {
+    max-height: 84vh;
+  }
+
+  .hero__name {
+    bottom: 196px;
+    font-size: clamp(48px, 5vw, 64px);
+  }
+
+  .hero__subtitle {
+    bottom: 126px;
+    font-size: 30px;
+  }
+
+  .hero__arrow {
+    top: 30%;
+  }
+
+  /* Why me */
+  .whyMe__headline {
+    left: 34px;
+    top: 210px;
+  }
+
+  .whyMe__headlineSvg {
+    height: 210px;
+  }
+
+  .whyMe__headlineSvg--why-me,
+  .whyMe__headlineSvg--sobre-mi-es {
+    width: 74px;
+    height: auto;
+  }
+
+  .whyMe__content {
+    left: 150px;
+    top: 46%;
+    max-width: 430px;
+  }
+
+  .text-area__paragraph {
+    max-width: 360px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .whyMe__infoBox {
+    gap: 8px;
+  }
+
+  .whyMe__icons {
+    gap: 18px;
+    margin-top: 24px;
+  }
+
+  .whyMe__infoSvg {
+    width: 68px;
+  }
+
+  .whyMe__infoItem {
+    max-width: 120px;
+    gap: 8px;
+  }
+
+  .whyMe__infoItem > .whyMe__infoIcon {
+    height: 32px;
+    max-height: 32px;
+  }
+
+  .whyMe__infoText {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .whyMe__contactBtn {
+    right: 170px;
+    top: 72%;
+  }
+
+  .whyMe__contactBtn img {
+    height: 38px;
+  }
+
+  .section__arrow {
+    top: 28%;
+  }
+
+  /* Skills: main Nest Hub fix */
+  .skills__headline {
+    left: 30px;
+    top: auto;
+    bottom: 30px;
+    transform: none;
+  }
+
+  .skills__headlineSvg {
+    height: 210px;
+  }
+
+  .skills__headlineSvg--habilidades-es {
+    width: 76px;
+    height: auto;
+  }
+
+  .skills__intro {
+    left: 145px;
+    bottom: 64px;
+    width: min(410px, calc(100% - 340px));
+  }
+
+  .skills__headlineText {
+    font-size: 16px;
+    line-height: 1.32;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(5, 54px);
+    gap: 14px 18px;
+    margin-top: 18px;
+  }
+
+  .skills__icon {
+    width: 50px;
+  }
+
+  .skills__aside {
+    right: 44px;
+    bottom: 64px;
+    width: 170px;
+  }
+
+  .skills__asideText {
+    font-size: 16px;
+    line-height: 1.28;
+  }
+
+  .section__arrow_skills {
+    top: 28%;
+  }
+
+  /* Contact section: compact the form/references without changing structure */
+  .contact {
+    gap: 18px;
+    padding: 0 20px 22px 26px;
+  }
+
+  .contact__references {
+    gap: 14px;
+  }
+
+  .contact__referencesHeadline,
+  .contact__formHeadline {
+    width: 40px;
+  }
+
+  .contact__referencesList {
+    gap: 12px;
+  }
+
+  .referenceCard {
+    width: 440px;
+    min-height: 118px;
+    padding: 16px 20px;
+    border-radius: 24px;
+  }
+
+  .referenceCard__quote p,
+  .referenceCard__project,
+  .contact__input,
+  .contact__textarea,
+  .contact__privacyText,
+  .contact__submit {
+    font-size: 16px;
+  }
+
+  .referenceCard__name {
+    font-size: 18px;
+  }
+
+  .contact__formWrap {
+    gap: 12px;
+    margin-bottom: 72px;
+  }
+
+  .contact__form {
+    width: 360px;
+    gap: 10px;
+  }
+
+  .contact__input {
+    height: 44px;
+  }
+
+  .contact__textarea {
+    min-height: 124px;
+    padding: 16px 20px;
+  }
+
+  .contact__middleArrow {
+    margin-bottom: 54px;
+  }
+
+  /* Footer */
+  .contact__footerSection {
+    width: calc(330px + var(--sidebar-w));
+    padding-top: 28px;
+    padding-bottom: 20px;
+  }
+
+  .contact__info {
+    max-width: 330px;
+    padding-top: 74px;
+  }
+
+  .contact__infoText,
+  .contact__detail,
+  .contact__footerLink,
+  .contact__copyright {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .contact__infoText {
+    margin-bottom: 24px;
+  }
+
+  .contact__legal {
+    gap: 10px;
+  }
+}
+
+/* Nest Hub Max / larger short landscape displays */
+@media screen and (min-width: 1101px) and (max-width: 1350px) and (max-height: 850px) {
+  .sidebar {
+    box-sizing: border-box;
+    height: 100vh;
+    padding-top: 26px;
+    padding-bottom: 26px;
+    overflow: hidden;
+  }
+
+  .sidebar__nav {
+    gap: 8px;
+  }
+
+  .sidebar__link {
+    font-size: 22px;
+    line-height: 1;
+    padding: 4px 0;
+  }
+
+  .topbar {
+    top: 20px;
+    right: 28px;
+  }
+
+  .skills__headline {
+    left: 38px;
+    top: auto;
+    bottom: 42px;
+    transform: none;
+  }
+
+  .skills__headlineSvg {
+    height: 260px;
+  }
+
+  .skills__headlineSvg--habilidades-es {
+    width: 92px;
+    height: auto;
+  }
+
+  .skills__intro {
+    left: 165px;
+    bottom: 82px;
+    width: min(520px, calc(100% - 450px));
+  }
+
+  .skills__headlineText,
+  .skills__asideText {
+    font-size: 16px;
+    line-height: 1.32;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(5, 62px);
+    gap: 20px 20px;
+    margin-top: 22px;
+  }
+
+  .skills__icon {
+    width: 58px;
+  }
+
+  .skills__aside {
+    right: 96px;
+    bottom: 82px;
+    width: 190px;
+  }
+
+  .whyMe__content {
+    top: 44%;
+  }
+
+  .whyMe__contactBtn {
+    top: 68%;
+  }
+}
+
+/* Google Nest Hub and similar compact landscape screens */
+@media screen and (min-width: 900px) and (max-width: 1100px) and (max-height: 650px) {
+  .sidebar {
+    box-sizing: border-box;
+    width: var(--sidebar-w);
+    height: 100vh;
+    padding: 18px 8px 14px;
+    gap: 6px;
+    overflow: hidden;
+  }
+
+  .sidebar__badgeText {
+    width: 82px;
+    height: 104px;
+    flex: 0 0 104px;
+  }
+
+  .sidebar__badgeArc {
+    inset: 0;
+    width: 82px;
+    height: 88px;
+    transform: none;
+  }
+
+  .sidebar__badgeArcText {
+    font-size: 7.5px;
+    letter-spacing: 0.2px;
+  }
+
+  .sidebar__badgeInitials {
+    font-size: 32px;
+    line-height: 3.15;
+    letter-spacing: -5px;
+  }
+
+  .sidebar__nav {
+    flex: 1;
+    justify-content: space-evenly;
+    gap: 0;
+    min-height: 0;
+  }
+
+  .sidebar__link {
+    font-size: 17px;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .topbar {
+    top: 18px;
+    right: 24px;
+    gap: 20px;
+  }
+
+  .social {
+    gap: 8px;
+  }
+
+  .social__btn,
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .lang .icon--de,
+  .lang .icon--en,
+  .lang .icon--es,
+  .lang .icon--vline {
+    width: 20px;
+    height: 22px;
+  }
+
+  .hero,
+  .whyMe,
+  .skills__section,
+  .contact,
+  .contact__footerSection {
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero__arrow,
+  .section__arrow,
+  .section__arrow_skills,
+  .myWork__arrow,
+  .contact__middleArrow,
+  .contact__footerArrow {
+    right: 20px;
+    top: 88%;
+  }
+
+  .hero__arrow img,
+  .section__arrow img,
+  .section__arrow_skills img,
+  .myWork__arrow img,
+  .contact__middleArrow img,
+  .contact__footerArrow img {
+    height: 28px;
+  }
+
+  /* Home */
+  .hero__portrait img {
+    max-height: 84vh;
+  }
+
+  .hero__name {
+    bottom: 196px;
+    font-size: clamp(48px, 5vw, 64px);
+  }
+
+  .hero__subtitle {
+    bottom: 126px;
+    font-size: 30px;
+  }
+
+  .hero__arrow {
+    top: 30%;
+  }
+
+  /* Why me */
+  .whyMe__headline {
+    left: 36px;
+    top: 36%;
+    transform: translateY(-50%);
+  }
+
+  .whyMe__headlineSvg,
+  .whyMe__headlineSvg--why-me,
+  .whyMe__headlineSvg--sobre-mi-es {
+    width: auto;
+    height: 210px;
+    max-width: 92px;
+  }
+
+  .whyMe__content {
+    left: 150px;
+    top: 46%;
+    max-width: 430px;
+  }
+
+  .text-area__paragraph {
+    max-width: 360px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .whyMe__infoBox {
+    gap: 8px;
+  }
+
+  .whyMe__icons {
+    gap: 18px;
+    margin-top: 24px;
+  }
+
+  .whyMe__infoSvg {
+    width: 68px;
+  }
+
+  .whyMe__infoItem {
+    max-width: 120px;
+    gap: 8px;
+  }
+
+  .whyMe__infoItem > .whyMe__infoIcon {
+    height: 32px;
+    max-height: 32px;
+  }
+
+  .whyMe__infoText {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .whyMe__contactBtn {
+    right: 170px;
+    top: 72%;
+  }
+
+  .whyMe__contactBtn img {
+    height: 38px;
+  }
+
+  .section__arrow {
+    top: 28%;
+  }
+
+  /* Skills */
+  .skills__headline {
+    left: 34px;
+    top: 56%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  .skills__headlineSvg,
+  .skills__headlineSvg--habilidades-es {
+    width: auto;
+    height: 210px;
+    max-width: 92px;
+  }
+
+  .skills__intro {
+    left: 145px;
+    bottom: 64px;
+    width: min(410px, calc(100% - 340px));
+  }
+
+  .skills__headlineText {
+    font-size: 16px;
+    line-height: 1.32;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(5, 54px);
+    gap: 14px 18px;
+    margin-top: 18px;
+  }
+
+  .skills__icon {
+    width: 50px;
+  }
+
+  .skills__aside {
+    right: 44px;
+    bottom: 64px;
+    width: 170px;
+  }
+
+  .skills__asideText {
+    font-size: 16px;
+    line-height: 1.28;
+  }
+
+  .section__arrow_skills {
+    top: 28%;
+  }
+
+  /* Contact section */
+  .contact {
+    gap: 18px;
+    padding: 0 20px 22px 26px;
+  }
+
+  .contact__references {
+    gap: 14px;
+  }
+
+  .contact__referencesHeadline,
+  .contact__formHeadline {
+    width: 40px;
+  }
+
+  .contact__referencesList {
+    gap: 12px;
+  }
+
+  .referenceCard {
+    width: 440px;
+    min-height: 118px;
+    padding: 16px 20px;
+    border-radius: 24px;
+  }
+
+  .referenceCard__quote p,
+  .referenceCard__project,
+  .contact__input,
+  .contact__textarea,
+  .contact__privacyText,
+  .contact__submit {
+    font-size: 16px;
+  }
+
+  .referenceCard__name {
+    font-size: 18px;
+  }
+
+  .contact__formWrap {
+    gap: 12px;
+    margin-bottom: 72px;
+  }
+
+  .contact__form {
+    width: 360px;
+    gap: 10px;
+  }
+
+  .contact__input {
+    height: 44px;
+  }
+
+  .contact__textarea {
+    min-height: 124px;
+    padding: 16px 20px;
+  }
+
+  .contact__middleArrow {
+    margin-bottom: 54px;
+  }
+
+  /* Footer */
+  .contact__footerSection {
+    width: calc(330px + var(--sidebar-w));
+    padding-top: 28px;
+    padding-bottom: 20px;
+  }
+
+  .contact__info {
+    max-width: 330px;
+    padding-top: 74px;
+  }
+
+  .contact__infoText,
+  .contact__detail,
+  .contact__footerLink,
+  .contact__copyright {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .contact__infoText {
+    margin-bottom: 24px;
+  }
+
+  .contact__legal {
+    gap: 10px;
+  }
+}
+
