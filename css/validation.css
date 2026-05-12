@@ -58,6 +58,12 @@
   font-weight: 700;
 }
 
+.contact__submit[aria-disabled="true"],
+.contactMobile__submit[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .contact__privacy--error::after,
 .contactMobile__privacy--error::after {
   content: attr(data-error-message);

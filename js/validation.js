@@ -57,6 +57,7 @@ function setupFormValidation(formSelector, checkboxSelector, buttonSelector) {
   preparePrivacy(checkbox, privacyLabel);
   bindFieldEvents(fields, classes, checkbox, button);
   bindCheckboxEvents(checkbox, privacyLabel, fields, button, classes);
+  bindButtonEvent(button, fields, checkbox, privacyLabel, classes);
   bindSubmitEvent(form, fields, checkbox, privacyLabel, button, classes);
   bindResetEvent(form, fields, checkbox, privacyLabel, button, classes);
 
@@ -133,8 +134,11 @@ function validateEmail(value) {
   const text = value.trim();
   const messages = getMessages();
 
+  const emailPattern =
+    /^(?!.*\.\.)[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
+
   if (!text) return messages.emailRequired;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(text)) {
+  if (!emailPattern.test(text)) {
     return messages.emailInvalid;
   }
 
@@ -183,7 +187,7 @@ function removeFieldStateClasses(field, classes) {
     classes.inputError,
     classes.textareaError,
     classes.inputValid,
-    classes.textareaValid
+    classes.textareaValid,
   );
 }
 
@@ -305,7 +309,10 @@ function areFieldsValid(fields) {
 }
 
 function updateButtonState(fields, checkbox, button) {
-  button.disabled = !(areFieldsValid(fields) && isPolicyAccepted(checkbox));
+  const isReady = areFieldsValid(fields) && isPolicyAccepted(checkbox);
+
+  button.disabled = false;
+  button.setAttribute("aria-disabled", String(!isReady));
 }
 
 function handleFieldFocus(field, classes) {
@@ -361,13 +368,26 @@ function bindCheckboxEvents(checkbox, privacyLabel, fields, button, classes) {
   });
 }
 
+function bindButtonEvent(button, fields, checkbox, privacyLabel, classes) {
+  button.addEventListener("click", (event) => {
+    const isDisabled = button.getAttribute("aria-disabled") === "true";
+
+    if (!isDisabled) return;
+
+    event.preventDefault();
+
+    validateAllFields(fields, classes);
+    validatePrivacy(checkbox, privacyLabel, classes);
+  });
+}
+
 function bindSubmitEvent(
   form,
   fields,
   checkbox,
   privacyLabel,
   button,
-  classes
+  classes,
 ) {
   form.addEventListener("submit", (event) => {
     const fieldsAreValid = validateAllFields(fields, classes);
