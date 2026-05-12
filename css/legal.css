@@ -417,7 +417,7 @@
     --legal-right-pad-left: 42px;
     --legal-right-pad-right: 36px;
     --legal-title-w: 54px;
-    --legal-body-size: 13px;
+    --legal-body-size: 12px;
     --legal-heading-size: 18px;
   }
 
@@ -663,7 +663,7 @@
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .legal__headline--privacy-es {
-    width: 80px;
+    width: 46px;
   }
 
   .legal__headline--privacy-es .legal__headlineSvg {
@@ -673,8 +673,8 @@
 
 @media screen and (min-width: 1025px) and (max-width: 1444px) {
   .legal__headline--privacy-es {
-    width: 96px;
-    top: 31%;
+    width: 50px;
+    top: 32%;
   }
 
   .legal__headline--privacy-es .legal__headlineSvg {
@@ -689,7 +689,7 @@
   }
 
   .legal__headline--privacy-es .legal__headlineSvg {
-    max-height: 64vh;
+    max-height: 36vh;
   }
 }
 

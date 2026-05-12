@@ -78,7 +78,7 @@
     font-family: var(--legal-mobile-font);
   }
 
-  main.legalPage > .legal {
+  main.legalPage>.legal {
     display: block;
     width: 100%;
     min-width: 0;
@@ -267,9 +267,16 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  #footer.legalMobileOnly .footerMobile__link:hover {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--legal-mobile-footer-text);
+  }
+}
+
 /* Tablet portrait */
 @media screen and (min-width: 426px) and (max-width: 768px) {
-  main.legalPage > .legal {
+  main.legalPage>.legal {
     padding-top: 42px;
   }
 }
@@ -286,7 +293,7 @@
     --legal-mobile-block-gap: 25px;
   }
 
-  main.legalPage > .legal {
+  main.legalPage>.legal {
     padding-top: 20px;
   }
 
