@@ -86,7 +86,7 @@ section {
   }
 
   .hero__subtitle {
-    font-size: 24px;
+    font-size: 36px;
     bottom: 136px;
   }
 
@@ -116,8 +116,9 @@ section {
   }
 
   .hero__subtitle {
-    font-size: 24px;
-    bottom: 120px;
+    font-size: 26px;
+    bottom: 130px;
+    -webkit-text-stroke: 2.1px #b5e93b
   }
 
   .hero__arrow {
