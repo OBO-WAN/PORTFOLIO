@@ -377,3 +377,9 @@
     height: 32px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  #legal-start {
+    scroll-margin-top: 96px;
+  }
+}

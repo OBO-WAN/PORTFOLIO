@@ -18,7 +18,7 @@ function getMessages() {
       nameRequired: "Tu nombre es obligatorio",
       nameShort: "El nombre debe tener al menos 2 caracteres",
       nameInvalid: "Por favor, usa solo letras",
-      emailRequired: "Tu correo electrónico es obligatorio",
+      emailRequired: "Tu correo es obligatorio",
       emailInvalid: "Introduce un correo electrónico válido",
       messageRequired: "Tu mensaje es obligatorio",
       messageShort: "El mensaje debe tener al menos 10 caracteres",

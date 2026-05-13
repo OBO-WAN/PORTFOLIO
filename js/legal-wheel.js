@@ -1,59 +1,114 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const main = document.querySelector("main.legalPage");
-  if (!main) return;
+const LEGAL_WHEEL_SCROLL_SPEED = 8;
+const LEGAL_MOBILE_BREAKPOINT = 768;
 
-  const WHEEL_SCROLL_SPEED = 8;
+let legalMain = null;
 
-  window.addEventListener(
-    "wheel",
-    (event) => {
-      if (window.innerWidth <= 768) return;
-      if (event.ctrlKey || event.metaKey) return;
-      if (main.scrollWidth <= main.clientWidth) return;
+document.addEventListener("DOMContentLoaded", initLegalPageScrolling);
 
-      const delta =
-        Math.abs(event.deltaX) > Math.abs(event.deltaY)
-          ? event.deltaX
-          : event.deltaY;
+function initLegalPageScrolling() {
+  legalMain = document.querySelector("main.legalPage");
+  if (!legalMain) return;
 
-      if (!delta) return;
+  bindWheelScrolling();
+  bindAnchorScrolling("#legal-start", scrollToLegalStart);
+  bindAnchorScrolling("#legal-end", scrollToLegalEnd);
+}
 
-      event.preventDefault();
+function bindWheelScrolling() {
+  window.addEventListener("wheel", handleLegalWheel, { passive: false });
+}
 
-      main.scrollBy({
-        left: delta * WHEEL_SCROLL_SPEED,
-        top: 0,
-        behavior: "auto",
-      });
-    },
-    { passive: false },
-  );
+function handleLegalWheel(event) {
+  if (shouldIgnoreWheel(event)) return;
 
-  document.querySelectorAll('a[href="#legal-start"]').forEach((link) => {
+  const delta = getMainWheelDelta(event);
+  if (!delta) return;
+
+  event.preventDefault();
+  scrollMainHorizontally(delta);
+}
+
+function shouldIgnoreWheel(event) {
+  if (isMobileViewport()) return true;
+  if (event.ctrlKey || event.metaKey) return true;
+
+  return legalMain.scrollWidth <= legalMain.clientWidth;
+}
+
+function getMainWheelDelta(event) {
+  const { deltaX, deltaY } = event;
+
+  return Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
+}
+
+function scrollMainHorizontally(delta) {
+  legalMain.scrollBy({
+    left: delta * LEGAL_WHEEL_SCROLL_SPEED,
+    top: 0,
+    behavior: "auto",
+  });
+}
+
+function bindAnchorScrolling(hash, scrollHandler) {
+  document.querySelectorAll(`a[href="${hash}"]`).forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-
-      main.scrollTo({
-        left: 0,
-        top: 0,
-        behavior: "smooth",
-      });
-
-      history.replaceState(null, "", "#legal-start");
+      scrollHandler("smooth");
+      history.replaceState(null, "", hash);
     });
   });
+}
 
-  document.querySelectorAll('a[href="#legal-end"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
+function scrollToLegalStart(behavior = "smooth") {
+  const target = document.querySelector("#legal-start");
 
-      main.scrollTo({
-        left: main.scrollWidth - main.clientWidth,
-        top: 0,
-        behavior: "smooth",
-      });
+  if (isMobileViewport()) {
+    scrollWindowToTarget(target, behavior);
+    return;
+  }
 
-      history.replaceState(null, "", "#legal-end");
-    });
+  scrollMainToStart(behavior);
+}
+
+function scrollToLegalEnd(behavior = "smooth") {
+  const target = document.querySelector("#legal-end");
+
+  if (isMobileViewport()) {
+    scrollWindowToTarget(target, behavior);
+    return;
+  }
+
+  scrollMainToEnd(behavior);
+}
+
+function scrollWindowToTarget(target, behavior = "smooth") {
+  if (!target) return;
+
+  target.scrollIntoView({
+    behavior,
+    block: "start",
+    inline: "nearest",
   });
-});
+}
+
+function scrollMainToStart(behavior) {
+  legalMain.scrollTo({
+    left: 0,
+    top: 0,
+    behavior,
+  });
+}
+
+function scrollMainToEnd(behavior) {
+  const left = legalMain.scrollWidth - legalMain.clientWidth;
+
+  legalMain.scrollTo({
+    left,
+    top: 0,
+    behavior,
+  });
+}
+
+function isMobileViewport() {
+  return window.innerWidth <= LEGAL_MOBILE_BREAKPOINT;
+}
