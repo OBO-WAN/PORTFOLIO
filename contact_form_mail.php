@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 header('Content-Type: application/json; charset=utf-8');
 
-$recipientEmail = 'kontakt@francisco-naranjo.de';
-$fromEmail = 'kontakt@francisco-naranjo.de';
+$recipientEmail = 'francisco@naranjo.io';
+$fromEmail = 'francisco@naranjo.io';
 $fromName = 'Francisco Naranjo Website';
 
 function jsonResponse(int $statusCode, array $payload): never
