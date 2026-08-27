@@ -56,7 +56,7 @@
 
   /** Builds the contact endpoint URL. */
   function getContactEndpoint() {
-    return `${window.location.origin}/contact_form_mail.php`;
+    return "https://naranjo.io/contact_form_mail.php";
   }
 
   /** Checks local development hostnames. */

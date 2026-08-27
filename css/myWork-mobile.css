@@ -138,14 +138,16 @@
 
   .workCard__previewWrap {
     width: 100%;
-    border-radius: 22px;
+    margin-top: 12px;
+    border-radius: 16px 16px 16px 16px;
+    overflow: hidden;
   }
 
   .workCard__preview {
     display: block;
     width: 100%;
     height: auto;
-    padding-top: 12px;
+    border-radius: 16px 16px 16px 16px;
   }
 
   .workCard__actions {
